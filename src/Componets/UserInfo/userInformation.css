@@ -1,0 +1,14 @@
+.signal-max-width{
+    width: 55%;
+    margin-left:3rem;
+}
+
+.taskcompleted-clr{
+    color:green;
+    margin-left: 3px;
+
+}
+.taskincompleted-clr{
+    color: red;
+    margin-left: 3px;
+}
