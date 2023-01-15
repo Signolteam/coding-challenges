@@ -1,3 +1,7 @@
 .venv/
 .idea/
 __pycache__/
+node_modules/
+.serverless/
+serverless_credentials.csv
+database_credentials.sh
