@@ -1,6 +1,6 @@
 from typing import List
 
-from fastapi import FastAPI, HTTPException, Query
+from fastapi import FastAPI, HTTPException, Query, UploadFile
 from sqlmodel import select
 
 from src.database import create_session
@@ -10,6 +10,7 @@ from src.models import (
     TaskStatus, TaskStatusRead, TaskStatusCreate, TaskStatusUpdate,
     Task, TaskRead, TaskCreate, TaskUpdate,
 )
+from src.upload import upload_csv
 
 v1 = FastAPI(
     title="Signol Tech Test - Doron",
@@ -235,4 +236,29 @@ def delete_task(task_id: int):
             raise HTTPException(status_code=404, detail="Task not found")
         session.delete(task)
         session.commit()
+        return {"ok": True}
+
+
+########################################################################################################################
+# Task - Upload CSV
+########################################################################################################################
+@v1.post("/tasks/upload/")
+async def upload_tasks_from_csv_file(file: UploadFile):
+    if file.content_type != "text/csv":
+        raise HTTPException(status_code=400, detail="Only CSV files are supported for upload")
+
+    count = upload_csv(file)
+
+    return {"ok": True, "count": count}
+
+
+@v1.delete("/empty_database", description="WARNING: Deletes all rows from all database tables. Use with caution.")
+def empty_database():
+    with create_session() as session:
+        session.exec("DELETE FROM task")
+        session.exec("DELETE FROM person")
+        session.exec("DELETE FROM company")
+        session.exec("DELETE FROM task_status")
+        session.commit()
+
         return {"ok": True}
