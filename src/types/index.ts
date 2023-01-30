@@ -17,13 +17,19 @@ export type Task = {
     description: string,
     status: TaskStatus,
     createdByUserId: string,
-    date: Date
+    date: string
 }
 
-export type FullTask = Task & User & Company
+export type FullTask = {
+    task: Task,
+    user: User,
+    company: Company
+}
 
 export type TaskResponse = {
     tasks: Task[],
     users: User[],
     companies: Company[]
 }
+
+export type LOADING_STATE = 'LOADING' | 'LOADED';

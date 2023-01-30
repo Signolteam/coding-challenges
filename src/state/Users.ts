@@ -13,4 +13,10 @@ export const addUpdateUsers = (users: User[]) => {
     users.forEach(addUpdateUser);
 };
 
+export const clearUsers = () => {
+    for (let key of Object.keys(userStore)) {
+        delete userStore[key];
+    }
+};
+
 export default userStore;

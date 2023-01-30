@@ -1,13 +1,22 @@
-import { addUpdateCompanies } from '@/state/Companies';
-import { addUpdateUsers } from '@/state/Users';
-import { addUpdateTasks } from '@/state/Tasks';
+import * as Companies from '@/state/Companies';
+import * as Users from '@/state/Users';
+import * as Tasks from '@/state/Tasks';
 import rawData, { RawTask, rawDataToResponse } from './mockTasks';
+import type { Task, TaskStatus } from '@/types';
 
 export const getTasks = async () => {
-    const { users, companies, tasks } = rawDataToResponse(rawData as RawTask[]);
+    const { users, companies, tasks } = await rawDataToResponse(rawData as RawTask[]);
 
-    addUpdateUsers(users);
-    addUpdateCompanies(companies);
-    addUpdateTasks(tasks);
+    Users.addUpdateUsers(users);
+    Companies.addUpdateCompanies(companies);
+    Tasks.addUpdateTasks(tasks);
 };
 
+export const updateTaskStatus = async (taskId: Task['taskId'], status: TaskStatus) => {
+    console.log('API: updating', taskId, status);
+    await new Promise((res) => {
+        setTimeout(res, 500);
+    });
+
+    Tasks.updateTaskStatus(taskId, status);
+};

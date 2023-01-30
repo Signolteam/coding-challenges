@@ -13,4 +13,10 @@ export const addUpdateCompanies = (companies: Company[]) => {
     companies.forEach(addUpdateCompany);
 };
 
+export const clearCompanies = () => {
+    for (let key of Object.keys(companyStore)) {
+        delete companyStore[key];
+    }
+};
+
 export default companyStore;

@@ -1,6 +1,16 @@
+# Author's note
+
+This App was created with Create React App (see bwlow), and much time has been spent getting React Table, MobX, and Tailwind to all play nice. This was effort somewhat successful.
+
+The BE REST server, and DB, have not been implemented...
+
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), with extra configuation made possible with craco.
+
+
+
+
 
 ## Available Scripts
 

@@ -12,7 +12,7 @@ module.exports = {
       sourceType: "module",
     },
     rules: {
-      indent: ["error", 4],
+      indent: ["warn", 4],
       "linebreak-style": ["error", "unix"],
       quotes: ["error", "single"],
       "no-console": "warn",
@@ -23,6 +23,6 @@ module.exports = {
       ],
       "@typescript-eslint/explicit-function-return-type": "off", // Consider using explicit annotations for object literals and function return types even when they can be inferred.
       "no-empty": "warn",
-      "semi": ["error", "always"],
+      "semi": ["warn", "always"],
     },
   };

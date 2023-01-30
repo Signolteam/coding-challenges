@@ -1,10 +1,13 @@
 import { TaskStatus, TaskResponse } from '@/types';
 
-export function rawDataToResponse (list: RawTask[]): TaskResponse {
+export async function rawDataToResponse (list: RawTask[]): Promise<TaskResponse> {
     const addedTasks: string[] = [];
     const addedUsers: string[] = [];
     const addedCompanies: string[] = [];
 
+    await new Promise((res) => {
+        setTimeout(res, 1000);
+    });
 
     return list.reduce((acc, { 
         task_owner,
@@ -36,7 +39,7 @@ export function rawDataToResponse (list: RawTask[]): TaskResponse {
                 taskId: task_description,
                 description: task_description,
                 createdByUserId: task_owner,
-                date: new Date(task_date),
+                date: task_date,
                 status: task_status
             });
         }

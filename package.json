@@ -48,8 +48,10 @@
   },
   "devDependencies": {
     "@types/lodash": "^4.14.191",
+    "@types/react-table": "^7.7.14",
     "@typescript-eslint/eslint-plugin": "^5.48.2",
     "@typescript-eslint/parser": "^5.48.2",
-    "eslint": "^8.32.0"
+    "eslint": "^8.32.0",
+    "tailwindcss": "^3.2.4"
   }
 }

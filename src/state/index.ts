@@ -1,7 +1,7 @@
 import { FullTask } from '@/types';
-import { getUser } from './Users';
-import { getTask  } from './Tasks';
-import { getCompany } from './Companies';
+import { getUser, clearUsers } from './Users';
+import { getTask, clearTasks  } from './Tasks';
+import { getCompany, clearCompanies } from './Companies';
 
 export const getFullTask = (id: string): FullTask => {
     const task = getTask(id);
@@ -14,8 +14,14 @@ export const getFullTask = (id: string): FullTask => {
     const company = getCompany(user.companyId);
 
     return {
-        ...task,
-        ...user,
-        ...company
+        task,
+        user,
+        company
     };
+};
+
+export const clearAllTasks = () => {
+    clearCompanies();
+    clearUsers();
+    clearTasks();
 };

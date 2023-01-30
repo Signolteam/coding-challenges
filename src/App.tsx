@@ -1,15 +1,17 @@
+// import *DevTools from 'mobx-react-devtools';
 import TaskManagementTable from  '@/components/TaskManagentPanel/TaskManagementTable';
 import TaskManagementHeader from  '@/components/TaskManagentPanel/TaskManagementHeader';
 
 function App() {
     return (
-        <div className="App">
-            <header className="App-header">
+        <div className="min-h-screen bg-gray-100 text-gray-900">
+            <header className="max-w-7xl flex justify-end px-4 sm:px-6 lg:px-8 pt-4">
                 <TaskManagementHeader />
             </header>
-            <body>
+            <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4">
                 <TaskManagementTable />
-            </body>
+            </main>
+            {/* <DevTools /> */}
         </div>
     );
 }
