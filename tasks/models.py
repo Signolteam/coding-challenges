@@ -1,3 +1,4 @@
+import datetime
 from django.db import models
 
 class Task(models.Model):
@@ -12,6 +13,7 @@ class Task(models.Model):
     completed_by = models.DateTimeField(blank=True)
     company = models.CharField(max_length=255)
     status = models.CharField(max_length=255, default='Review', choices=STATUS_CHOICES)
+    timestamp = models.DateField(default=datetime.datetime.now, blank=True)
     
     def __str__(self):
         return self.description
