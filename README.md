@@ -4,6 +4,20 @@ This is a very simple REST API with the standard CRUD operations GET, POST, PUT,
 
 Written in: _Python 3.8.13_
 
+### Techstack requested vs techstack is implemented so far.
+- [x] Spin up a RESTAPI
+- [x] Python3
+- [x] CI and automated test suite
+- [ ] Javascript/React
+- [ ] AWS Serverless for deployment
+- [x] CRUD ops
+- [x] Tailwind CSS
+- [ ] Responsive UI
+- [x] PostgreSQL
+- [ ] Minimum 2 db tables
+
+> PostgreSQL has been configured and commented out. SQLite has been used instead. In order to spin up a postgreSQL instance locally, you either need to do it manually or I have to contenerise the package and provide it out of the box. 
+
 ## How To
 
 This is a fork of [signol's project](https://github.com/Signolteam/coding-challenges).
