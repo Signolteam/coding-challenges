@@ -16,7 +16,7 @@ Written in: _Python 3.8.13_
 - [x] PostgreSQL
 - [ ] Minimum 2 db tables
 
-> PostgreSQL has been configured and commented out. SQLite has been used instead. In order to spin up a postgreSQL instance locally, you either need to do it manually or I have to contenerise the package and provide it out of the box. 
+> PostgreSQL has been configured and commented out. SQLite has been used instead. In order to spin up a postgreSQL instance locally, you either need to do it manually or I have to containerise the package and provide it out of the box. 
 
 ## How To
 
