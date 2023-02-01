@@ -39,7 +39,7 @@ virtualenv venv && source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-**Step 4**: Run on a separate terminal tailwind to make it beautiful.
+**Step 4**: Run on a separate terminal tailwind to make it beautiful. You don't need to leave the connection open if you don't want browser hot reload on every CSS change.
 ```bash
 python manage.py tailwind start
 ```
