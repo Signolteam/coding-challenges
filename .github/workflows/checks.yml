@@ -4,10 +4,10 @@ name: Check
 on:
   push:
     branches:
-      - master
+      - main
   pull_request:
     branches:
-      - master
+      - main
 
 # What to do when the action is triggered
 jobs:
@@ -31,6 +31,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      # Move into the Django project folder (./amanager) and run pytest
-      - name: Test with pytest
+      # Run test suite
+      - name: Test
         run: pytest -vv
+      
+      # Run linter
+      - name: Lint
+        run: flake8
