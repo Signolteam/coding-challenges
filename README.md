@@ -39,9 +39,16 @@ virtualenv venv && source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-**Step 4**: Serve the site from root directory.
-```python
-python manage.py runserver
+**Step 4**: Run on a separate terminal tailwind to make it beautiful.
+```bash
+python manage.py tailwind start
 ```
+
+**Step 5**: Serve the site from root directory.
+```bash
+python manage.py collectstatic --noinput && python manage.py runserver
+```
+
+API root is at `<project-root>/api`
 
 ###### Contact: themistheodoratos@gmail.com
