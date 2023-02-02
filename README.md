@@ -11,7 +11,7 @@ Written in: _Python 3.8.13_
 - [ ] Javascript/React
 - [x] CSV upload
 - [x] Paginator
-- [ ] AWS Serverless for deployment (To be added)
+- [x] AWS Serverless for deployment
 - [x] CRUD ops
 - [x] Tailwind CSS
 - [ ] Responsive UI
