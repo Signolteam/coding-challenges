@@ -34,7 +34,7 @@ def create_task(**params):
         'description': 'This is an example description.',
         'created_by': 'John',
         'email': 'johndoe@example.com',
-        'completed_by': timezone.now(),
+        'completed_by': timezone.now().date(),
         'company': 'ExampleCo',
         'status': '2'
     }
