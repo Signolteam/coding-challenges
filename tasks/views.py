@@ -12,7 +12,7 @@ class TaskView(viewsets.ModelViewSet):
     
 
 class TaskViewGeneric(generic.ListView):
-    paginate_by = 500
+    paginate_by = 25
     template_name = 'tasks/tasks.html'
     context_object_name = 'tasks'
     
@@ -36,7 +36,6 @@ def upload_csv(request):
             lines = file_data.split("\n")
             for line in lines[1:]:
                 fields = line.split(",")
-                print(fields)
                 data_dict = {}
                 data_dict['created_by'] = fields[0]
                 data_dict['email'] = fields[1]
