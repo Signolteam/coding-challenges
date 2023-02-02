@@ -10,6 +10,7 @@ Written in: _Python 3.8.13_
 - [x] CI and automated test suite
 - [ ] Javascript/React
 - [x] CSV upload
+- [x] Paginator
 - [ ] AWS Serverless for deployment (To be added)
 - [x] CRUD ops
 - [x] Tailwind CSS
