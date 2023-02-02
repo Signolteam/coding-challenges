@@ -9,6 +9,7 @@ Written in: _Python 3.8.13_
 - [x] Python3
 - [x] CI and automated test suite
 - [ ] Javascript/React
+- [x] CSV upload
 - [ ] AWS Serverless for deployment (To be added)
 - [x] CRUD ops
 - [x] Tailwind CSS

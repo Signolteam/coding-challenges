@@ -12,7 +12,7 @@ class TaskView(viewsets.ModelViewSet):
     
 
 class TaskViewGeneric(generic.ListView):
-    paginate_by = 25
+    paginate_by = 500
     template_name = 'tasks/tasks.html'
     context_object_name = 'tasks'
     
