@@ -14,7 +14,7 @@ Written in: _Python 3.8.13_
 - [x] AWS Serverless for deployment
 - [x] CRUD ops
 - [x] Tailwind CSS
-- [ ] Responsive UI
+- [x] Responsive UI
 - [x] PostgreSQL
 - [ ] Minimum 2 db tables
 
