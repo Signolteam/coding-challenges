@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<section class="text-gray-600 body-font overflow-hidden m-8">
+  <div class="container py-8 mx-auto">
+  <div class="flex flex-wrap items-center border-b -mt-2">
+    <div class="w-1/2">
+      <h1 class="font-bold text-3xl">Task Manager</h1>
+    </div>
+    <form id="csv-form" onchange="submit();" class="w-1/2 flex justify-end" action="{% url 'tasks:csv'%}" method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      <label class="relative rounded shadow-md bg-cyan-500 m-4 px-8 py-2 text-white z-10 cursor-pointer hover:bg-cyan-700 ease-in-out duration-200" for="upload-csv">
+        UPLOAD CSV
+        <svg id='csv-loading' class="animate-spin hidden absolute left-2.5 top-2.5 -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+        </svg>
+      </label>
+      <input class="opacity-0 absolute -z-1" name="upload-csv" type="file" id="upload-csv" accept=".csv">
+    </form>
+  </div>
+    <div class="flex flex-col mt-2">
+      <div class="shadow overflow-auto h-[550px]">
+        <div class="py-2 inline-block min-w-full px-8">
+          <div class="overflow-hidden">
+            <table class="table-fixed min-w-full">
+              <thead class="border-b text-sm font-medium text-gray-700 text-left">
+                <tr>
+                  <th scope="col" class="px-6 py-4">
+                    CREATED BY
+                  </th>
+                  <th scope="col" class="px-6 py-4">
+                    EMAIL
+                  </th>
+                  <th scope="col" class="px-6 py-4">
+                    TASK DATE
+                  </th>
+                  <th scope="col" class="px-6 py-4">
+                    TASK DESCRIPTION
+                  </th>
+                  <th scope="col" class="px-6 py-4">
+                    COMPANY NAME
+                  </th>
+                  <th scope="col" class="px-6 py-4">
+                    TASK STATUS
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+              {% for task in tasks %}
+              <tr class="bg-white border-b">
+                <td class="px-6 py-4 text-sm font-medium text-gray-900">
+                  {{task.created_by}}
+                </td>
+                <td class="text-sm text-gray-900 font-light px-6 py-4">
+                  {{task.email}}
+                </td>
+                <td class="text-sm text-gray-900 font-light px-6 py-4">
+                  {{task.completed_by|date:'Y-m-d'}}
+                </td>
+                <td class="text-sm text-gray-900 font-light px-6 py-4 w-30">
+                  {{task.description}}
+                </td>
+                <td class="text-sm text-gray-900 font-light px-6 py-4">
+                  {{task.company}}
+                </td>
+                <td class="text-sm text-gray-900 font-light px-6 py-4">
+                  {{task.status}}
+                </td>
+              </tr>
+              {% endfor %}
+              </tbody>
+
+            </table>
+          </div>
+        </div>
+        <div class="pagination text-center p-10 w-full">
+          <span class="step-links bg-gray-100 rounded p-4">
+              {% if page_obj.has_previous %}
+                  <a class="p-2 border rounded hover:bg-gray-200 ease-in-out duration-200" href="?page=1">&laquo; first</a>
+                  <a class="p-2 border rounded hover:bg-gray-200 ease-in-out duration-200" href="?page={{ page_obj.previous_page_number }}">previous</a>
+              {% endif %}
+
+              <span class="current p-2">
+                  Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+              </span>
+
+              {% if page_obj.has_next %}
+                  <a class="p-2 border rounded hover:bg-gray-200 ease-in-out duration-200" href="?page={{ page_obj.next_page_number }}">next</a>
+                  <a class="p-2 border rounded hover:bg-gray-200 ease-in-out duration-200" href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+              {% endif %}
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
