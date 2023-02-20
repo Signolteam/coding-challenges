@@ -1,0 +1,33 @@
+service: task_tracking
+
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: python3.8
+  stage: dev
+  region: ap-southeast-1
+  logs:
+    httpApi: true
+
+custom:
+  pythonRequirements:
+    dockerizePip: non-linux
+    slim: true
+
+package:
+  exclude:
+    - node_modules/**
+    - .venv/**
+    - .direnv/**
+    - .idea/**
+
+functions:
+  app:
+    handler: task_tracking.main.handler
+    events:
+      - httpApi:
+          path: '*'
+
+plugins:
+  - serverless-python-requirements
