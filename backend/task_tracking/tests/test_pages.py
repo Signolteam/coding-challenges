@@ -1,3 +1,5 @@
+from datetime import date
+
 import pytest
 
 from task_tracking.schemas import TaskSchema
@@ -11,7 +13,8 @@ def task():
         email="user1@example.com",
         company_name="Company 1",
         description="example task",
-        status="IN_REVIEW",
+        status="IR",
+        date=date.today()
     )
 
 
@@ -26,7 +29,6 @@ def test_model_schema(task):
         "date": task.date,
         "description": task.description,
         "status": task.status,
-        "owner": task.owner,
     }
     assert schema.schema() == {
         "title": "TaskSchema",
@@ -56,19 +58,21 @@ def test_model_schema(task):
                 "title": "Date",
                 "description": "date",
                 "type": "string",
-                "format": "date-time",
+                "format": "date",
             },
             "description": {
                 "title": "Description",
+                'maxLength': 1000,
                 "description": "description",
                 "type": "string",
             },
             "status": {
+                "default": "IR",
                 "title": "Status",
                 "description": "status",
-                "maxLength": 15,
+                "maxLength": 2,
                 "type": "string",
             },
         },
-        "required": ["owner", "email", "company_name", "date", "description", "status"],
+        "required": ["owner", "email", "company_name", "date", "description",],
     }
