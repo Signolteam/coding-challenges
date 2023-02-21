@@ -46,7 +46,8 @@ http://localhost:8000/docs
 
 or
 
-using the Django admin panel.
+using the Django admin panel. You need to kill the API server first.
+
 The set up:
 ```
 cd backend
