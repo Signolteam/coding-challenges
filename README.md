@@ -13,7 +13,7 @@ First create a virtual environment and install the dependencies:
 ```shell
 cd backend
 python -m venv .venv
-. .venv/bin/activate
+source .venv/bin/activate
 pip install -r requirements.txt
 ```
 The application uses SQLite by default, please refer to `settings/base.py`. To populate the initial database tables using the migration command:
