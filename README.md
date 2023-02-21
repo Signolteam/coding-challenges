@@ -5,7 +5,7 @@ This project consists of:
 - a React frontend
 
 ## To start the application locally
-### The backend
+### The backend server
 ***Requirements***: Python 3.10+
 
 First create a virtual environment and install the dependencies:
@@ -31,7 +31,7 @@ The [auto-generated docs](https://fastapi.tiangolo.com/features/#automatic-docs)
 
 The [model admin](https://docs.djangoproject.com/en/4.0/ref/contrib/admin/) provided by Django is availabe at http://localhost:8000/admin
 
-### The frontend
+### The frontend server
 ```shell
 cd frontend 
 npm install
