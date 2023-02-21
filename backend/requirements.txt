@@ -1,0 +1,20 @@
+django
+pydantic
+fastapi
+djantic
+pytest
+pytest-django
+python-dotenv
+boto3
+Collectfast
+django-environ
+Werkzeug
+gunicorn
+uvicorn
+black
+
+# Only required for serverless deployment
+mangum
+
+# Only required if using Postgres
+psycopg2-binary
