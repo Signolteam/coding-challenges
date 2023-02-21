@@ -38,3 +38,25 @@ npm install
 npm start
 ```
 ***Note***: The `Upload file` button functionality is not implemented
+
+## Create tasks
+You can create tasks using 
+
+http://localhost:8000/docs
+
+or
+
+using the Django admin panel.
+The set up:
+```
+cd backend
+# make a copy of .env.dist and named it .env
+./manage.py createsuperuser #create a super user for the django admin
+./manage.py runserver
+```
+Login to:
+
+http://localhost:8000/admin
+
+Click "+ Add" at the admin panel:
+![Django admin panel](/django-admin-panel.png?raw=true "Django admin panel")
