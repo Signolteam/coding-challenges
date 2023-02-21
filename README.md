@@ -37,3 +37,4 @@ cd frontend
 npm install
 npm start
 ```
+***Note***: The `Upload file` button functionality is not implemented
