@@ -10,7 +10,7 @@ First create a virtual environment and install the dependencies:
 
 ```shell
 python -m venv .venv
-. .venv/bin/activate
+source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
@@ -51,3 +51,8 @@ The following steps assumes a remote Postgres database is already setup and Serv
 - Edit the `serverless.yml` where necessary
 - Add the remote database details to `.env`
 - Run `sls deploy`
+
+## To run tests
+```
+pytest
+```
