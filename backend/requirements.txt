@@ -11,6 +11,7 @@ django-environ
 Werkzeug
 gunicorn
 uvicorn
+black
 
 # Only required for serverless deployment
 mangum
