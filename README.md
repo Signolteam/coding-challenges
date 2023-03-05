@@ -1,1 +1,1 @@
-# coding-challenges
+# Signol Coding Challenge
