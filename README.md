@@ -33,11 +33,13 @@ The frontend is created using ReactJS and the backend is implemented in Postgres
 2. Run the client side
     ```
     cd client
+   npm i
     npm start
     ```
 3. Run the server side
     ```
    cd server
+   npm i
    npm start
     ```
 
