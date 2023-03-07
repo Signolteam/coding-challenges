@@ -81,8 +81,6 @@ async function closeClient(client) {
     client.end();
 }
 
-
-
 module.exports = {
     getClient,
     readTasks,
