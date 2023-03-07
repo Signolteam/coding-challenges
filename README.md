@@ -30,16 +30,16 @@ The frontend is created using ReactJS and the backend is implemented in Postgres
    ```
     git clone https://github.com/syedsaifhasan/signol-coding-challenge.git
     ```
-2. Run the client side
+2. Run the client side (Note: _--force_ flag used to avoid broken dependencies)
     ```
-    cd client
-   npm i
+    cd client 
+   npm i --force
     npm start
     ```
-3. Run the server side
+3. Run the server side (Note: _--force_ flag used to avoid broken dependencies)
     ```
    cd server
-   npm i
+   npm i --force
    npm start
     ```
 
