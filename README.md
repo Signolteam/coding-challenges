@@ -15,7 +15,7 @@ With this panel, the managers can:
 The frontend is created using ReactJS and the backend is implemented in Postgres. The Postgres database is deployed on Amazon AWS RDS.
 
 ### Database Schema
-![](../../Desktop/schema.drawio.png)
+![](./schema.png)
 ## Getting Started
 
 ### Requirements
