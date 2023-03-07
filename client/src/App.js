@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Typography from '@mui/material/Typography';
 import axios from 'axios';
-import CSVReader from 'react-csv-reader'
+import CSVReader from 'react-csv-reader';
 
 class App extends Component {
     constructor(props) {
@@ -41,7 +41,6 @@ class App extends Component {
     }
 
     processCSVData(data) {
-        console.log(data);
         const keys = data.shift();
         this.setState({ header: keys })
         return data.map(row => {
@@ -66,7 +65,6 @@ class App extends Component {
         await axios.get('http://localhost:8082/')
             .then(res => {
                 const tasks = res.data;
-                console.log('Tasks', tasks);
                 const totalPages = tasks.length / this.state.pageSize;
                 this.setState({ tasks, totalPages });
             })
