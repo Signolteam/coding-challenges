@@ -28,11 +28,11 @@ export class TasksService {
     //TODO: Paging?
     return await _DB.query(
       `SELECT
-        tasks.*,
         tasks._id AS task_id,
         users.full_name AS owner_full_name,
         users.email AS owner_email,
         users.company_name AS owner_company_name,
+        tasks.*
       FROM tasks
       LEFT JOIN users ON tasks.owner_id=users._id;`
     );
@@ -45,11 +45,11 @@ export class TasksService {
   protected async getById(id: number) {
     return await _DB.query(
       `SELECT
-        tasks.*,
         tasks._id AS task_id,
         users.full_name AS owner_full_name,
         users.email AS owner_email,
         users.company_name AS owner_company_name,
+        tasks.*
       FROM tasks
       LEFT JOIN users ON tasks.owner_id=users._id
       WHERE tasks._id = $1;`,
