@@ -1,0 +1,8 @@
+.TaskTable th,
+.TaskTable td {
+  padding: 2px 5px;
+}
+.TaskTable th {
+  text-align: left;
+  background: #eee;
+}
