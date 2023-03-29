@@ -25,7 +25,7 @@ jobs:
         uses: mingjun97/file-regex-replace@v1
         with:
           path: "frontend/src"
-          regex: "process\.env\.REACT_APP_TASKS_API_BASE_URL"
+          regex: "process\\.env\\.REACT_APP_TASKS_API_BASE_URL"
           replacement: '"${{ secrets.REACT_APP_TASKS_API_BASE_URL }}"'
 
       - name: Deploy to S3
