@@ -1,0 +1,77 @@
+.TaskTable th,
+.TaskTable td {
+  padding: 2px 5px;
+}
+.TaskTable th {
+  text-align: left;
+  background: #b7eaf1;
+}
+.TaskTable tr {
+  background-color: #effafb;
+}
+.TaskTable tr:hover {
+  background-color: white;
+}
+
+@media screen and (max-width: 768px) {
+  /** "Mobile" version of the table */
+  .TaskTable {
+    display: block;
+  }
+  .TaskTable thead {
+    display: none;
+  }
+  .TaskTable tbody {
+    display: block;
+  }
+  .TaskTable tr {
+    display: block;
+    border: solid 1px;
+    margin-bottom: 1em;
+  }
+  .TaskTable td {
+    display: block;
+  }
+  .TaskTable td:before {
+    max-width: min-content;
+    font-weight: bold;
+    font-family: "Poppins", sans-serif;
+  }
+  .TaskTable td.created_by:before {
+    content: "Created By: ";
+  }
+  .TaskTable td.email:before {
+    content: "Email: ";
+  }
+  .TaskTable td.task_date:before {
+    content: "Task Date: ";
+  }
+  .TaskTable td.description:before {
+    content: "Description: ";
+  }
+  .TaskTable td.owner_company_name:before {
+    content: "Company Name: ";
+  }
+}
+@media screen and (min-width: 769px) {
+  .TaskTable tr {
+    border-bottom: solid 1px #b7eaf1;
+  }
+  .TaskTable td.created_by {
+    min-width: 10rem;
+  }
+  .TaskTable td.email {
+    min-width: 12em;
+  }
+  .TaskTable td.task_date {
+    min-width: 7em;
+  }
+  .TaskTable td.description {
+  }
+  .TaskTable td.owner_company_name {
+    min-width: 8em;
+  }
+  .TaskTable td.actions {
+    min-width: 11em;
+  }
+}
