@@ -23,6 +23,7 @@
   - [ ] Component-level tests
   - [ ] End-to-end tests
   - [x] Deploy to S3
+  - [ ] Deploy with correct Lambda base URL
 
 ## Pre-requisites
 
