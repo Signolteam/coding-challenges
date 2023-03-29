@@ -26,7 +26,7 @@
     1.  `cd frontend`
     2.  Create file `frontend/.env` that looks like:
         ```sh
-        TASKS_API_BASE_URL=
+        REACT_APP_TASKS_API_BASE_URL=http://localhost:3000/dev/
         ```
     3.  `yarn install`
     4.  (Optional) To run locally, `yarn start`

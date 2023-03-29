@@ -9,9 +9,19 @@
   --signol-darkblue: #1344bc;
   --signol-green: #81c784;
 }
+.bg-signol-cyan {
+  background-color: var(--signol-cyan);
+}
+.bg-signol-magenta {
+  background-color: var(--signol-magenta);
+}
+.bg-signol-green {
+  background-color: var(--signol-green);
+}
 
 html {
   background-color: var(--signol-cyan);
+  font-size: 12px;
 }
 body {
   margin: auto;
@@ -38,8 +48,6 @@ h4 {
 }
 
 .btn-signol {
-  background-color: var(--signol-magenta);
-  color: white;
   padding: 4px;
   font-size: 11px;
   border: solid 1px black;
@@ -50,4 +58,16 @@ h4 {
 }
 .btn-big {
   padding: 15px;
+}
+
+.animate-spinX {
+  animation: spinX 1s infinite linear;
+}
+@keyframes spinX {
+  from {
+    transform: rotateX(0deg);
+  }
+  to {
+    transform: rotateX(360deg);
+  }
 }

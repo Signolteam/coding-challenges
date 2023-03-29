@@ -1,41 +1,48 @@
-import React from "react";
+import { useState } from "react";
+import CSVReader from "react-csv-reader";
 import TaskTable from "./components/TaskTable";
+import TasksApi from "./core/TasksApi";
 
 function App() {
-  function importUploadFile() {
-    console.log("TODO: Prompt for file");
-    console.log("TODO: Send file to API (or parse CSV here)");
-    /* 
-     * If we want to read it locally then send it up,
-     * we could trigger a click event on a hidden `input[type=file]`?
-     * Some code to read the file contents in-browser: (via https://stackoverflow.com/a/29395276)
+  const [loading, setLoading] = useState(false);
 
-      const fileInput = document.getElementById('csv')
-      const readFile = () => {
-        const reader = new FileReader()
-        reader.onload = () => {
-          document.getElementById('out').innerHTML = reader.result
-        }
-        // start reading the file. When it is done, calls the onload event defined above.
-        reader.readAsBinaryString(fileInput.files[0])
-      }
-      fileInput.addEventListener('change', readFile)
-    */
+  function handleCsvFileLoaded(data: Array<any>) {
+    setLoading(true);
+    TasksApi.createTasks(data)
+      .then(() => {
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error(error);
+        setLoading(false);
+      });
   }
+
   return (
     <div className="App">
       <header className="flex justify-around pt-2 mb-8">
         <div>
           <h1 className="text-6xl">Tasks</h1>
         </div>
-        <div className="flex-shrink flex flex-col justify-around">
-          <button
-            type="button"
-            className="btn-signol btn-big vertical-align"
-            onClick={importUploadFile}
-          >
-            Import (Upload File)
-          </button>
+        <div
+          className="flex-shrink flex flex-col justify-around"
+          title="Upload a CSV file with Headings: task_owner,email,company_name,task_date,task_description,task_status"
+        >
+          <div className="btn-signol bg-signol-cyan text-black btn-big vertical-align">
+            {loading ? (
+              <>
+                <span className="inline-block animate-spinX">⏳</span>{" "}
+                Loading...
+              </>
+            ) : (
+              <CSVReader
+                cssClass=""
+                label="Import CSV (Upload File)"
+                onFileLoaded={handleCsvFileLoaded}
+                parserOptions={{ header: true }}
+              ></CSVReader>
+            )}
+          </div>
         </div>
       </header>
 

@@ -1,50 +1,83 @@
-import { TaskOutputDTO } from "../../../shared/dto/TaskOutputDTO";
+import { useEffect, useState } from "react";
+
+import { TaskOutputDTO } from "../dto";
+import { TaskStates } from "../enum/TaskStates";
+import TasksApi from "../core/TasksApi";
+
 import "./TaskTable.css";
-import { TaskStates } from "../../../shared/enum/TaskStates";
+
+const dateTimeFormatter = new Intl.DateTimeFormat(undefined, {
+  dateStyle: "medium",
+});
+const statusToEmoji = {
+  APPROVED: "☑️",
+  IN_REVIEW: "",
+  REJECTED: "❌",
+} satisfies Record<TaskStates, string>;
 
 function TaskTable() {
-  const dataTasks: TaskOutputDTO[] = [
-    {
-      task_id: 0,
-      day: new Date(),
-      description: "aaaa",
-      status: "APPROVED",
-      owner_id: 0,
-      owner_full_name: "Shameen",
-      owner_company_name: "Co. & Co.",
-      owner_email: "shameen@example.com",
-    },
-  ];
-  const dateTimeFormatter = new Intl.DateTimeFormat(undefined, {
-    dateStyle: "medium",
-  });
-  const statusToEmoji: Record<TaskStates, string> = {
-    APPROVED: "☑️",
-    IN_REVIEW: "",
-    REJECTED: "❌",
-  };
+  const [data, setData] = useState<Array<TaskOutputDTO>>([]);
+  useEffect(() => {
+    reloadTaskList();
+  }, []);
+
+  /** Fetches all Tasks via API */
+  function reloadTaskList() {
+    TasksApi.getAllTasks().then((json) => {
+      setData(json.data.data);
+    });
+  }
+
+  /** Updates a Task's status (from IN_REVIEW to either APPROVED or REJECTED) */
+  function setTaskStatus(task: TaskOutputDTO, targetState: TaskStates) {
+    TasksApi.setTaskStatus(task.task_id, targetState).then(() => {
+      reloadTaskList();
+    });
+  }
+
   return (
     <table className="TaskTable w-11/12 m-auto border">
       <tbody>
-        {dataTasks.map((item, i) => {
+        {data.map((item) => {
+          //First build up the Actions area (TODO: Move to another component)
+          const emoji = statusToEmoji[item.status];
           const actionArea =
-            item.status === "IN_REVIEW" ? (
-              <>(TODO: IN_REVIEW needs buttons)</>
+            item.status === TaskStates.IN_REVIEW ? (
+              <>
+                <button
+                  type="button"
+                  className="btn-signol bg-signol-green"
+                  onClick={() => setTaskStatus(item, TaskStates.APPROVED)}
+                >
+                  Approve
+                </button>
+                <button
+                  type="button"
+                  className="btn-signol bg-signol-magenta ml-2"
+                  onClick={() => setTaskStatus(item, TaskStates.REJECTED)}
+                >
+                  Reject
+                </button>
+              </>
             ) : (
               <>
-                <span className="mr-1">{statusToEmoji[item.status]}</span>
+                <span className="mr-1">{emoji}</span>
                 {item.status}
               </>
             );
 
           return (
-            <tr key={i}>
-              <td>{item.owner_full_name}</td>
-              <td>{item.owner_email}</td>
-              <td>{dateTimeFormatter.format(item.day)}</td>
-              <td>{item.description}</td>
-              <td>{item.owner_company_name}</td>
-              <td>{actionArea}</td>
+            <tr key={item.task_id} data-id={item.task_id}>
+              <td className="created_by">{item.owner_full_name}</td>
+              <td className="email">{item.owner_email}</td>
+              <td className="task_date">
+                {dateTimeFormatter.format(item.day)}
+              </td>
+              <td className="description" title={item.description}>
+                {item.description}
+              </td>
+              <td className="owner_company_name">{item.owner_company_name}</td>
+              <td className="actions">{actionArea}</td>
             </tr>
           );
         })}
