@@ -10,7 +10,7 @@ export default interface TaskOutputDTO {
   owner_full_name: string;
   owner_email: string;
   owner_company_name?: string;
-  day?: Date;
+  task_date?: Date;
   description?: string;
   status: TaskStates;
 }

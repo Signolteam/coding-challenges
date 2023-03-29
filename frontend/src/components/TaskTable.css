@@ -4,7 +4,13 @@
 }
 .TaskTable th {
   text-align: left;
-  background: #eee;
+  background: #b7eaf1;
+}
+.TaskTable tr {
+  background-color: #effafb;
+}
+.TaskTable tr:hover {
+  background-color: white;
 }
 
 @media screen and (max-width: 768px) {
@@ -48,6 +54,9 @@
   }
 }
 @media screen and (min-width: 769px) {
+  .TaskTable tr {
+    border-bottom: solid 1px #b7eaf1;
+  }
   .TaskTable td.created_by {
     min-width: 10rem;
   }
@@ -58,7 +67,6 @@
     min-width: 7em;
   }
   .TaskTable td.description {
-    width: auto;
   }
   .TaskTable td.owner_company_name {
     min-width: 8em;
