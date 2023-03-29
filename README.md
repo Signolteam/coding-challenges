@@ -12,8 +12,8 @@
   - [x] Basic Unit tests (for util functions)
   - [ ] Integration tests (full lambda function)
   - [ ] End-to-end tests
-  - [ ] Deploy as AWS Lambda function
-  - [ ] Deploy with AWS API Gateway
+  - [x] Deploy as AWS Lambda function
+  - [x] Deploy with AWS API Gateway
   - [ ] Deploy with RDS PostgreSQL database
 - Frontend (React)
   - [x] List: Fetch Tasks from API and output on-screen
@@ -22,7 +22,7 @@
   - [x] Responsive: Useful UI on smaller screen sizes
   - [ ] Component-level tests
   - [ ] End-to-end tests
-  - [ ] Deploy to S3
+  - [x] Deploy to S3
 
 ## Pre-requisites
 
@@ -35,6 +35,7 @@
 
     1.  `cd backend`
     2.  `yarn install`
+    3.  (Optional) To run locally, `yarn local`
 
 3.  Set up frontend (React TypeScript):
 
@@ -90,12 +91,7 @@
 
          3. `yarn deploy`
 
-            ```sh
-
-            yarn deploy
-            ```
-
-4. Add the VPC to the Lambda functions:
+4. Add the VPC to the Lambda functions: (Note: I didn't manage to get this to work)
    1. Find a lambda, Configuration -> Permissions
    2. Edit the permissions and add these policies (Statement)
    ```json
