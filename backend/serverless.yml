@@ -1,8 +1,9 @@
-service: aws-node-rest-api-typescript
+service: signol-shameen-dev
 
 provider:
   name: aws
   runtime: nodejs18.x
+  region: eu-west-1
   environment:
     NODE_ENV: dev
 
@@ -10,42 +11,33 @@ plugins:
   - serverless-plugin-typescript
   - serverless-offline
 
+useDotenv: true
 package:
-  exclude:
-    - config/.env.stg
-    - config/.env.pro
   include:
-    - config/.env.dev
+    - .env
 
 functions:
-  create:
-    handler: app/handler.create
+  createMany:
+    handler: app/handler.createMany
     events:
       - http:
-          path: books
+          path: tasks
           method: post
   update:
     handler: app/handler.update
     events:
       - http:
-          path: books/{id}
+          path: tasks/{id}
           method: put
   find:
     handler: app/handler.find
     events:
       - http:
-          path: books
+          path: tasks
           method: get
   findOne:
     handler: app/handler.findOne
     events:
       - http:
-          path: books/{id}
+          path: tasks/{id}
           method: get
-
-  deleteOne:
-    handler: app/handler.deleteOne
-    events:
-      - http:
-          path: books/{id}
-          method: delete

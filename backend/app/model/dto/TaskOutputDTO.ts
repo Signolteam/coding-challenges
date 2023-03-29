@@ -5,12 +5,12 @@ import { TaskStates } from "../enum/TaskStates";
  * @remarks Could be refactored to the Aggregate Root pattern, to better organize read+write
  */
 export default interface TaskOutputDTO {
-  task_id: number;
-  owner_id: number;
+  task_id: string;
+  owner_id: string;
   owner_full_name: string;
   owner_email: string;
-  owner_company_name: string;
-  day: Date;
-  description: string;
+  owner_company_name?: string;
+  task_date?: Date;
+  description?: string;
   status: TaskStates;
 }

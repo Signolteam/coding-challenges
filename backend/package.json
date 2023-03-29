@@ -11,15 +11,16 @@
   "license": "UNLICENSED",
   "main": "app/handler.ts",
   "scripts": {
-    "lint": "tslint -p tsconfig.json -c tslint.json",
-    "local": "serverless offline",
+    "lint": "eslint \"./{app,tests}/**/*.ts\"",
+    "local": "serverless offline --httpPort=3001",
     "deploy": "serverless deploy",
-    "test": "cross-env NODE_ENV=dev jest -r ts-node/register tests/*.test.ts --exit",
-    "coverage": "nyc --reporter lcov npm run test",
-    "clean": "npx rimraf .serverless"
+    "test": "jest -r ts-node/register",
+    "coverage": "yarn test --coverage",
+    "clean": "npx rimraf .serverless && npx rimraf .build"
   },
   "dependencies": {
     "dotenv": "^16.0.3",
+    "esm": "^3.2.25",
     "pg": "^8.10.0"
   },
   "devDependencies": {
@@ -29,6 +30,9 @@
     "@types/lambda-tester": "^3.6.2",
     "@types/node": "^18.15.10",
     "@types/pg": "^8.6.6",
+    "@types/sinon": "^10.0.13",
+    "@typescript-eslint/eslint-plugin": "^5.57.0",
+    "@typescript-eslint/parser": "^5.57.0",
     "cross-env": "^7.0.3",
     "eslint": "^8.36.0",
     "eslint-config-prettier": "^8.8.0",
@@ -51,7 +55,7 @@
       "ts"
     ],
     "rootDir": "app",
-    "testRegex": ".*\\.spec\\.ts$",
+    "testRegex": ".*\\.{spec,test}\\.ts$",
     "collectCoverageFrom": [
       "**/*.(t|j)s"
     ],

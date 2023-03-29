@@ -1,102 +1,99 @@
 import { Context } from "aws-lambda";
-import { MessageUtil } from "../utils/message";
-import { TasksService } from "../service/TasksService";
+import { MessageUtil } from "../utils/MessageUtil";
+import { TaskRepository } from "../infrastructure/TaskRepository";
+import ITaskRepository from "../infrastructure/ITaskRepository";
+import { ValidateCreateTaskDTO } from "../model/dto/CreateTaskDTO";
+import UpdateTaskDTO, {
+  ValidateUpdateTaskDTO,
+} from "../model/dto/UpdateTaskDTO";
+import isUUID from "../utils/isUUID";
+import { RequestBodyCreateMany } from "../model/dto/RequestBodyCreateMany";
 
-export class TasksController extends TasksService {
-  /**
-   * Create book
-   * @param {*} event
-   */
-  async create(event: any, context?: Context) {
-    console.log("functionName", context.functionName);
-
-    try {
-      const result = await this.create();
-
-      return MessageUtil.success(result);
-    } catch (err) {
-      console.error(err);
-
-      return MessageUtil.error(err.code, err.message);
-    }
+export class TasksController {
+  taskRepository: ITaskRepository;
+  constructor(taskRepository: ITaskRepository = new TaskRepository()) {
+    //TODO: Dependency Injection so we can test
+    this.taskRepository = taskRepository;
   }
 
   /**
-   * Update a book by id
+   * Create a Task
+   * @param {*} event
+   */
+  async createMany(event: any, context?: Context) {
+    console.log("functionName", context?.functionName);
+    const body: RequestBodyCreateMany = JSON.parse(event.body);
+    const createDTOs = body.create;
+
+    //Validation
+    createDTOs.forEach((dto, index) => {
+      const validationErrors = ValidateCreateTaskDTO(dto);
+      if (validationErrors.length > 0) {
+        return MessageUtil.error(
+          400,
+          `Error at row ${index}: ${validationErrors.join("\n")}`
+        );
+      }
+    });
+
+    return await this.taskRepository
+      .createMany(createDTOs)
+      .then(() =>
+        MessageUtil.success({ message: `${createDTOs.length} Tasks Created` })
+      )
+      .catch((err: any) => MessageUtil.error(err.code, err.message));
+  }
+
+  /**
+   * Update a task (status only)
    * @param event
    */
   async update(event: any) {
-    const id: number = Number(event.pathParameters.id);
-    const body: object = JSON.parse(event.body);
-
-    try {
-      const result = await this.updateTasks(id, body);
-      return MessageUtil.success(result);
-    } catch (err) {
-      console.error(err);
-
-      return MessageUtil.error(err.code, err.message);
+    const id: string = event.pathParameters.id;
+    if (!isUUID(id)) {
+      return MessageUtil.error(400, "Invalid UUID");
     }
+
+    const body: UpdateTaskDTO = JSON.parse(event.body);
+    const validationErrors = ValidateUpdateTaskDTO(body);
+    if (validationErrors.length > 0) {
+      return MessageUtil.error(
+        400,
+        "Invalid Body: " + validationErrors.join("\n")
+      );
+    }
+
+    return await this.taskRepository
+      .update(id, body)
+      .then(() => MessageUtil.success({ message: "Task Updated" }))
+      .catch((err: any) => MessageUtil.error(err.code, err.message));
   }
 
   /**
-   * Find book list
+   * Get all Tasks
    */
   async find() {
-    try {
-      const result = await this.findTasks();
-
-      return MessageUtil.success(result);
-    } catch (err) {
-      console.error(err);
-
-      return MessageUtil.error(err.code, err.message);
-    }
+    return await this.taskRepository
+      .getAll()
+      .then((result) => MessageUtil.success(result))
+      .catch((err: any) => MessageUtil.error(err.code, err.message));
   }
 
   /**
-   * Query book by id
+   * Get single Task by ID
    * @param event
    */
-  async findOne(event: any, context: Context) {
-    // The amount of memory allocated for the function
-    console.log("memoryLimitInMB: ", context.memoryLimitInMB);
+  // async findOne(event: any) {
+  //   const id: string = event.pathParameters.id;
 
-    const id: number = Number(event.pathParameters.id);
+  //   //Validation
+  //   if (!isUUID(id)) {
+  //     return MessageUtil.error(400, "Invalid UUID");
+  //   }
 
-    try {
-      const result = await this.findOneTaskById(id);
-
-      return MessageUtil.success(result);
-    } catch (err) {
-      console.error(err);
-
-      return MessageUtil.error(err.code, err.message);
-    }
-  }
-
-  /**
-   * Delete book by id
-   * @param event
-   */
-  async deleteOne(event: any) {
-    const id: number = event.pathParameters.id;
-
-    try {
-      const result = await this.deleteOneTaskById(id);
-
-      if (result.deletedCount === 0) {
-        return MessageUtil.error(
-          1010,
-          "The data was not found! May have been deleted!"
-        );
-      }
-
-      return MessageUtil.success(result);
-    } catch (err) {
-      console.error(err);
-
-      return MessageUtil.error(err.code, err.message);
-    }
-  }
+  //   return await this.taskRepository
+  //     .getById(id)
+  //     .then((result) => MessageUtil.success(result))
+  //     .catch((err: any) => MessageUtil.error(err.code, err.message));
+  // }
 }
