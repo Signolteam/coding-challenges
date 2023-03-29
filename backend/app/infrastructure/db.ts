@@ -1,20 +1,7 @@
 import { Client } from "pg";
 
-let DB: Client;
 export async function getDB(): Promise<Client> {
-  if (DB && DB instanceof Client) {
-    await DB.connect();
-    return DB;
-  }
-  const config = {
-    host: process.env.DB_HOST,
-    port: parseInt(process.env.DB_PORT || "5432"),
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_DATABASE,
-    ssl: process.env.DB_SSL == "1",
-  };
-  DB = new Client(config);
+  const DB = new Client();
   console.debug("[DB] Connecting...");
   await DB.connect();
   console.debug("[DB] Connected");
@@ -92,4 +79,5 @@ async function _seedDatabase(client: Client) {
       ('00000000-0000-0000-0000-000000000005', '2022-01-24','mattis egestas metus aenean fermentum donec ut mauris eget massa tempor convallis nulla neque libero convallis eget','REJECTED');
   END$$;
   `);
+  console.debug("Seeding complete");
 }

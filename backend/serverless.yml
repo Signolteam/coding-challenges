@@ -8,12 +8,12 @@ provider:
   environment:
     NODE_ENV: ${self:provider.stage}
     ENV: ${self:provider.stage}
-    DB_HOST: ${env:DB_HOST}
-    DB_PORT: ${env:DB_PORT}
-    DB_USER: ${env:DB_USER}
-    DB_PASSWORD: ${env:DB_PASSWORD}
-    DB_DATABASE: ${env:DB_DATABASE}
-    DB_SSL: ${env:DB_SSL}
+    PGHOST: ${env:PGHOST}
+    PGPORT: ${env:PGPORT}
+    PGUSER: ${env:PGUSER}
+    PGPASSWORD: ${env:PGPASSWORD}
+    PGDATABASE: ${env:PGDATABASE}
+    PGSSLMODE: ${env:PGSSLMODE}
 
 package:
   include:

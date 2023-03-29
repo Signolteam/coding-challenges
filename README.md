@@ -81,11 +81,11 @@
             ```ini
             AWS_ACCESS_KEY_ID=
             AWS_SECRET_ACCESS_KEY=
-            DB_HOST=
-            DB_PORT=5432
-            DB_USER=
-            DB_PASSWORD=
-            DB_DATABASE=
+            PGHOST=
+            PGPORT=5432
+            PGUSER=
+            PGPASSWORD=
+            PGDATABASE=
             ```
 
          3. `yarn deploy`

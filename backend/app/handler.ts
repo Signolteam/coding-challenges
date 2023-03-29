@@ -8,7 +8,7 @@ dotenv.config({
 console.log("*** coding-challenges-signol/backend ***");
 console.log("process.env.NODE_ENV: ", process.env.NODE_ENV);
 console.log("process.env.ENV: ", process.env.ENV);
-console.log("process.env.DB_HOST: ", process.env.DB_HOST);
+console.log("process.env.PGHOST: ", process.env.PGHOST);
 
 import { TasksController } from "./controller/TasksController";
 const tasksController = new TasksController();
