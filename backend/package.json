@@ -13,7 +13,8 @@
   "scripts": {
     "lint": "eslint \"./{app,tests}/**/*.ts\"",
     "local": "serverless offline --httpPort=3001",
-    "deploy": "serverless deploy",
+    "predeploy": "yarn clean",
+    "deploy": "serverless deploy --stage production",
     "test": "jest -r ts-node/register",
     "coverage": "yarn test --coverage",
     "clean": "npx rimraf .serverless && npx rimraf .build"

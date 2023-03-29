@@ -2,7 +2,8 @@ import { Client } from "pg";
 
 let DB: Client;
 export async function getDB(): Promise<Client> {
-  if (DB) {
+  if (DB && DB instanceof Client) {
+    await DB.connect();
     return DB;
   }
   const config = {
@@ -11,10 +12,12 @@ export async function getDB(): Promise<Client> {
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_DATABASE,
+    ssl: process.env.DB_SSL == "1",
   };
-  console.log("DB Config: " + JSON.stringify(config, null, 2));
   DB = new Client(config);
+  console.debug("[DB] Connecting...");
   await DB.connect();
+  console.debug("[DB] Connected");
   await _seedDataIfNeeded(DB);
   return DB;
 }
@@ -42,6 +45,7 @@ async function _getTableRowCountFast(
 }
 
 async function _seedDatabase(client: Client) {
+  console.debug("Seeding...");
   client.query(`
   DO $$
   BEGIN

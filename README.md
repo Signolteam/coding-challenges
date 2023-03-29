@@ -45,13 +45,12 @@
 ## Deploy
 
 1. Fork/Clone
-2. Configure an AWS account with:
+2. Configure an AWS account with: (Ensure it is the same region as in [serverless.yml (provider.region)](serverless.yml))
    1. IAM User Access Key and Secret
    2. RDS Database (PostgreSQL, v14 or v15)
    3. S3 Bucket with ACLs, Public Access, and Static Website all enabled
    4. API Gateway (TODO)
-3. Connect to the RDS DB, and ensure there is a Database created
-4. Add the secrets and deploy. There are two ways to do this, either:
+3. Add the secrets and deploy. There are two ways to do this, either:
 
    1. GitHub repository secrets + GitHub Actions deployment
       1. Add secrets to the GitHub repository's secrets, (settings/secrets/actions)
@@ -95,3 +94,23 @@
 
             yarn deploy
             ```
+
+4. Add the VPC to the Lambda functions:
+   1. Find a lambda, Configuration -> Permissions
+   2. Edit the permissions and add these policies (Statement)
+   ```json
+   {
+     "Effect": "Allow",
+     "Action": [
+       "ec2:DescribeNetworkInterfaces",
+       "ec2:CreateNetworkInterface",
+       "ec2:DeleteNetworkInterface",
+       "ec2:DescribeInstances",
+       "ec2:AttachNetworkInterface"
+     ],
+     "Resource": "*"
+   }
+   ```
+   3. Back at the Lambda, Configuration -> VPC
+   4. Add the Lambda to the same VPC as the PostgreSQL RDB Database
+   5. Repeat the above two steps for the other remaining lambda functions

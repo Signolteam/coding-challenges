@@ -1,43 +1,48 @@
 service: signol-shameen-dev
-
+useDotenv: true
 provider:
   name: aws
   runtime: nodejs18.x
   region: eu-west-1
+  stage: '${opt:stage, "dev"}'
   environment:
-    NODE_ENV: dev
+    NODE_ENV: ${self:provider.stage}
+    ENV: ${self:provider.stage}
+    DB_HOST: ${env:DB_HOST}
+    DB_PORT: ${env:DB_PORT}
+    DB_USER: ${env:DB_USER}
+    DB_PASSWORD: ${env:DB_PASSWORD}
+    DB_DATABASE: ${env:DB_DATABASE}
+    DB_SSL: ${env:DB_SSL}
+
+package:
+  include:
+    - .env.dev
+    - .env.production
 
 plugins:
   - serverless-plugin-typescript
   - serverless-offline
 
-useDotenv: true
-package:
-  include:
-    - .env
-
 functions:
   createMany:
     handler: app/handler.createMany
+    description: (Signol Shameen) Create Many Tasks
     events:
       - http:
           path: tasks
           method: post
   update:
     handler: app/handler.update
+    description: (Signol Shameen) Update Task Status
     events:
       - http:
           path: tasks/{id}
           method: put
   find:
     handler: app/handler.find
+    description: (Signol Shameen) Get All Tasks
     events:
       - http:
           path: tasks
-          method: get
-  findOne:
-    handler: app/handler.findOne
-    events:
-      - http:
-          path: tasks/{id}
           method: get

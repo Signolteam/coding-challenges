@@ -1,9 +1,5 @@
 import { ResponseVO } from "../model/vo/responseVo";
 
-enum StatusCode {
-  success = 200,
-}
-
 class Result {
   private statusCode: number;
   private code: number;
@@ -34,13 +30,14 @@ class Result {
 
 export class MessageUtil {
   static success(data: object, code = 200): ResponseVO {
-    const result = new Result(StatusCode.success, code, "success", data);
-
+    console.debug(`Returning success (HTTP ${code})`);
+    const result = new Result(code, code, "success", data);
     return result.bodyToString();
   }
 
-  static error(code: number = 500, message: string) {
-    const result = new Result(StatusCode.success, code, message);
+  static error(code: number, message: string) {
+    console.debug(`Returning error (HTTP ${code})`);
+    const result = new Result(code, code, message);
 
     console.log(result.bodyToString());
     return result.bodyToString();
