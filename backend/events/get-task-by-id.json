@@ -1,0 +1,7 @@
+{
+  "resource": "/{proxy+}",
+  "httpMethod": "GET",
+  "pathParameters": {
+    "id": "e6851370-f3e8-4318-9c38-460501f5ebd8"
+  }
+}

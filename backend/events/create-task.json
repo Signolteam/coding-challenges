@@ -1,0 +1,8 @@
+{
+    "resource": "/{proxy+}",
+    "httpMethod": "POST",
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": "{\"owner\": \"John Smith\",\"email\": \"test@test.co.uk\",\"company\": \"Google\",\"date\": \"25/01/2024\",\"description\": \"this is a test\",\"status\": \"IN_REVIEW\"}"
+  }

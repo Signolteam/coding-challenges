@@ -1,0 +1,7 @@
+{
+  "resource": "/{proxy+}",
+  "httpMethod": "DELETE",
+  "pathParameters": {
+    "id": "90937f41-e51c-485e-a44e-f88c0667cc9c"
+  }
+}

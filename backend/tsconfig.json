@@ -1,0 +1,33 @@
+{
+    "compilerOptions": {
+        "experimentalDecorators": true,
+        "target": "es2020",
+        "strict": true,
+        "preserveConstEnums": true,
+        "noEmit": true,
+        "sourceMap": false,
+        "module": "CommonJS",
+        "moduleResolution": "node",
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "forceConsistentCasingInFileNames": true,
+        "baseUrl": ".",
+        "paths": {
+            "src/*": ["src/*"],
+            "tests/*": ["tests/*"],
+            "mocks": ["tests/mocks"],
+            "models": ["src/models"],
+            "mappers": ["src/mappers"],
+            "infrastructure/aws": ["src/infrastructure/aws"],
+            "repositories": ["src/repositories"],
+            "services": ["src/services"],
+            "handlers/*": ["src/handlers/*"]
+        },
+        "resolveJsonModule": true
+    },
+    "exclude": ["node_modules", "cdk.out", "coverage"],
+    "typeAcquisition": { "include": ["jest"] },
+    "ts-node": {
+        "require": ["tsconfig-paths/register"]
+    }
+}

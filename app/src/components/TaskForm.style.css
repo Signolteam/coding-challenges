@@ -1,0 +1,34 @@
+.form-container {
+    text-align: center;
+
+    div {
+        margin-bottom: 10px;
+    }
+
+    label {
+        width: 80px;
+        text-align: right;
+        margin-right: 5px;
+        display: inline-block;
+    }
+
+    select {
+        display: inline-block;
+        width: 185px;
+        text-align: center;
+        height: 25px;
+    }
+
+    input[type="text"] {
+        height: 20px;
+        padding: 5px;
+        margin: 5px;
+    }
+
+    input[type="button"],
+    input[type="submit"] {
+        margin-top: 10px;
+        height: 30px;
+        margin-left: 5px;
+    }
+}

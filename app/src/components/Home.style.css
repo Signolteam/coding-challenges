@@ -1,0 +1,27 @@
+.article-header {
+    background-color: grey;
+    color: white;
+    border: 3px solid transparent;
+    text-align: center;
+}
+
+.section-content {
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 15px;
+}
+
+input[type="button"],
+input[type="submit"] {
+    height: 30px;
+    margin: 5px;
+}
+
+.list-container-controls {
+    margin-bottom: 10px;
+    text-align: right;
+}
+
+.add-task-button {
+    float: right;
+}

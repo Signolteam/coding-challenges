@@ -1,0 +1,618 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="667px" preserveAspectRatio="none" style="width:1135px;height:667px;background:#000000;" version="1.1" viewBox="0 0 1135 667" width="1135px" zoomAndPan="magnify"><defs/><g><!--MD5=[4a295ef8cc5b9a4281ad5bd76a07f436]
+entity ag--><g id="elem_ag"><rect fill="#000000" height="136.8281" style="stroke:#7D8998;stroke-width:2.0;" width="113" x="347" y="14.5"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="93" x="357" y="39.0332">«APIGateway»</text><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="74" x="366.5" y="58.7188">REST API</text><image height="64" width="64" x="371.5" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAIAAAAlC+aJAAAC/ElEQVR4Xu2aP2sUURTF8yUMQSws1Q8g2NjZaukH0EprBTEx2GiXQAobLQQVBW3UQq1EUFBcbBMCCSKB/ZPEZFdZd3Y3u56dq+PbvfPeuzNvhpnFF07x5s45993fZvZlEGeqh65PtWZ4abrkAYqWByhaHqBoeYCi5Qrw/fz93moteL/Jb5kVfNhEEHF+K5HSAzROLnVerw7//nCDWVEQTdCKG4RKA1A7evPnyrtB0Mf2g1bHBYDiaIWGaMttViUEmJ3fv/T0oNYKNx+0H1XqJ267ACCOJmiFNdqiObbgZoMSAOycudOtfKONscAl1V0AaK3rLJEIwPw5uQOMFPe75SkuG8DhG63FV+YndXIUmWJTE98ubI0BeFaVBSD49JV2MpwVsaNYZUip5xsG4AZVFgDqYj6tDaMYZE1hU6unKgTg9aQeLklK4skMQHUKL6OKThKPB5B5uCQpiccDyDxckpTE4wGsntn57dMrk0VrSuzJHWD33L1h+Ic8UUruyRigfuxW8+oL9W77YQV3fyy9xRq3YOApnSSeLAEwXG+tjnXEUDuyOGj+QmX71DKKWMBADIk6G5QZQDR9NCK0d/EJKt0vW1UFjwzyzryuKjMAem9Vp4c6b9ZQbF57SZcRQ/SSy7vxzryuKkeA0cfcOxh2+/8qx0sMwB8hfPBD5fwp+yNUZV9iPPpY7114TLayf4lpjeGaV55jgWMHRRxBOIgiZ9mPUVU4+FFsP/jM/YZUCk9eAHT+7J69y/2GVApPXgDQ6BVI/69UulRST44AZklSEo8HkHm4JCmJJzMA1Sm8jCo6STweQObhkqQknv8DYP/ys+rcAr+renjdLEtqbgGbWjyhLADBxz/vvf2NHR2GZBsubSocHduRAQNMGsZlAZhoF4uhHcWomJRgLy4bAMnYOmYUgcZSxv5myQBImm2cADQ9uV+nJAAktqULgMvopOQApHGM1AAuo5PSApBCjN56I+V/NVhvuIxOcgMogTxA0fIARcsDFC0PULSmHuA3e05XXkBDL7IAAAAASUVORK5CYII=" y="62.2344"/><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="62" x="372.5" y="138.6914">[Tasks API]</text></g><!--MD5=[734710fd7ce19042a31e72390e69faac]
+entity createTask--><g id="elem_createTask"><rect fill="#000000" height="136.8281" style="stroke:#7D8998;stroke-width:2.0;" width="99" x="7" y="273.5"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="67" x="23" y="298.0332">«Lambda»</text><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="71" x="21" y="317.7188">postTask</text><image height="64" width="64" x="24.5" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAIAAAAlC+aJAAAFmUlEQVR4XtWZW2wUVRjHARW8EI23eFc0xniJCcYHY+IlXh68vIgvmHh70BfwwVBa2mqh0qJWrLFAKVEjWGwJpBBIWkEwYEpFkbbBgFbQAi0SKaUze7/Mzu6M37dndph+33b37M48OJPfy//8z5w938yZOf9ppymLpvkaqn0H1b6Dat9Bte+g2ndQ7Tuo9h1U+w6qfQfVkiT2rzINw5Q4DC0abnuGj+AVVEuSPv83nenUhz7yCx/BK6iWRBQQWHEXt5yoSy4zIuPQM7Tmce56AtWSSBYAxHctg56pP7q55QlUS5KZGMYCGu/kFkGtu9bQYvDABD95gLvuoVoS+QIU8cSbZvLQN9xyD9WSlFRAoHGOmdHNdCrwwS3cdQnVkpRUAKANdkL/xI/N3HIJ1ZLkCpjDrbwEm+dCfyMZVmuv4q4bqJYkM3FCvOPJoZ/uVypn8v5A6thu6BDrqeGWG6iWJNG3hs49d0Q3v8X7A7Afg5sJn1WqZnG3bKh2Q2TjKzDF9Lk/lYrp3AX0fwawwi1vc6tsqHbF4osyykmYYmT9S9TKEmmfn63wmFIxg7vlQbVLolsXwhT1Uz9zC4EKsw9PZP08apUL1S7B8BM9D1MMtT7BXcWu0Lt4R7V74ruWmhh+erilOCv0KN5R7R71/WvgG6BA+PE23lFdBmrNbH24N76n0W5J9LbAFJP97bwz9rfjXdP93C0Vqssg1r0E3/+ZdPDDu0VLoOEOK/wsv433VzDercYKD23gVqlQXSpq1aWwN2EBMKGDX9vt2sC30JLo/Zyfonga76gulWjXAphoevw43AGcUMPtoj248kETw09Efe9qfpaC8W4TVrjvU26VBNWlsfji3M41L9m/ESfU12q7qaHvoCW+s46elcWreEd1SUQ6XsPLPzYE2SHYdJ9pZAw9EVh2o3BDrU/ioxE5B8uMn6t4FO+oLoGK6emzv8MMop1viBbtty6yKvTRX7FD1wJ6bhZP4h3V8kDgwZ9XR2AhiZbcqojAVmD12fAy9pkYhhDBR1Aw3g1ihS7iHdXyWFd360JnI2zAuO53N1gtFTPw+YaHpH0+H0GZFO/yB9iiUC1J7u6PkfUdWvUo3oR4QK29UrTA1YUWCNJ8EORCvMsfYItCtSSpv/bCr8a6q6ey4j21VkvVLLFRhNc9yzsDsW3vYIVTBdhiUC1DqOURcpmdhNc+hW5kXK2+XLRAndCSOr6Hd1ac8W71Y9wtCtUyaEd34DX+YQW3BPrIQVwVHa8KCW96IxGClmDzQ7wzEP++HissK95RXRTImJDDII2pdddxF6m8JKOO4pr54jm7MbFvJbRohzfTzlncxDuqi6INdJgYclq4JYhuehM6pP896nyxBOpvNtMaxI2p/pRUdryjujDw81bmWX4rdxHY3caGnOvHBqIeTvGntfSULNl4lx25xHhHdWGSB9bhJBypk2Dtbsope3ezCX58L669VFxdej0/UcnFO+cBaYp3I1BdgED9TaaehMAT/Oge7gry7m422pHtpnObmww8AEZ0gtTAuxGoLkDuQdzCLUG47WmzYHqztrmYolZfwV0CXCkvC4BYD9HXxFfhXO4K4E1vOrewfOgn9kOf2PZ3uUXwuADrS3xoJ7cEoc8exqubCBXO9+GvXsS7pI7yh4TgZQFwx8XqLLBZWll6bxO3JnEhhL9Orcl4WUBsxyIYSz/Zxy0BPNa5r5kbuEuA7wcTN4oj3HLiXQGVMzPBMzBW+MvnqZXDescfaONWHmCrDpzODvgCtRx4VoDIw+kzh7klgK3H2mUl/mkpsG7pcC+3bDwrAL42TIlDG+zk506FWjPbiKt0iHwHP5dANQeuEx2VHZCHYaPl5xYA3qT4p6GCh8c78f8Tqn0H1b6Dat9Bte+g2ndQ7Tuo9h1U+w6qfcd/sTVKGw8/YPUAAAAASUVORK5CYII=" y="321.2344"/><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="79" x="17" y="397.6914">[Create a task]</text></g><!--MD5=[e1d456bfcf333b615bcdedb2e1208a67]
+entity updateTask--><g id="elem_updateTask"><rect fill="#000000" height="136.8281" style="stroke:#7D8998;stroke-width:2.0;" width="102" x="141.5" y="273.5"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="67" x="159" y="298.0332">«Lambda»</text><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="62" x="161.5" y="317.7188">putTask</text><image height="64" width="64" x="160.5" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAIAAAAlC+aJAAAFmUlEQVR4XtWZW2wUVRjHARW8EI23eFc0xniJCcYHY+IlXh68vIgvmHh70BfwwVBa2mqh0qJWrLFAKVEjWGwJpBBIWkEwYEpFkbbBgFbQAi0SKaUze7/Mzu6M37dndph+33b37M48OJPfy//8z5w938yZOf9ppymLpvkaqn0H1b6Dat9Bte+g2ndQ7Tuo9h1U+w6qfQfVkiT2rzINw5Q4DC0abnuGj+AVVEuSPv83nenUhz7yCx/BK6iWRBQQWHEXt5yoSy4zIuPQM7Tmce56AtWSSBYAxHctg56pP7q55QlUS5KZGMYCGu/kFkGtu9bQYvDABD95gLvuoVoS+QIU8cSbZvLQN9xyD9WSlFRAoHGOmdHNdCrwwS3cdQnVkpRUAKANdkL/xI/N3HIJ1ZLkCpjDrbwEm+dCfyMZVmuv4q4bqJYkM3FCvOPJoZ/uVypn8v5A6thu6BDrqeGWG6iWJNG3hs49d0Q3v8X7A7Afg5sJn1WqZnG3bKh2Q2TjKzDF9Lk/lYrp3AX0fwawwi1vc6tsqHbF4osyykmYYmT9S9TKEmmfn63wmFIxg7vlQbVLolsXwhT1Uz9zC4EKsw9PZP08apUL1S7B8BM9D1MMtT7BXcWu0Lt4R7V74ruWmhh+erilOCv0KN5R7R71/WvgG6BA+PE23lFdBmrNbH24N76n0W5J9LbAFJP97bwz9rfjXdP93C0Vqssg1r0E3/+ZdPDDu0VLoOEOK/wsv433VzDercYKD23gVqlQXSpq1aWwN2EBMKGDX9vt2sC30JLo/Zyfonga76gulWjXAphoevw43AGcUMPtoj248kETw09Efe9qfpaC8W4TVrjvU26VBNWlsfji3M41L9m/ESfU12q7qaHvoCW+s46elcWreEd1SUQ6XsPLPzYE2SHYdJ9pZAw9EVh2o3BDrU/ioxE5B8uMn6t4FO+oLoGK6emzv8MMop1viBbtty6yKvTRX7FD1wJ6bhZP4h3V8kDgwZ9XR2AhiZbcqojAVmD12fAy9pkYhhDBR1Aw3g1ihS7iHdXyWFd360JnI2zAuO53N1gtFTPw+YaHpH0+H0GZFO/yB9iiUC1J7u6PkfUdWvUo3oR4QK29UrTA1YUWCNJ8EORCvMsfYItCtSSpv/bCr8a6q6ey4j21VkvVLLFRhNc9yzsDsW3vYIVTBdhiUC1DqOURcpmdhNc+hW5kXK2+XLRAndCSOr6Hd1ac8W71Y9wtCtUyaEd34DX+YQW3BPrIQVwVHa8KCW96IxGClmDzQ7wzEP++HissK95RXRTImJDDII2pdddxF6m8JKOO4pr54jm7MbFvJbRohzfTzlncxDuqi6INdJgYclq4JYhuehM6pP896nyxBOpvNtMaxI2p/pRUdryjujDw81bmWX4rdxHY3caGnOvHBqIeTvGntfSULNl4lx25xHhHdWGSB9bhJBypk2Dtbsope3ezCX58L669VFxdej0/UcnFO+cBaYp3I1BdgED9TaaehMAT/Oge7gry7m422pHtpnObmww8AEZ0gtTAuxGoLkDuQdzCLUG47WmzYHqztrmYolZfwV0CXCkvC4BYD9HXxFfhXO4K4E1vOrewfOgn9kOf2PZ3uUXwuADrS3xoJ7cEoc8exqubCBXO9+GvXsS7pI7yh4TgZQFwx8XqLLBZWll6bxO3JnEhhL9Orcl4WUBsxyIYSz/Zxy0BPNa5r5kbuEuA7wcTN4oj3HLiXQGVMzPBMzBW+MvnqZXDescfaONWHmCrDpzODvgCtRx4VoDIw+kzh7klgK3H2mUl/mkpsG7pcC+3bDwrAL42TIlDG+zk506FWjPbiKt0iHwHP5dANQeuEx2VHZCHYaPl5xYA3qT4p6GCh8c78f8Tqn0H1b6Dat9Bte+g2ndQ7Tuo9h1U+w6qfcd/sTVKGw8/YPUAAAAASUVORK5CYII=" y="321.2344"/><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="82" x="151.5" y="397.6914">[Update a task]</text></g><!--MD5=[dbcbc2e0caaefbfb4456a815652db4d8]
+entity deleteTask--><g id="elem_deleteTask"><rect fill="#000000" height="136.8281" style="stroke:#7D8998;stroke-width:2.0;" width="103" x="279" y="273.5"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="67" x="297" y="298.0332">«Lambda»</text><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="83" x="289" y="317.7188">deleteTask</text><image height="64" width="64" x="298.5" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAIAAAAlC+aJAAAFmUlEQVR4XtWZW2wUVRjHARW8EI23eFc0xniJCcYHY+IlXh68vIgvmHh70BfwwVBa2mqh0qJWrLFAKVEjWGwJpBBIWkEwYEpFkbbBgFbQAi0SKaUze7/Mzu6M37dndph+33b37M48OJPfy//8z5w938yZOf9ppymLpvkaqn0H1b6Dat9Bte+g2ndQ7Tuo9h1U+w6qfQfVkiT2rzINw5Q4DC0abnuGj+AVVEuSPv83nenUhz7yCx/BK6iWRBQQWHEXt5yoSy4zIuPQM7Tmce56AtWSSBYAxHctg56pP7q55QlUS5KZGMYCGu/kFkGtu9bQYvDABD95gLvuoVoS+QIU8cSbZvLQN9xyD9WSlFRAoHGOmdHNdCrwwS3cdQnVkpRUAKANdkL/xI/N3HIJ1ZLkCpjDrbwEm+dCfyMZVmuv4q4bqJYkM3FCvOPJoZ/uVypn8v5A6thu6BDrqeGWG6iWJNG3hs49d0Q3v8X7A7Afg5sJn1WqZnG3bKh2Q2TjKzDF9Lk/lYrp3AX0fwawwi1vc6tsqHbF4osyykmYYmT9S9TKEmmfn63wmFIxg7vlQbVLolsXwhT1Uz9zC4EKsw9PZP08apUL1S7B8BM9D1MMtT7BXcWu0Lt4R7V74ruWmhh+erilOCv0KN5R7R71/WvgG6BA+PE23lFdBmrNbH24N76n0W5J9LbAFJP97bwz9rfjXdP93C0Vqssg1r0E3/+ZdPDDu0VLoOEOK/wsv433VzDercYKD23gVqlQXSpq1aWwN2EBMKGDX9vt2sC30JLo/Zyfonga76gulWjXAphoevw43AGcUMPtoj248kETw09Efe9qfpaC8W4TVrjvU26VBNWlsfji3M41L9m/ESfU12q7qaHvoCW+s46elcWreEd1SUQ6XsPLPzYE2SHYdJ9pZAw9EVh2o3BDrU/ioxE5B8uMn6t4FO+oLoGK6emzv8MMop1viBbtty6yKvTRX7FD1wJ6bhZP4h3V8kDgwZ9XR2AhiZbcqojAVmD12fAy9pkYhhDBR1Aw3g1ihS7iHdXyWFd360JnI2zAuO53N1gtFTPw+YaHpH0+H0GZFO/yB9iiUC1J7u6PkfUdWvUo3oR4QK29UrTA1YUWCNJ8EORCvMsfYItCtSSpv/bCr8a6q6ey4j21VkvVLLFRhNc9yzsDsW3vYIVTBdhiUC1DqOURcpmdhNc+hW5kXK2+XLRAndCSOr6Hd1ac8W71Y9wtCtUyaEd34DX+YQW3BPrIQVwVHa8KCW96IxGClmDzQ7wzEP++HissK95RXRTImJDDII2pdddxF6m8JKOO4pr54jm7MbFvJbRohzfTzlncxDuqi6INdJgYclq4JYhuehM6pP896nyxBOpvNtMaxI2p/pRUdryjujDw81bmWX4rdxHY3caGnOvHBqIeTvGntfSULNl4lx25xHhHdWGSB9bhJBypk2Dtbsope3ezCX58L669VFxdej0/UcnFO+cBaYp3I1BdgED9TaaehMAT/Oge7gry7m422pHtpnObmww8AEZ0gtTAuxGoLkDuQdzCLUG47WmzYHqztrmYolZfwV0CXCkvC4BYD9HXxFfhXO4K4E1vOrewfOgn9kOf2PZ3uUXwuADrS3xoJ7cEoc8exqubCBXO9+GvXsS7pI7yh4TgZQFwx8XqLLBZWll6bxO3JnEhhL9Orcl4WUBsxyIYSz/Zxy0BPNa5r5kbuEuA7wcTN4oj3HLiXQGVMzPBMzBW+MvnqZXDescfaONWHmCrDpzODvgCtRx4VoDIw+kzh7klgK3H2mUl/mkpsG7pcC+3bDwrAL42TIlDG+zk506FWjPbiKt0iHwHP5dANQeuEx2VHZCHYaPl5xYA3qT4p6GCh8c78f8Tqn0H1b6Dat9Bte+g2ndQ7Tuo9h1U+w6qfcd/sTVKGw8/YPUAAAAASUVORK5CYII=" y="321.2344"/><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="78" x="291.5" y="397.6914">[Delete a task]</text></g><!--MD5=[ecf1e6e0264f490747fd9621f111d34b]
+entity getTaskById--><g id="elem_getTaskById"><rect fill="#000000" height="136.8281" style="stroke:#7D8998;stroke-width:2.0;" width="116" x="417.5" y="273.5"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="67" x="442" y="298.0332">«Lambda»</text><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="96" x="427.5" y="317.7188">getTaskById</text><image height="64" width="64" x="443.5" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAIAAAAlC+aJAAAFmUlEQVR4XtWZW2wUVRjHARW8EI23eFc0xniJCcYHY+IlXh68vIgvmHh70BfwwVBa2mqh0qJWrLFAKVEjWGwJpBBIWkEwYEpFkbbBgFbQAi0SKaUze7/Mzu6M37dndph+33b37M48OJPfy//8z5w938yZOf9ppymLpvkaqn0H1b6Dat9Bte+g2ndQ7Tuo9h1U+w6qfQfVkiT2rzINw5Q4DC0abnuGj+AVVEuSPv83nenUhz7yCx/BK6iWRBQQWHEXt5yoSy4zIuPQM7Tmce56AtWSSBYAxHctg56pP7q55QlUS5KZGMYCGu/kFkGtu9bQYvDABD95gLvuoVoS+QIU8cSbZvLQN9xyD9WSlFRAoHGOmdHNdCrwwS3cdQnVkpRUAKANdkL/xI/N3HIJ1ZLkCpjDrbwEm+dCfyMZVmuv4q4bqJYkM3FCvOPJoZ/uVypn8v5A6thu6BDrqeGWG6iWJNG3hs49d0Q3v8X7A7Afg5sJn1WqZnG3bKh2Q2TjKzDF9Lk/lYrp3AX0fwawwi1vc6tsqHbF4osyykmYYmT9S9TKEmmfn63wmFIxg7vlQbVLolsXwhT1Uz9zC4EKsw9PZP08apUL1S7B8BM9D1MMtT7BXcWu0Lt4R7V74ruWmhh+erilOCv0KN5R7R71/WvgG6BA+PE23lFdBmrNbH24N76n0W5J9LbAFJP97bwz9rfjXdP93C0Vqssg1r0E3/+ZdPDDu0VLoOEOK/wsv433VzDercYKD23gVqlQXSpq1aWwN2EBMKGDX9vt2sC30JLo/Zyfonga76gulWjXAphoevw43AGcUMPtoj248kETw09Efe9qfpaC8W4TVrjvU26VBNWlsfji3M41L9m/ESfU12q7qaHvoCW+s46elcWreEd1SUQ6XsPLPzYE2SHYdJ9pZAw9EVh2o3BDrU/ioxE5B8uMn6t4FO+oLoGK6emzv8MMop1viBbtty6yKvTRX7FD1wJ6bhZP4h3V8kDgwZ9XR2AhiZbcqojAVmD12fAy9pkYhhDBR1Aw3g1ihS7iHdXyWFd360JnI2zAuO53N1gtFTPw+YaHpH0+H0GZFO/yB9iiUC1J7u6PkfUdWvUo3oR4QK29UrTA1YUWCNJ8EORCvMsfYItCtSSpv/bCr8a6q6ey4j21VkvVLLFRhNc9yzsDsW3vYIVTBdhiUC1DqOURcpmdhNc+hW5kXK2+XLRAndCSOr6Hd1ac8W71Y9wtCtUyaEd34DX+YQW3BPrIQVwVHa8KCW96IxGClmDzQ7wzEP++HissK95RXRTImJDDII2pdddxF6m8JKOO4pr54jm7MbFvJbRohzfTzlncxDuqi6INdJgYclq4JYhuehM6pP896nyxBOpvNtMaxI2p/pRUdryjujDw81bmWX4rdxHY3caGnOvHBqIeTvGntfSULNl4lx25xHhHdWGSB9bhJBypk2Dtbsope3ezCX58L669VFxdej0/UcnFO+cBaYp3I1BdgED9TaaehMAT/Oge7gry7m422pHtpnObmww8AEZ0gtTAuxGoLkDuQdzCLUG47WmzYHqztrmYolZfwV0CXCkvC4BYD9HXxFfhXO4K4E1vOrewfOgn9kOf2PZ3uUXwuADrS3xoJ7cEoc8exqubCBXO9+GvXsS7pI7yh4TgZQFwx8XqLLBZWll6bxO3JnEhhL9Orcl4WUBsxyIYSz/Zxy0BPNa5r5kbuEuA7wcTN4oj3HLiXQGVMzPBMzBW+MvnqZXDescfaONWHmCrDpzODvgCtRx4VoDIw+kzh7klgK3H2mUl/mkpsG7pcC+3bDwrAL42TIlDG+zk506FWjPbiKt0iHwHP5dANQeuEx2VHZCHYaPl5xYA3qT4p6GCh8c78f8Tqn0H1b6Dat9Bte+g2ndQ7Tuo9h1U+w6qfcd/sTVKGw8/YPUAAAAASUVORK5CYII=" y="321.2344"/><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="92" x="429.5" y="397.6914">[Get a task by Id]</text></g><!--MD5=[bc2063f1e406a138579fad02ee69a9ea]
+entity getAllTasks--><g id="elem_getAllTasks"><rect fill="#000000" height="136.8281" style="stroke:#7D8998;stroke-width:2.0;" width="109" x="569" y="273.5"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="67" x="590" y="298.0332">«Lambda»</text><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="89" x="579" y="317.7188">getAllTasks</text><image height="64" width="64" x="591.5" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAIAAAAlC+aJAAAFmUlEQVR4XtWZW2wUVRjHARW8EI23eFc0xniJCcYHY+IlXh68vIgvmHh70BfwwVBa2mqh0qJWrLFAKVEjWGwJpBBIWkEwYEpFkbbBgFbQAi0SKaUze7/Mzu6M37dndph+33b37M48OJPfy//8z5w938yZOf9ppymLpvkaqn0H1b6Dat9Bte+g2ndQ7Tuo9h1U+w6qfQfVkiT2rzINw5Q4DC0abnuGj+AVVEuSPv83nenUhz7yCx/BK6iWRBQQWHEXt5yoSy4zIuPQM7Tmce56AtWSSBYAxHctg56pP7q55QlUS5KZGMYCGu/kFkGtu9bQYvDABD95gLvuoVoS+QIU8cSbZvLQN9xyD9WSlFRAoHGOmdHNdCrwwS3cdQnVkpRUAKANdkL/xI/N3HIJ1ZLkCpjDrbwEm+dCfyMZVmuv4q4bqJYkM3FCvOPJoZ/uVypn8v5A6thu6BDrqeGWG6iWJNG3hs49d0Q3v8X7A7Afg5sJn1WqZnG3bKh2Q2TjKzDF9Lk/lYrp3AX0fwawwi1vc6tsqHbF4osyykmYYmT9S9TKEmmfn63wmFIxg7vlQbVLolsXwhT1Uz9zC4EKsw9PZP08apUL1S7B8BM9D1MMtT7BXcWu0Lt4R7V74ruWmhh+erilOCv0KN5R7R71/WvgG6BA+PE23lFdBmrNbH24N76n0W5J9LbAFJP97bwz9rfjXdP93C0Vqssg1r0E3/+ZdPDDu0VLoOEOK/wsv433VzDercYKD23gVqlQXSpq1aWwN2EBMKGDX9vt2sC30JLo/Zyfonga76gulWjXAphoevw43AGcUMPtoj248kETw09Efe9qfpaC8W4TVrjvU26VBNWlsfji3M41L9m/ESfU12q7qaHvoCW+s46elcWreEd1SUQ6XsPLPzYE2SHYdJ9pZAw9EVh2o3BDrU/ioxE5B8uMn6t4FO+oLoGK6emzv8MMop1viBbtty6yKvTRX7FD1wJ6bhZP4h3V8kDgwZ9XR2AhiZbcqojAVmD12fAy9pkYhhDBR1Aw3g1ihS7iHdXyWFd360JnI2zAuO53N1gtFTPw+YaHpH0+H0GZFO/yB9iiUC1J7u6PkfUdWvUo3oR4QK29UrTA1YUWCNJ8EORCvMsfYItCtSSpv/bCr8a6q6ey4j21VkvVLLFRhNc9yzsDsW3vYIVTBdhiUC1DqOURcpmdhNc+hW5kXK2+XLRAndCSOr6Hd1ac8W71Y9wtCtUyaEd34DX+YQW3BPrIQVwVHa8KCW96IxGClmDzQ7wzEP++HissK95RXRTImJDDII2pdddxF6m8JKOO4pr54jm7MbFvJbRohzfTzlncxDuqi6INdJgYclq4JYhuehM6pP896nyxBOpvNtMaxI2p/pRUdryjujDw81bmWX4rdxHY3caGnOvHBqIeTvGntfSULNl4lx25xHhHdWGSB9bhJBypk2Dtbsope3ezCX58L669VFxdej0/UcnFO+cBaYp3I1BdgED9TaaehMAT/Oge7gry7m422pHtpnObmww8AEZ0gtTAuxGoLkDuQdzCLUG47WmzYHqztrmYolZfwV0CXCkvC4BYD9HXxFfhXO4K4E1vOrewfOgn9kOf2PZ3uUXwuADrS3xoJ7cEoc8exqubCBXO9+GvXsS7pI7yh4TgZQFwx8XqLLBZWll6bxO3JnEhhL9Orcl4WUBsxyIYSz/Zxy0BPNa5r5kbuEuA7wcTN4oj3HLiXQGVMzPBMzBW+MvnqZXDescfaONWHmCrDpzODvgCtRx4VoDIw+kzh7klgK3H2mUl/mkpsG7pcC+3bDwrAL42TIlDG+zk506FWjPbiKt0iHwHP5dANQeuEx2VHZCHYaPl5xYA3qT4p6GCh8c78f8Tqn0H1b6Dat9Bte+g2ndQ7Tuo9h1U+w6qfcd/sTVKGw8/YPUAAAAASUVORK5CYII=" y="321.2344"/><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="73" x="587" y="397.6914">[Get all tasks]</text></g><!--MD5=[dfac8bd8324783ce0414aa92e077d8aa]
+entity generateSignedS3Url--><g id="elem_generateSignedS3Url"><rect fill="#000000" height="151.9219" style="stroke:#7D8998;stroke-width:2.0;" width="183" x="713" y="266"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="67" x="771" y="290.5332">«Lambda»</text><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="163" x="723" y="310.2188">generateSignedS3Url</text><image height="64" width="64" x="772.5" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAIAAAAlC+aJAAAFmUlEQVR4XtWZW2wUVRjHARW8EI23eFc0xniJCcYHY+IlXh68vIgvmHh70BfwwVBa2mqh0qJWrLFAKVEjWGwJpBBIWkEwYEpFkbbBgFbQAi0SKaUze7/Mzu6M37dndph+33b37M48OJPfy//8z5w938yZOf9ppymLpvkaqn0H1b6Dat9Bte+g2ndQ7Tuo9h1U+w6qfQfVkiT2rzINw5Q4DC0abnuGj+AVVEuSPv83nenUhz7yCx/BK6iWRBQQWHEXt5yoSy4zIuPQM7Tmce56AtWSSBYAxHctg56pP7q55QlUS5KZGMYCGu/kFkGtu9bQYvDABD95gLvuoVoS+QIU8cSbZvLQN9xyD9WSlFRAoHGOmdHNdCrwwS3cdQnVkpRUAKANdkL/xI/N3HIJ1ZLkCpjDrbwEm+dCfyMZVmuv4q4bqJYkM3FCvOPJoZ/uVypn8v5A6thu6BDrqeGWG6iWJNG3hs49d0Q3v8X7A7Afg5sJn1WqZnG3bKh2Q2TjKzDF9Lk/lYrp3AX0fwawwi1vc6tsqHbF4osyykmYYmT9S9TKEmmfn63wmFIxg7vlQbVLolsXwhT1Uz9zC4EKsw9PZP08apUL1S7B8BM9D1MMtT7BXcWu0Lt4R7V74ruWmhh+erilOCv0KN5R7R71/WvgG6BA+PE23lFdBmrNbH24N76n0W5J9LbAFJP97bwz9rfjXdP93C0Vqssg1r0E3/+ZdPDDu0VLoOEOK/wsv433VzDercYKD23gVqlQXSpq1aWwN2EBMKGDX9vt2sC30JLo/Zyfonga76gulWjXAphoevw43AGcUMPtoj248kETw09Efe9qfpaC8W4TVrjvU26VBNWlsfji3M41L9m/ESfU12q7qaHvoCW+s46elcWreEd1SUQ6XsPLPzYE2SHYdJ9pZAw9EVh2o3BDrU/ioxE5B8uMn6t4FO+oLoGK6emzv8MMop1viBbtty6yKvTRX7FD1wJ6bhZP4h3V8kDgwZ9XR2AhiZbcqojAVmD12fAy9pkYhhDBR1Aw3g1ihS7iHdXyWFd360JnI2zAuO53N1gtFTPw+YaHpH0+H0GZFO/yB9iiUC1J7u6PkfUdWvUo3oR4QK29UrTA1YUWCNJ8EORCvMsfYItCtSSpv/bCr8a6q6ey4j21VkvVLLFRhNc9yzsDsW3vYIVTBdhiUC1DqOURcpmdhNc+hW5kXK2+XLRAndCSOr6Hd1ac8W71Y9wtCtUyaEd34DX+YQW3BPrIQVwVHa8KCW96IxGClmDzQ7wzEP++HissK95RXRTImJDDII2pdddxF6m8JKOO4pr54jm7MbFvJbRohzfTzlncxDuqi6INdJgYclq4JYhuehM6pP896nyxBOpvNtMaxI2p/pRUdryjujDw81bmWX4rdxHY3caGnOvHBqIeTvGntfSULNl4lx25xHhHdWGSB9bhJBypk2Dtbsope3ezCX58L669VFxdej0/UcnFO+cBaYp3I1BdgED9TaaehMAT/Oge7gry7m422pHtpnObmww8AEZ0gtTAuxGoLkDuQdzCLUG47WmzYHqztrmYolZfwV0CXCkvC4BYD9HXxFfhXO4K4E1vOrewfOgn9kOf2PZ3uUXwuADrS3xoJ7cEoc8exqubCBXO9+GvXsS7pI7yh4TgZQFwx8XqLLBZWll6bxO3JnEhhL9Orcl4WUBsxyIYSz/Zxy0BPNa5r5kbuEuA7wcTN4oj3HLiXQGVMzPBMzBW+MvnqZXDescfaONWHmCrDpzODvgCtRx4VoDIw+kzh7klgK3H2mUl/mkpsG7pcC+3bDwrAL42TIlDG+zk506FWjPbiKt0iHwHP5dANQeuEx2VHZCHYaPl5xYA3qT4p6GCh8c78f8Tqn0H1b6Dat9Bte+g2ndQ7Tuo9h1U+w6qfcd/sTVKGw8/YPUAAAAASUVORK5CYII=" y="313.7344"/><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="157" x="724.5" y="390.1914">[Generate signed S3 URL for</text><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="115" x="747" y="405.2852">uploading a CSV file]</text></g><!--MD5=[018ca3c4d23b98718a4ccb7d45090cbc]
+entity tasksRepository--><g id="elem_tasksRepository"><rect fill="#000000" height="151.9219" style="stroke:#7D8998;stroke-width:2.0;" width="210" x="297.5" y="510"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="190" x="307.5" y="534.5332">«AuroraPostgreSQLInstance»</text><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="46" x="379.5" y="554.2188">Tasks</text><image height="64" width="64" x="370.5" xlink:href="data:image/png;base64,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" y="557.7344"/><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="181" x="310.5" y="634.1914">[PostgreSQL database for storing</text><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="36" x="384.5" y="649.2852">Tasks]</text></g><!--MD5=[f77fd47f7e026fbdd026e9a14b173273]
+entity tasksFileBucket--><g id="elem_tasksFileBucket"><rect fill="#000000" height="151.9219" style="stroke:#7D8998;stroke-width:2.0;" width="218" x="821.5" y="7"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="198" x="831.5" y="31.5332">«SimpleStorageServiceBucket»</text><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="110" x="875.5" y="51.2188">Task CSV files</text><image height="64" width="64" x="898.5" xlink:href="data:image/png;base64,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" y="54.7344"/><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="166" x="846" y="131.1914">[S3 bucket for bulk imnporting</text><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="32" x="914.5" y="146.2852">tasks]</text></g><!--MD5=[cf4f23aab660ec24aa6a47229de809fc]
+entity processS3File--><g id="elem_processS3File"><rect fill="#000000" height="151.9219" style="stroke:#7D8998;stroke-width:2.0;" width="184" x="931.5" y="266"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="67" x="990" y="290.5332">«Lambda»</text><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="109" x="969" y="310.2188">processS3File</text><image height="64" width="64" x="991.5" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAIAAAAlC+aJAAAFmUlEQVR4XtWZW2wUVRjHARW8EI23eFc0xniJCcYHY+IlXh68vIgvmHh70BfwwVBa2mqh0qJWrLFAKVEjWGwJpBBIWkEwYEpFkbbBgFbQAi0SKaUze7/Mzu6M37dndph+33b37M48OJPfy//8z5w938yZOf9ppymLpvkaqn0H1b6Dat9Bte+g2ndQ7Tuo9h1U+w6qfQfVkiT2rzINw5Q4DC0abnuGj+AVVEuSPv83nenUhz7yCx/BK6iWRBQQWHEXt5yoSy4zIuPQM7Tmce56AtWSSBYAxHctg56pP7q55QlUS5KZGMYCGu/kFkGtu9bQYvDABD95gLvuoVoS+QIU8cSbZvLQN9xyD9WSlFRAoHGOmdHNdCrwwS3cdQnVkpRUAKANdkL/xI/N3HIJ1ZLkCpjDrbwEm+dCfyMZVmuv4q4bqJYkM3FCvOPJoZ/uVypn8v5A6thu6BDrqeGWG6iWJNG3hs49d0Q3v8X7A7Afg5sJn1WqZnG3bKh2Q2TjKzDF9Lk/lYrp3AX0fwawwi1vc6tsqHbF4osyykmYYmT9S9TKEmmfn63wmFIxg7vlQbVLolsXwhT1Uz9zC4EKsw9PZP08apUL1S7B8BM9D1MMtT7BXcWu0Lt4R7V74ruWmhh+erilOCv0KN5R7R71/WvgG6BA+PE23lFdBmrNbH24N76n0W5J9LbAFJP97bwz9rfjXdP93C0Vqssg1r0E3/+ZdPDDu0VLoOEOK/wsv433VzDercYKD23gVqlQXSpq1aWwN2EBMKGDX9vt2sC30JLo/Zyfonga76gulWjXAphoevw43AGcUMPtoj248kETw09Efe9qfpaC8W4TVrjvU26VBNWlsfji3M41L9m/ESfU12q7qaHvoCW+s46elcWreEd1SUQ6XsPLPzYE2SHYdJ9pZAw9EVh2o3BDrU/ioxE5B8uMn6t4FO+oLoGK6emzv8MMop1viBbtty6yKvTRX7FD1wJ6bhZP4h3V8kDgwZ9XR2AhiZbcqojAVmD12fAy9pkYhhDBR1Aw3g1ihS7iHdXyWFd360JnI2zAuO53N1gtFTPw+YaHpH0+H0GZFO/yB9iiUC1J7u6PkfUdWvUo3oR4QK29UrTA1YUWCNJ8EORCvMsfYItCtSSpv/bCr8a6q6ey4j21VkvVLLFRhNc9yzsDsW3vYIVTBdhiUC1DqOURcpmdhNc+hW5kXK2+XLRAndCSOr6Hd1ac8W71Y9wtCtUyaEd34DX+YQW3BPrIQVwVHa8KCW96IxGClmDzQ7wzEP++HissK95RXRTImJDDII2pdddxF6m8JKOO4pr54jm7MbFvJbRohzfTzlncxDuqi6INdJgYclq4JYhuehM6pP896nyxBOpvNtMaxI2p/pRUdryjujDw81bmWX4rdxHY3caGnOvHBqIeTvGntfSULNl4lx25xHhHdWGSB9bhJBypk2Dtbsope3ezCX58L669VFxdej0/UcnFO+cBaYp3I1BdgED9TaaehMAT/Oge7gry7m422pHtpnObmww8AEZ0gtTAuxGoLkDuQdzCLUG47WmzYHqztrmYolZfwV0CXCkvC4BYD9HXxFfhXO4K4E1vOrewfOgn9kOf2PZ3uUXwuADrS3xoJ7cEoc8exqubCBXO9+GvXsS7pI7yh4TgZQFwx8XqLLBZWll6bxO3JnEhhL9Orcl4WUBsxyIYSz/Zxy0BPNa5r5kbuEuA7wcTN4oj3HLiXQGVMzPBMzBW+MvnqZXDescfaONWHmCrDpzODvgCtRx4VoDIw+kzh7klgK3H2mUl/mkpsG7pcC+3bDwrAL42TIlDG+zk506FWjPbiKt0iHwHP5dANQeuEx2VHZCHYaPl5xYA3qT4p6GCh8c78f8Tqn0H1b6Dat9Bte+g2ndQ7Tuo9h1U+w6qfcd/sTVKGw8/YPUAAAAASUVORK5CYII=" y="313.7344"/><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="161" x="941.5" y="390.1914">[Import CSV files from S3 into</text><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="55" x="996" y="405.2852">database]</text></g><!--MD5=[b4bd8472fb870e573ed1e8775d9c111f]
+link ag to createTask--><g id="link_ag_createTask"><path d="M346.87,92.77 C286.16,104.83 190.21,131.91 128.5,189 C106.17,209.66 90.08,238.69 78.87,265.85 " fill="none" id="ag-to-createTask" style="stroke:#9BA7B6;stroke-width:2.0;"/><polygon fill="#9BA7B6" points="75.83,273.45,81.5866,267.1364,76.0157,264.908,75.83,273.45" style="stroke:#9BA7B6;stroke-width:2.0;"/><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="67" x="129.5" y="217.457">POST/tasks</text></g><!--MD5=[619119bcb0eb7e3a33f92b0b38a0c877]
+link ag to updateTask--><g id="link_ag_updateTask"><path d="M346.77,103.67 C307.14,120.32 256.19,148.08 226.5,189 C210.52,211.02 201.85,239.2 197.21,265.3 " fill="none" id="ag-to-updateTask" style="stroke:#9BA7B6;stroke-width:2.0;"/><polygon fill="#9BA7B6" points="195.9,273.33,200.1592,265.9233,194.2388,264.949,195.9,273.33" style="stroke:#9BA7B6;stroke-width:2.0;"/><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="81" x="227.5" y="217.457">PUT/tasks/{id}</text></g><!--MD5=[00c094be083df75015915cce15d2d47f]
+link ag to deleteTask--><g id="link_ag_deleteTask"><path d="M346.81,146.04 C337.64,159.35 329.53,173.96 324.5,189 C316.46,213.07 315.3,240.49 316.99,265.35 " fill="none" id="ag-to-deleteTask" style="stroke:#9BA7B6;stroke-width:2.0;"/><polygon fill="#9BA7B6" points="317.63,273.32,319.9626,265.1006,313.9829,265.5935,317.63,273.32" style="stroke:#9BA7B6;stroke-width:2.0;"/><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="101" x="325.5" y="217.457">DELETE/tasks/{id}</text></g><!--MD5=[6c282b3316fcfd2201eb53ca13ba5be6]
+link ag to getTaskById--><g id="link_ag_getTaskById"><path d="M424.54,151.67 C428.28,164.06 432.07,176.9 435.5,189 C442.53,213.75 449.8,240.89 456.19,265.3 " fill="none" id="ag-to-getTaskById" style="stroke:#9BA7B6;stroke-width:2.0;"/><polygon fill="#9BA7B6" points="458.23,273.13,459.1154,264.632,453.3093,266.1452,458.23,273.13" style="stroke:#9BA7B6;stroke-width:2.0;"/><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="80" x="449.5" y="217.457">GET/tasks/{id}</text></g><!--MD5=[bdd6fc41933ec810340d9c2ecce3c394]
+link ag to getAllTasks--><g id="link_ag_getAllTasks"><path d="M460.33,120.42 C486.23,138.87 516.05,162.88 538.5,189 C558.22,211.95 575.52,240.19 589.26,266.08 " fill="none" id="ag-to-getAllTasks" style="stroke:#9BA7B6;stroke-width:2.0;"/><polygon fill="#9BA7B6" points="593.05,273.31,591.9929,264.8316,586.6787,267.6173,593.05,273.31" style="stroke:#9BA7B6;stroke-width:2.0;"/><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="57" x="573.5" y="217.457">GET/tasks</text></g><!--MD5=[95c1104c67eb72c21e500a15d7ef5663]
+link ag to generateSignedS3Url--><g id="link_ag_generateSignedS3Url"><path d="M460.01,103.19 C509.54,121.36 582.35,151.44 639.5,189 C670.36,209.29 701,235.4 727.35,260.24 " fill="none" id="ag-to-generateSignedS3Url" style="stroke:#9BA7B6;stroke-width:2.0;"/><polygon fill="#9BA7B6" points="733.25,265.85,729.5192,258.1636,725.3851,262.5119,733.25,265.85" style="stroke:#9BA7B6;stroke-width:2.0;"/><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="90" x="699.5" y="217.457">GET/files/signed</text></g><!--MD5=[85117a506800ccc8c3e3afb37c061419]
+link createTask to tasksRepository--><g id="link_createTask_tasksRepository"><path d="M90.38,410.61 C105.23,435.01 124.55,461.15 147.5,480 C188.59,513.75 242.03,537.98 289.36,554.59 " fill="none" id="createTask-to-tasksRepository" style="stroke:#9BA7B6;stroke-width:2.0;"/><polygon fill="#9BA7B6" points="297.21,557.3,290.6272,551.8533,288.669,557.5247,297.21,557.3" style="stroke:#9BA7B6;stroke-width:2.0;"/><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="76" x="148.5" y="468.957">Create a task</text></g><!--MD5=[f1e140ffa279fee90d0f64ae820a128e]
+link updateTask to tasksRepository--><g id="link_updateTask_tasksRepository"><path d="M214.15,410.51 C223.79,434.07 236.8,459.68 253.5,480 C264.39,493.25 277.35,505.6 291.01,516.83 " fill="none" id="updateTask-to-tasksRepository" style="stroke:#9BA7B6;stroke-width:2.0;"/><polygon fill="#9BA7B6" points="297.33,521.91,292.9797,514.5564,289.2172,519.2301,297.33,521.91" style="stroke:#9BA7B6;stroke-width:2.0;"/><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="78" x="254.5" y="468.957">Update a task</text></g><!--MD5=[9de798580425a9df5224ba68ce5bdd10]
+link deleteTask to tasksRepository--><g id="link_deleteTask_tasksRepository"><path d="M334.72,410.54 C337.34,433 341.6,457.9 348.5,480 C350.82,487.41 353.63,494.93 356.74,502.35 " fill="none" id="deleteTask-to-tasksRepository" style="stroke:#9BA7B6;stroke-width:2.0;"/><polygon fill="#9BA7B6" points="359.94,509.75,359.5081,501.2169,354.0038,503.605,359.94,509.75" style="stroke:#9BA7B6;stroke-width:2.0;"/><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="74" x="349.5" y="468.957">Delete a task</text></g><!--MD5=[2dc465097d1c8e6e914a951925b90199]
+link getTaskById to tasksRepository--><g id="link_getTaskById_tasksRepository"><path d="M455.07,410.73 C446.55,438.97 436.57,472.05 427.61,501.75 " fill="none" id="getTaskById-to-tasksRepository" style="stroke:#9BA7B6;stroke-width:2.0;"/><polygon fill="#9BA7B6" points="425.24,509.62,430.4146,502.8212,424.6682,501.0951,425.24,509.62" style="stroke:#9BA7B6;stroke-width:2.0;"/><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="86" x="444.5" y="468.957">Get a task by Id</text></g><!--MD5=[3de238d1152731dcd982f34180aafbc5]
+link getAllTasks to tasksRepository--><g id="link_getAllTasks_tasksRepository"><path d="M588.74,410.53 C575.08,433.84 558.18,459.27 539.5,480 C531.6,488.77 522.89,497.32 513.81,505.52 " fill="none" id="getAllTasks-to-tasksRepository" style="stroke:#9BA7B6;stroke-width:2.0;"/><polygon fill="#9BA7B6" points="507.79,510.85,515.7683,507.7927,511.7908,503.3006,507.79,510.85" style="stroke:#9BA7B6;stroke-width:2.0;"/><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="70" x="565.5" y="468.957">Get all tasks</text></g><!--MD5=[0afadc1262dd29fb0c8f6e7f07807b32]
+link tasksFileBucket to processS3File--><g id="link_tasksFileBucket_processS3File"><path d="M970.79,159.14 C975.4,169.04 979.77,179.17 983.5,189 C991.81,210.91 999.04,235.23 1004.99,257.87 " fill="none" id="tasksFileBucket-to-processS3File" style="stroke:#9BA7B6;stroke-width:2.0;"/><polygon fill="#9BA7B6" points="1007.04,265.8,1007.9439,257.3039,1002.1346,258.8045,1007.04,265.8" style="stroke:#9BA7B6;stroke-width:2.0;"/><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="108" x="1007.5" y="202.457">Trigger processing</text><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="126" x="998.5" y="217.5508">lambda from file being</text><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="75" x="1025.5" y="232.6445">created in S3</text></g><!--MD5=[f4dded3656947237ac436b2c5f490ad3]
+link processS3File to tasksRepository--><g id="link_processS3File_tasksRepository"><path d="M931.29,408.53 C925.37,411.9 919.41,415.09 913.5,418 C782.77,482.3 621.48,530.28 515.5,557.93 " fill="none" id="processS3File-to-tasksRepository" style="stroke:#9BA7B6;stroke-width:2.0;"/><polygon fill="#9BA7B6" points="507.65,559.97,516.1476,560.8592,514.637,555.0525,507.65,559.97" style="stroke:#9BA7B6;stroke-width:2.0;"/><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="139" x="847.5" y="461.457">Import CSV files from S3</text><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="77" x="880" y="476.5508">into database</text></g><!--MD5=[4c15a7dfafeed93d33ab74e565606b44]
+link tasksFileBucket to generateSignedS3Url--><g id="link_tasksFileBucket_generateSignedS3Url"><path d="M852.38,159.16 C845.21,168.67 838.7,178.7 833.5,189 C822.89,210.03 816.15,234.48 811.87,257.54 " fill="none" id="tasksFileBucket-to-generateSignedS3Url" style="stroke:#9BA7B6;stroke-width:2.0;"/><polygon fill="#9BA7B6" points="810.45,265.63,814.7764,258.2623,808.8651,257.2343,810.45,265.63" style="stroke:#9BA7B6;stroke-width:2.0;"/><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="137" x="834.5" y="209.957">Generate signed S3 URL</text><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="131" x="839" y="225.0508">for uploading a CSV file</text></g><!--MD5=[73830e236e73ea2959d645b880f57279]
+@startuml Tasks Management Portal
+
+!define AWSPuml https://raw.githubusercontent.com/awslabs/aws-icons-for-plantuml/v17.0/dist
+
+!include https://raw.githubusercontent.com/adrianvlupu/C4-PlantUML/latest/C4_Context.puml
+!include AWSPuml/AWSCommon.puml
+!include AWSPuml/ApplicationIntegration/APIGateway.puml
+!include AWSPuml/Compute/Lambda.puml
+!include AWSPuml/Database/AuroraPostgreSQLInstance.puml
+!include AWSPuml/Storage/SimpleStorageServiceBucket.puml
+
+APIGateway(ag, "REST API", "Tasks API")
+Lambda(createTask, "postTask", "Create a task")
+Lambda(updateTask, "putTask", "Update a task")
+Lambda(deleteTask, "deleteTask", "Delete a task")
+Lambda(getTaskById, "getTaskById", "Get a task by Id")
+Lambda(getAllTasks, "getAllTasks", "Get all tasks")
+Lambda(generateSignedS3Url, "generateSignedS3Url", "Generate signed S3 URL for uploading a CSV file")
+
+Rel(ag, createTask, "POST/tasks")
+Rel(ag, updateTask, "PUT/tasks/{id}")
+Rel(ag, deleteTask, "DELETE/tasks/{id}")
+Rel(ag, getTaskById, "GET/tasks/{id}")
+Rel(ag, getAllTasks, "GET/tasks")
+Rel(ag, generateSignedS3Url, "GET/files/signed")
+
+AuroraPostgreSQLInstance(tasksRepository, "Tasks", "PostgreSQL database for storing Tasks")
+
+Rel(createTask, tasksRepository, "Create a task")
+Rel(updateTask, tasksRepository, "Update a task")
+Rel(deleteTask, tasksRepository, "Delete a task")
+Rel(getTaskById, tasksRepository, "Get a task by Id")
+Rel(getAllTasks, tasksRepository, "Get all tasks")
+
+SimpleStorageServiceBucket(tasksFileBucket, "Task CSV files", "S3 bucket for bulk imnporting tasks")
+
+Lambda(processS3File, "processS3File", "Import CSV files from S3 into database")
+
+Rel(tasksFileBucket, processS3File, "Trigger processing lambda from file being created in S3")
+Rel(processS3File, tasksRepository, "Import CSV files from S3 into database")
+
+Rel(tasksFileBucket, generateSignedS3Url, "Generate signed S3 URL for uploading a CSV file")
+
+@enduml
+
+@startuml Tasks Management Portal
+
+
+
+
+
+
+
+skinparam defaultTextAlignment center
+
+skinparam wrapWidth 200
+skinparam maxMessageSize 150
+
+skinparam LegendBorderColor transparent
+skinparam LegendBackgroundColor transparent
+skinparam LegendFontColor #FFFFFF
+
+skinparam rectangle {
+    StereotypeFontSize 12
+    shadowing false
+}
+
+skinparam database {
+    StereotypeFontSize 12
+    shadowing false
+}
+
+skinparam queue {
+    StereotypeFontSize 12
+    shadowing false
+}
+
+skinparam Arrow {
+    Color #666666
+    FontColor #666666
+    FontSize 12
+}
+
+skinparam rectangle<<boundary>> {
+    Shadowing false
+    StereotypeFontSize 0
+    FontColor #444444
+    BorderColor #444444
+    BorderStyle dashed
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+skinparam rectangle<<person>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #08427B
+    BorderColor #073B6F
+}
+
+skinparam rectangle<<external_person>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #686868
+    BorderColor #8A8A8A
+}
+
+skinparam rectangle<<system>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #1168BD
+    BorderColor #3C7FC0
+}
+
+skinparam rectangle<<external_system>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #999999
+    BorderColor #8A8A8A
+}
+
+sprite $person [48x48/16] {
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+0000000000000000000049BCCA7200000000000000000000
+0000000000000000006EFFFFFFFFB3000000000000000000
+00000000000000001CFFFFFFFFFFFF700000000000000000
+0000000000000001EFFFFFFFFFFFFFF80000000000000000
+000000000000000CFFFFFFFFFFFFFFFF6000000000000000
+000000000000007FFFFFFFFFFFFFFFFFF100000000000000
+00000000000001FFFFFFFFFFFFFFFFFFF900000000000000
+00000000000006FFFFFFFFFFFFFFFFFFFF00000000000000
+0000000000000BFFFFFFFFFFFFFFFFFFFF40000000000000
+0000000000000EFFFFFFFFFFFFFFFFFFFF70000000000000
+0000000000000FFFFFFFFFFFFFFFFFFFFF80000000000000
+0000000000000FFFFFFFFFFFFFFFFFFFFF80000000000000
+0000000000000DFFFFFFFFFFFFFFFFFFFF60000000000000
+0000000000000AFFFFFFFFFFFFFFFFFFFF40000000000000
+00000000000006FFFFFFFFFFFFFFFFFFFE00000000000000
+00000000000000EFFFFFFFFFFFFFFFFFF800000000000000
+000000000000007FFFFFFFFFFFFFFFFFF100000000000000
+000000000000000BFFFFFFFFFFFFFFFF5000000000000000
+0000000000000001DFFFFFFFFFFFFFF70000000000000000
+00000000000000000BFFFFFFFFFFFF500000000000000000
+0000000000000000005DFFFFFFFFA1000000000000000000
+0000000000000000000037ABB96100000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000025788300000000005886410000000000000
+000000000007DFFFFFFD9643347BFFFFFFFB400000000000
+0000000004EFFFFFFFFFFFFFFFFFFFFFFFFFFB1000000000
+000000007FFFFFFFFFFFFFFFFFFFFFFFFFFFFFD200000000
+00000006FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE10000000
+0000003FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFB0000000
+000000BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF5000000
+000003FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFD000000
+000009FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF200000
+00000DFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF600000
+00000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF800000
+00001FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFA00000
+00001FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFB00000
+00001FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFB00000
+00001FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFB00000
+00001FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFA00000
+00000EFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF700000
+000006FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE100000
+0000008FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFD3000000
+000000014555555555555555555555555555555300000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+  root {
+    BackgroundColor #000000
+    FontColor #FFFFFF
+    LineColor #FFFFFF
+  }
+  caption {
+    LineThickness 0
+  }
+  footer {
+    LineThickness 0
+  }
+  header {
+    LineThickness 0
+  }
+</style>
+
+
+skinparam defaultTextAlignment Center
+skinparam PackageTitleAlignment Left
+
+skinparam wrapWidth 200
+skinparam maxMessageSize 150
+skinparam Shadowing false
+skinparam RoundCorner 0
+skinparam BackgroundColor #000000
+
+
+
+skinparam arrow {
+    Color #9BA7B6
+    FontColor #FFFFFF
+    FontSize 12
+}
+
+skinparam TitleFontColor #FFFFFF
+skinparam TitleBorderColor transparent
+skinparam BackgroundColor #000000
+
+skinparam participant {
+        FontColor #FFFFFF
+    BackgroundColor #000000
+    BorderColor #7D8998
+    BorderThickness 1.25
+    Padding 2
+}
+
+skinparam sequence {
+    ArrowThickness 2
+    LifeLineBorderColor #FFFFFF
+    LifeLineBackgroundColor #000000
+    BoxFontColor #FFFFFF
+    BoxBorderColor #7D8998
+    BoxBorderThickness 1.25
+    BoxBackgroundColor #000000
+    GroupBorderColor #FFFFFF
+    GroupFontColor #FFFFFF
+    GroupBodyBackgroundColor transparent
+}
+skinparam BoxPadding 2
+
+skinparam note {
+  BorderColor #7D8998
+  BorderThickness 1.25
+}
+
+skinparam activity {
+      FontColor #FFFFFF
+    BackgroundColor #000000
+    BorderColor #7D8998
+  BorderThickness 2
+  StartColor #000000
+  EndColor #FFFFFF
+  BarColor #FFFFFF
+}
+skinparam swimlane {
+      FontColor #FFFFFF
+    BackgroundColor #000000
+    BorderColor #7D8998
+  TitleFontColor #FFFFFF
+}
+
+skinparam actor { 
+        FontColor #FFFFFF
+    BackgroundColor #000000
+    BorderColor #7D8998
+    BorderThickness 1.25
+}
+skinparam agent { 
+        FontColor #FFFFFF
+    BackgroundColor #000000
+    BorderColor #7D8998
+    BorderThickness 1.25
+    Padding 2
+}
+skinparam artifact {
+        FontColor #FFFFFF
+    BackgroundColor #000000
+    BorderColor #7D8998
+    BorderThickness 1.25
+}
+skinparam boundary {
+        FontColor #FFFFFF
+    BackgroundColor #000000
+    BorderColor #7D8998
+    BorderThickness 1.25
+}
+skinparam card {
+        FontColor #FFFFFF
+    BackgroundColor #000000
+    BorderColor #7D8998
+    BorderThickness 1.25
+}
+skinparam circle {
+        FontColor #FFFFFF
+    BackgroundColor #000000
+    BorderColor #7D8998
+    BorderThickness 1.25
+}
+skinparam cloud {
+        FontColor #FFFFFF
+    BackgroundColor #000000
+    BorderColor #7D8998
+    BorderThickness 1.25
+}
+skinparam collections {
+        FontColor #FFFFFF
+    BackgroundColor #000000
+    BorderColor #7D8998
+    BorderThickness 1.25
+}
+skinparam component { 
+        FontColor #FFFFFF
+    BackgroundColor #000000
+    BorderColor #7D8998
+    BorderThickness 1.25
+}
+skinparam control {
+        FontColor #FFFFFF
+    BackgroundColor #000000
+    BorderColor #7D8998
+    BorderThickness 1.25
+}
+skinparam database { 
+        FontColor #FFFFFF
+    BackgroundColor #000000
+    BorderColor #7D8998
+    BorderThickness 1.25
+}
+skinparam entity {
+        FontColor #FFFFFF
+    BackgroundColor #000000
+    BorderColor #7D8998
+    BorderThickness 1.25
+}
+skinparam file {
+        FontColor #FFFFFF
+    BackgroundColor #000000
+    BorderColor #7D8998
+    BorderThickness 1.25
+}
+skinparam folder {
+        FontColor #FFFFFF
+    BackgroundColor #000000
+    BorderColor #7D8998
+    BorderThickness 1.25
+}
+skinparam frame {
+        FontColor #FFFFFF
+    BackgroundColor #000000
+    BorderColor #7D8998
+    BorderThickness 1.25
+}
+skinparam hexagon {
+        FontColor #FFFFFF
+    BackgroundColor #000000
+    BorderColor #7D8998
+    BorderThickness 1.25
+}
+skinparam interface {
+        FontColor #FFFFFF
+    BackgroundColor #000000
+    BorderColor #7D8998
+    BorderThickness 1.25
+}
+skinparam label {
+        FontColor #FFFFFF
+    BackgroundColor #000000
+    BorderColor #7D8998
+    BorderThickness 1.25
+}
+skinparam node {
+        FontColor #FFFFFF
+    BackgroundColor #000000
+    BorderColor #7D8998
+    BorderThickness 1.25
+}
+skinparam package { 
+        FontColor #FFFFFF
+    BackgroundColor #000000
+    BorderColor #7D8998
+    BorderThickness 1.25
+}
+skinparam person { 
+        FontColor #FFFFFF
+    BackgroundColor #000000
+    BorderColor #7D8998
+    BorderThickness 1.25
+}
+skinparam queue {
+        FontColor #FFFFFF
+    BackgroundColor #000000
+    BorderColor #7D8998
+    BorderThickness 1.25
+}
+skinparam rectangle {
+    StereotypeFontSize 12
+        FontColor #FFFFFF
+    BackgroundColor #000000
+    BorderColor #7D8998
+    BorderThickness 2
+}
+skinparam stack {
+        FontColor #FFFFFF
+    BackgroundColor #000000
+    BorderColor #7D8998
+    BorderThickness 1.25
+}
+skinparam storage {
+        FontColor #FFFFFF
+    BackgroundColor #000000
+    BorderColor #7D8998
+    BorderThickness 1.25
+}
+skinparam usecase { 
+        FontColor #FFFFFF
+    BackgroundColor #000000
+    BorderColor #7D8998
+    BorderThickness 1.25
+}
+
+skinparam legend {
+        FontColor #FFFFFF
+    BackgroundColor #000000
+    BorderColor #7D8998
+}
+skinparam object {
+        FontColor #FFFFFF
+    BackgroundColor #000000
+    BorderColor #7D8998
+}
+skinparam class {
+        FontColor #FFFFFF
+    BackgroundColor #000000
+    BorderColor #7D8998
+}
+skinparam partition {
+        FontColor #FFFFFF
+    BackgroundColor #000000
+    BorderColor #7D8998
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+sprite $APIGateway [64x64/16z] {
+xTO5SaGn30DGnK7h_lSjj-xiw7EvqJAy7yw4FoqpCpqPRsAfxzKZ0-1D0EInHti1j0UAR-gMWEpAUmPIMxz2Dy0wgNpykfGeGVcetOAkqKBbetUgl8953siV
+esFA0vtSzcG7jES-ppqU8Dy_VRKNl_vBx-EQxyWdlLUIp2YiVi9xGYKT61N93tjFZueDngUtHxqzSUQdIYJOEU-02x-x_XMPelwx-y_Go8havyPl04wU6x_7
+5EHBypUZN_8S_d_M_zn_c-_nthItE5ve7mSKMpYwl5n1-zl_B5z1Uwtr5PJNMbz1UQtr5PJNMbz1d5z3_vZCpDm3
+}
+
+
+skinparam rectangle<<APIGateway>> {
+        FontColor #FFFFFF
+    BackgroundColor #000000
+    BorderColor #7D8998
+    BorderThickness 2
+}
+sprite $Lambda [64x64/16z] {
+xPC5TiLG509vclslk7PhKv-wyLq8Sn8ulfN-zQyHQ5b_2zIyVz_wH03l7-blyk_We_8JmFi9uFsbdk7z193-KYE0xzyyIgi0f6RQ3T6KPZPlfhqLO7qs09iN
+3S3c-H8Fk6o9PxBV0f2aetaEOAO1m9OuMVL_09ZuYgxgMu3gU_s_cHNXdvS0M9681u0fSSNNgrqHELk6M17Y0U1Mr3D8OahCeYRBhOZnCqtEc165hrPK2JoH
+ND6vkeedm8L4FDwMacVY6LeeyBjuVg2VIXRY0V2CdmNdbMBr4nlFwYSsdW2F-LjA3tOaj_GI_xuBXsD_3_thNwS
+}
+
+
+skinparam rectangle<<Lambda>> {
+        FontColor #FFFFFF
+    BackgroundColor #000000
+    BorderColor #7D8998
+    BorderThickness 2
+}
+sprite $AuroraPostgreSQLInstance [64x64/16z] {
+xTO55kD840JHh2o-_uLtMvQUO4pjOVXc237XLq6Tm6kSFIa4E-yFw2aFdM5v602xYvYatIrOP3SnpReTY-x01wfhctp31xnxcnCLTnCy8nuseboUvTRBrZFf
+XPqhBjAeG3eZW2MqKm-KG8s0EYMTe96WgC1iJRG05E_tBPfQPAcoGb7g2I-ND7Ta070747gdByj0AioPj_zeW0atI8uxedJjxLwl19AZyjBHcwyzAtDqR347
+a7f_-e5SAaYDNdFjfN1JP04ZVj3Vvb-r445KvEZNHU_g1MHe1j1kTkf5CQWJOYuG8q1Da03C2NKJ09OvdktIuoxtUryMCRpiir9mXyYTVjfy_w-dUMHck76-
+j-oZK27nTczRLzMh8jxkO_m_LB0GslYYzTsUtQKu4U-kTtllvjqlt-y35r9JVPSJEutkkNx8S3Fpo1wcUgi-2v_g0LhKscQeG2VxXVmFYzb-zrDwmrLCzHt4
+aTRq-gymvM2Uq-i_-ogdUeZbtbRe9yjVg0D_m_MlkFAflbrmn9nU_-bA6ROzSQQllggf7lJgNPhCBt-Xsg1Rn_tw-VFrX-vytGkkRElZvGneT-cNUM4XtMrl
+dFzS1MkXs_bl6tnNs4FSpm0rh6yL6-sd781uzL4Q3iJhUJ-8MkH-_N4b3-4NzXy
+}
+
+
+skinparam rectangle<<AuroraPostgreSQLInstance>> {
+        FontColor #FFFFFF
+    BackgroundColor #000000
+    BorderColor #7D8998
+    BorderThickness 2
+}
+sprite $SimpleStorageServiceBucket [64x64/16z] {
+pLU7Skn027kY_lyVls6kO2wHXysqK-ewmCeIM_BlMu62200S9efvH5uHuIROvAedHzXj3UdSS3DLAQYgUTDn8TcQ3p2cygPcDDiLgzVJpp_uUBlx4b6nys5q
+pGKqFWfOfXzPx5E46EKe9k7BA8_pVUJ7AN-RCteUwvS-onLC5ido2fxDu-_ckyrzXKswKaEDI_Eh0EY5BDSb45e9rtcGQMFnSRZYGNZqQik1nqm3pGejMFsW
+3LICLUq1LHM0sD_Z1UXyTfW_x6yzDcYz6-t713ozwqw_P-3lxTixnOJ-cAu9pQhPaLCkS44QOyUbTl4TnBfZMVHz0uW9l9SRPsit1k91mpkWHbHHNY6KwjgE
+yZsdO7W4ryX8HzsVZc6eRjKkm0na90gFbm2nX4FUbbgq1Dn0NgBmnnLSitk4utW5Sws5DW0DvIkOWrDjKWHCgdq3SAju0z18NfM3C-K6CgNs1dAd-EEz_PmM
+jmzSbhrzvmRoE5vtpzFM-RPT5dlx-1QyxvEvf_Fq13KsOt4A6DyO2c42VdcyVKdOk4AA010PbqV3ufHXS5t__yWkZti0yW3GcT-7_m
+}
+
+
+skinparam rectangle<<SimpleStorageServiceBucket>> {
+        FontColor #FFFFFF
+    BackgroundColor #000000
+    BorderColor #7D8998
+    BorderThickness 2
+}
+
+rectangle "==REST API\n<img data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAIAAAAlC+aJAAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAQKADAAQAAAABAAAAQAAAAABGUUKwAAAEhUlEQVRoBe1aaWwMYRie2Xttt+i2jog4oqFBKIkzESRSRIU4gpCGxvGncf0kIo4ffiASEkcEIYiSFT9ISVyJo5JqhVAhRERoaxXbdrfdYzzrqzFm25lv9vuGNKY/Nt/xvs/7PO/7zrczsxU/5m0RuvKfrSuTT3G3BPzrCloVsCrAmAGrhRgTyOz+31fAPT0/925ZTrDUaCpzLpfCEe5GHVX2DtWcfmofFMjeMctdNIzeRWnpmjQI057nS1orar9vu5Z4G1Lu0o8zESD6XFmbpnZbO1l02aVwq+h308dTWcIdKcidlt9y5F7TvttSc5vKQHdq8BoQRe+i0XkPN/rKpohOW+RsVcOE/boxNAzgDhBAARCwABdEUcM+fcuAAOfofoGra7ofWmjr7Y9VvQ8VHf62IZhsaEoHpV+BO0AABUDAAhwhEIgegaqFbHlZ/i0zvEvHID3JunB4R0Xk4hNBkujDaFvGaj6EZh/1Lhzl31bkHNs/ULEucu5xePcNmuzoCXDafasnZm2ehkaX2hIZd6q2gNSuJEXKa6JXn5Ory7tsrKd4RNPeW83HHgixhIa7joCc4CrXuAHwZzwrNBgot3ARh3debzlTRc43//aZ7tkFX+YcU9qoxjoCCPvGJadab75SeZo3xZHauOIMviJwyBICGrGoLuK/yV7mShlUpwIynO6gT/0u2HzqtRWfZKw71cWkMaCqAA3Qv7LhVgGSeyJDOcZKh1O5SozKu3wFLAGMHcDsbn4FRNFR0JuZZ6cApgtwTRyYe6es5+nlnVJg2+AswBbwdVs5XkkpdYcsCLHnn/CJLRgod9nHPAWAHB4Us/cUyxpEt8NTPBwso+U1WMQWDPhq4CaAsHcM7RV/WR+98oyk1j2zQMz2xKo/xF9/xiK2YMBXAzcBPU4tI+y/zDueDDUTAaR/IuXVmGIRW0QDjIkB+yc3AelUUJPUS4dYIhp82r5r7GkxHbKDFW4CvpacVXWIZ/5IwWHDTSUpSKrHgqWkSjDugEtGS9wEKDvEM3cEyHgXFeITz1mEGBbTeywjzn84cbuZAyrRgGOn5eQjx5BcZ2E/6XsUj3IkYMuJSgxwKZOC/MGCYcJTAGiAHNhj4Pl5/IOu1BqX6REN8pTLgFsLqdg4h/fFitw/ql2OU84VkJk1Lj+NW6B4bb28YtLALAGgG39RZxJpJaxZLaSMYeq4ywvg1kLWW4kMG41bBZSvHpRj8Opwar2VaK8Y1UXsXVwo2KksM+yDdDe7LRWU4k+HVlvlO4B0P7gg7976vyTjJ3WEQ1CEJgQ0hOhcA3gE8S4YhXf29sEBIGKAX7Iil54IiaQGaIZboP4rFhASb0LtsTThdASAaORCNRjL0KbI6Iw6RZr0BBD12jI0M6SzyUCdIIuG/+UsLSS6C1iqs1KH969X8OgT4v67YSiyrgSnq4DSI60ayk2jY7DPmDqJZVwA8VPI8K2fkqw3/GNr2/23+PGz+cBdxiPBeAsZTbLJ9jrfAyZH5wBvCeCQRCYIqwJM6ePgbFWAQxKZIKwKMKWPg/MPXZrrmOeye88AAAAASUVORK5CYII={scale=1}>\n//<size:12>[Tasks API]</size>//" <<APIGateway>> as ag
+rectangle "==postTask\n<img data:image/png;base64,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{scale=1}>\n//<size:12>[Create a task]</size>//" <<Lambda>> as createTask
+rectangle "==putTask\n<img data:image/png;base64,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{scale=1}>\n//<size:12>[Update a task]</size>//" <<Lambda>> as updateTask
+rectangle "==deleteTask\n<img data:image/png;base64,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{scale=1}>\n//<size:12>[Delete a task]</size>//" <<Lambda>> as deleteTask
+rectangle "==getTaskById\n<img data:image/png;base64,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{scale=1}>\n//<size:12>[Get a task by Id]</size>//" <<Lambda>> as getTaskById
+rectangle "==getAllTasks\n<img data:image/png;base64,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{scale=1}>\n//<size:12>[Get all tasks]</size>//" <<Lambda>> as getAllTasks
+rectangle "==generateSignedS3Url\n<img data:image/png;base64,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{scale=1}>\n//<size:12>[Generate signed S3 URL for uploading a CSV file]</size>//" <<Lambda>> as generateSignedS3Url
+
+ag - ->> createTask : **POST/tasks**
+ag - ->> updateTask : **PUT/tasks/{id}**
+ag - ->> deleteTask : **DELETE/tasks/{id}**
+ag - ->> getTaskById : **GET/tasks/{id}**
+ag - ->> getAllTasks : **GET/tasks**
+ag - ->> generateSignedS3Url : **GET/files/signed**
+
+rectangle "==Tasks\n<img data:image/png;base64,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{scale=1}>\n//<size:12>[PostgreSQL database for storing Tasks]</size>//" <<AuroraPostgreSQLInstance>> as tasksRepository
+
+createTask - ->> tasksRepository : **Create a task**
+updateTask - ->> tasksRepository : **Update a task**
+deleteTask - ->> tasksRepository : **Delete a task**
+getTaskById - ->> tasksRepository : **Get a task by Id**
+getAllTasks - ->> tasksRepository : **Get all tasks**
+
+rectangle "==Task CSV files\n<img data:image/png;base64,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{scale=1}>\n//<size:12>[S3 bucket for bulk imnporting tasks]</size>//" <<SimpleStorageServiceBucket>> as tasksFileBucket
+
+rectangle "==processS3File\n<img data:image/png;base64,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{scale=1}>\n//<size:12>[Import CSV files from S3 into database]</size>//" <<Lambda>> as processS3File
+
+tasksFileBucket - ->> processS3File : **Trigger processing lambda from file being created in S3**
+processS3File - ->> tasksRepository : **Import CSV files from S3 into database**
+
+tasksFileBucket - ->> generateSignedS3Url : **Generate signed S3 URL for uploading a CSV file**
+
+@enduml
+
+PlantUML version 1.2022.3(Tue Mar 29 17:10:57 BST 2022)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: Cp1252
+Language: en
+Country: GB
+--></g></svg>
