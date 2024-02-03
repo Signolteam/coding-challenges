@@ -1,8 +1,5 @@
 # Tasks Management Portal - Frontend
 
-# Accessing the Portal
-The portal can be accessed from: https://doqxqjma2w719.cloudfront.net/.
-
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
