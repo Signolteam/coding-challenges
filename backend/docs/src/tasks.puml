@@ -1,0 +1,44 @@
+@startuml Tasks Management Portal
+
+!define AWSPuml https://raw.githubusercontent.com/awslabs/aws-icons-for-plantuml/v17.0/dist
+
+!include https://raw.githubusercontent.com/adrianvlupu/C4-PlantUML/latest/C4_Context.puml
+!include AWSPuml/AWSCommon.puml
+!include AWSPuml/ApplicationIntegration/APIGateway.puml
+!include AWSPuml/Compute/Lambda.puml
+!include AWSPuml/Database/AuroraPostgreSQLInstance.puml
+!include AWSPuml/Storage/SimpleStorageServiceBucket.puml
+
+APIGateway(ag, "REST API", "Tasks API")
+Lambda(createTask, "postTask", "Create a task")
+Lambda(updateTask, "putTask", "Update a task")
+Lambda(deleteTask, "deleteTask", "Delete a task")
+Lambda(getTaskById, "getTaskById", "Get a task by Id")
+Lambda(getAllTasks, "getAllTasks", "Get all tasks")
+Lambda(generateSignedS3Url, "generateSignedS3Url", "Generate signed S3 URL for uploading a CSV file")
+
+Rel(ag, createTask, "POST/tasks")
+Rel(ag, updateTask, "PUT/tasks/{id}")
+Rel(ag, deleteTask, "DELETE/tasks/{id}")
+Rel(ag, getTaskById, "GET/tasks/{id}")
+Rel(ag, getAllTasks, "GET/tasks")
+Rel(ag, generateSignedS3Url, "GET/files/signed")
+
+AuroraPostgreSQLInstance(tasksRepository, "Tasks", "PostgreSQL database for storing Tasks")
+
+Rel(createTask, tasksRepository, "Create a task")
+Rel(updateTask, tasksRepository, "Update a task")
+Rel(deleteTask, tasksRepository, "Delete a task")
+Rel(getTaskById, tasksRepository, "Get a task by Id")
+Rel(getAllTasks, tasksRepository, "Get all tasks")
+
+SimpleStorageServiceBucket(tasksFileBucket, "Task CSV files", "S3 bucket for bulk imnporting tasks")
+
+Lambda(processS3File, "processS3File", "Import CSV files from S3 into database")
+
+Rel(tasksFileBucket, processS3File, "Trigger processing lambda from file being created in S3")
+Rel(processS3File, tasksRepository, "Import CSV files from S3 into database")
+
+Rel(tasksFileBucket, generateSignedS3Url, "Generate signed S3 URL for uploading a CSV file")
+
+@enduml

@@ -1,0 +1,22 @@
+input[type="file"] {
+    display: none;
+}
+
+.custom-file-upload {
+    padding: 5px;
+    text-align: center;
+    cursor: pointer;
+    background-color: grey;
+    color: white;
+    margin-bottom: 10px;
+    border: solid black 1px;
+}
+
+.input-group {
+    margin-bottom: 10px;
+}
+
+.file-details {
+    color: gray;
+    margin-top: 10px;
+}

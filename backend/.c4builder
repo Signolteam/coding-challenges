@@ -1,0 +1,25 @@
+{
+	"projectName": "tasks-managemnet-portal",
+	"homepageName": "Architecture",
+	"rootFolder": "docs/src",
+	"distFolder": "docs/output",
+	"generateMD": false,
+	"generatePDF": false,
+	"generateCompleteMD": false,
+	"generateCompletePDF": false,
+	"generateWEB": false,
+	"plantumlVersion": "latest",
+	"includeBreadcrumbs": true,
+	"includeLinkToDiagram": false,
+	"diagramsOnTop": false,
+	"embedDiagram": false,
+	"excludeOtherFiles": false,
+	"generateLocalImages": true,
+	"plantumlServerUrl": "https://www.plantuml.com/plantuml",
+	"diagramFormat": "svg",
+	"charset": "UTF-8",
+	"hasRun": true,
+	"checksums": [
+		"1285843b38fe6fd60daee07319e2a079aa9663a67b890accae526e0fab3b4c83"
+	]
+}

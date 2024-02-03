@@ -1,0 +1,11 @@
+{
+  "resource": "/{proxy+}",
+  "httpMethod": "PUT",
+  "headers": {
+    "Content-Type": "application/json"
+  },  
+  "pathParameters": {
+    "id": "e6851370-f3e8-4318-9c38-460501f5ebd8"
+  },
+  "body": "{\"owner\": \"Scott Taylor\",\"email\": \"test@test.co.uk\",\"company\": \"Google\",\"date\": \"25/01/2024\",\"description\": \"this is a test\",\"status\": \"IN_REVIEW\"}"
+}
