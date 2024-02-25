@@ -28,7 +28,7 @@ you'll need an appropriately configured S3 bucket, then simply point .env.produc
 and run:
 
 ```
-npm build
+npm run build
 aws s3 sync build/ s3://<your-bucket-name>
 ```
 
