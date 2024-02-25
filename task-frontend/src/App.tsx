@@ -17,7 +17,7 @@ function App() {
   useEffect(() => {
     fetchTasks();
     return () => {
-      // TODO abort signal handling
+      // Abort signal handling would go here
     }
   },[fetchTasks]);
 

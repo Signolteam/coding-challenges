@@ -14,7 +14,8 @@ export default class TaskAPI {
      * by default all 3 of these manifest slightly differently,
      * with only the HTTP layer resulting in a true HTTP error response,
      * which causes axios to throw.
-     * The others both come through at the request level as status: 200.
+     * The others both come through at the request level as status: 200,
+     * and are managed here.
      */
 
     if (response.data.errorMessage) {
