@@ -36,6 +36,20 @@ As long as you have `aws-cli` and have run `aws configure`, run:
 serverless deploy
 ```
 
+## CORS
+
+Cors is already configured to accept the [S3 static site](http://signol-ravelle-task-frontend.s3-website.eu-west-2.amazonaws.com/)
+and localhost:3000,
+if you'd like to add or modify a host you can do so in `serverless.yml`:
+
+```
+  httpApi:
+    cors:
+      allowedOrigins:
+        - http://localhost:3000
+        - <your host here>
+```
+
 ## Tests
 
 There aren't many tests, but you can run them from the root ('coding-challenges')
