@@ -69,19 +69,19 @@ def with_error_handling(request_handler):
 @with_request_tracking
 def fetch_all(event, context):
     try:
+        print(f"Attempting fetch_all...")
         cursor = connection.cursor()
         query = '''SELECT
             id, created_by, company_name, description, email, date, status
             FROM tasks
             ORDER BY date DESC, id DESC;'''
-        print("running query for fetch_all")
         cursor.execute(query)
         results = cursor.fetchall()
         response = {
             "statusCode": 200,
             "body": json.dumps([serialize_task(task) for task in results])
         }
-        print(f"returning:\n{response}\nfor fetch_all")
+        print(f"fetch_all succeeded")
         return response
     finally :
         cleanup(connection, cursor)
@@ -92,9 +92,8 @@ def update(event, context):
     try:
         task_id = event['pathParameters']['id']
         task = json.loads(event['body'])
-        print(f"updating task {task_id} with {task}");
+        print(f"Attempting to update task {task_id} with {task}");
         cursor = connection.cursor()
-        print("executing query");
         query = '''UPDATE tasks
             SET (created_by, company_name, description, email, date, status)
             = (%s,%s,%s,%s,%s,%s) WHERE id = %s'''
@@ -102,8 +101,7 @@ def update(event, context):
                        (task['createdBy'], task['companyName'],
                         task['description'], task['email'],
                         task['date'], task['status'], task_id))
-        print("commiting connection");
-        print("responding");
+        print(f"Successfully updated {task_id} with {task}");
         response = {"statusCode": 200}
         return response
     finally :
