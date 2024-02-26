@@ -1,0 +1,109 @@
+@import '../../palette';
+
+.task-table-wrapper {
+}
+
+.table-header {
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td {
+  text-align: center;
+  overflow: hidden;
+  text-wrap: wrap;
+  text-overflow: ellipsis;
+  max-width: 250px;
+}
+
+tr {
+  height: 120px;
+}
+
+tr:nth-of-type(even) {
+  background-color: rgba(0,0,0,0.1);
+}
+tr:nth-of-type(odd) {
+  background-color: rgba(0,0,0,0.05);
+}
+
+.date-container {
+  text-wrap: nowrap;
+}
+
+.status-container {
+  display: flex;
+  justify-content: space-evenly;
+  width: 175px;
+}
+
+.status-button-common {
+  box-sizing: content-box;
+  margin: 5px;
+  border-radius: 20px;
+  padding: 0 5px;
+  width: 75px;
+  text-align: center;
+}
+.status-approve {
+  @extend .status-button-common;
+  border-color: $color-success-green;
+  color: $color-success-green;
+  &:hover {
+    background-color: $color-success-green;
+  }
+}
+
+.status-reject {
+  @extend .status-button-common;
+  border-color: $color-failure-red;
+  color: $color-failure-red;
+  &:hover {
+    background-color: $color-failure-red;
+  }
+}
+
+.no-tasks-message {
+  width: 100%;
+  text-align: center;
+  margin: 200px auto 400px auto;
+}
+.tasks-loading {
+  width: 0px;
+  height: 0px;
+  margin: 200px auto 400px auto;
+  display: flex;
+}
+
+@media (max-width: 900px) {
+  .status-container {
+    width: 100%;
+  }
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
+
+  thead tr {
+    display: none;
+  }
+
+  tr {
+    height: unset;
+    padding: 10px;
+  }
+
+  td {
+    border: none;
+    position: relative;
+    text-align: center;
+    width: 100%;
+    max-width: unset;
+    padding: 3px;
+  }
+
+  td:before {
+  }
+}

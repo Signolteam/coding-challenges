@@ -1,0 +1,59 @@
+service: task-backend
+frameworkVersion: '3'
+useDotenv: true
+
+provider:
+  name: aws
+  runtime: python3.10
+  region: eu-west-2
+  httpApi:
+    cors:
+      allowedOrigins:
+        - http://localhost:3000
+        - http://signol-ravelle-task-frontend.s3-website.eu-west-2.amazonaws.com
+      allowedMethods:
+        - GET
+        - PUT
+        - POST
+      allowedHeaders:
+        - Content-Type
+
+  environment:
+    POSTGRES_HOST: ${env:POSTGRES_HOST}
+    POSTGRES_PORT: ${env:POSTGRES_PORT}
+    POSTGRES_DB: ${env:POSTGRES_DB}
+    POSTGRES_USER: ${env:POSTGRES_USER}
+    POSTGRES_PASS: ${env:POSTGRES_PASS}
+
+plugins:
+  - serverless-dotenv-plugin
+  - serverless-offline
+  - serverless-python-requirements
+
+custom:
+  serverless-offline:
+    httpPort: 3001
+
+functions:
+  fetch:
+    handler: handlers.fetch_all
+    description: fetch all tasks
+    events:
+      - httpApi:
+          path: /tasks
+          method: get
+  update:
+    handler: handlers.update
+    description:  update a task by id
+    events:
+      - httpApi:
+          path: /tasks/{id}
+          method: put
+  createMany:
+    handler: handlers.create_many
+    description:  create multiple tasks in one transaction
+    timeout: 28
+    events:
+      - httpApi:
+          path: /tasks
+          method: post
