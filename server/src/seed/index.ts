@@ -11,73 +11,61 @@ const client = new Client({
 
 const databaseName = "signoldb";
 
-// SQL queries for table creation and sample data insertion
 const createUsersTableQuery = `
   CREATE TABLE IF NOT EXISTS public.users (
-    "Name" text COLLATE pg_catalog."default" NOT NULL,
-    "Id" SERIAL PRIMARY KEY,
-    "Email" text COLLATE pg_catalog."default" NOT NULL
+    "name" text COLLATE pg_catalog."default" NOT NULL,
+    "id" SERIAL PRIMARY KEY,
+    "email" text COLLATE pg_catalog."default" NOT NULL,
+    "company" text COLLATE pg_catalog."default" NOT NULL
   )
 `;
 
 const createTasksTableQuery = `
   CREATE TABLE IF NOT EXISTS public.tasks (
-    "Id" SERIAL PRIMARY KEY,
-    "CreatedBy" integer NOT NULL,
-    "TaskDate" date NOT NULL,
-    "TaskDescription" text COLLATE pg_catalog."default",
-    "Company" text COLLATE pg_catalog."default" NOT NULL,
-    "Status" text COLLATE pg_catalog."default" NOT NULL,
-    CONSTRAINT "tasks_CreatedBy_fkey" FOREIGN KEY ("CreatedBy")
-      REFERENCES public.users ("Id") MATCH SIMPLE
+    "id" SERIAL PRIMARY KEY,
+    "createdBy" integer NOT NULL,
+    "taskDate" date NOT NULL,
+    "taskDescription" text COLLATE pg_catalog."default",
+    "status" text COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT "tasks_createdBy_fkey" FOREIGN KEY ("createdBy")
+      REFERENCES public.users ("id") MATCH SIMPLE
       ON UPDATE NO ACTION
       ON DELETE NO ACTION
   )
 `;
 
-const sampleUserDataQuery = `
-  INSERT INTO public.users ("Name", "Email") VALUES
-  ('John Doe', 'john@example.com'),
-  ('Jane Smith', 'jane@example.com')
-`;
-
 const sampleUserData = [
-  { id: 1, name: "John Doe", email: "john@example.com" },
-  { id: 2, name: "Jane Smith", email: "jane@example.com" },
+  {
+    id: 1,
+    name: "John Doe",
+    email: "john@example.com",
+    company: "Sample Company A",
+  },
+  {
+    id: 2,
+    name: "Jane Smith",
+    email: "jane@example.com",
+    company: "Sample Company B",
+  },
 ];
 
-const sampleTasksDataQuery = `
-  INSERT INTO public.tasks ("CreatedBy", "TaskDate", "TaskDescription", "Company", "Status") VALUES
-  (${"1"}, ${new Date(
-  "2024-03-04"
-)} , 'Sample task 1 description', 'Sample Company A', 'in review'),
-  (${"2"}, ${new Date(
-  "2024-03-05"
-)}, 'Sample task 2 description', 'Sample Company B', 'approved'),
-  (${"2"}, ${new Date(
-  "2024-03-10"
-)}', 'Sample task 2 description', 'Sample Company B', 'approved')
-`;
 const sampleTasksData = [
   {
     createdBy: null,
     taskDate: new Date("2024-03-04"),
     taskDescription: "Sample task 1 description",
-    company: "Sample Company A",
-    status: "in review",
+    status: "in_review",
   },
   {
     createdBy: null,
     taskDate: new Date("2024-03-05"),
     taskDescription: "Sample task 2 description",
-    company: "Sample Company B",
     status: "approved",
   },
   {
     createdBy: null,
     taskDate: new Date("2024-03-10"),
     taskDescription: "Sample task 2 description",
-    company: "Sample Company B",
     status: "rejected",
   },
 ];
@@ -101,14 +89,14 @@ async function executeQueries() {
     for (const userData of sampleUserData) {
       const result = await client.query(
         `
-        INSERT INTO public.users ( "Name", "Email")
-        VALUES ($1, $2)
-        RETURNING "Id"
+        INSERT INTO public.users ( "name", "email", "company")
+        VALUES ($1, $2, $3)
+        RETURNING "id"
       `,
-        [userData.name, userData.email]
+        [userData.name, userData.email, userData.company]
       );
 
-      insertedUsers.push(result.rows[0].Id);
+      insertedUsers.push(result.rows[0].id);
     }
 
     // Remove previous data
@@ -120,14 +108,13 @@ async function executeQueries() {
       const createdBy = insertedUsers[i % 2];
       await client.query(
         `
-          INSERT INTO public.tasks ("CreatedBy", "TaskDate", "TaskDescription", "Company", "Status")
-          VALUES ($1, $2, $3, $4, $5)
+          INSERT INTO public.tasks ("createdBy", "taskDate", "taskDescription", "status")
+          VALUES ($1, $2, $3, $4)
         `,
         [
           createdBy,
           taskData.taskDate,
           taskData.taskDescription,
-          taskData.company,
           taskData.status,
         ]
       );

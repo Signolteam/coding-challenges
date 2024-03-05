@@ -1,9 +1,7 @@
 import { Client } from "pg";
-import { queryClient } from "../connection";
+import { singleQueryClient } from "../connection";
 
 export const getUsers = async () => {
-  //connect to dbclient
-
-  const result = await queryClient("SELECT * FROM users");
+  const result = await singleQueryClient("SELECT * FROM users", null);
   return result;
 };
