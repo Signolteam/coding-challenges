@@ -1,3 +1,4 @@
+import "dotenv/config";
 import { Client } from "pg";
 
 export const singleQueryClient = async (
@@ -6,11 +7,11 @@ export const singleQueryClient = async (
   success?: boolean
 ) => {
   const client = new Client({
-    user: "postgres",
-    password: "password",
-    host: "localhost",
-    port: 5432,
-    database: "signoldb",
+    user: process.env.USER,
+    password: process.env.PASSWORD,
+    host: process.env.HOST,
+    port: JSON.parse(process.env.PORT),
+    database: process.env.DATABASE,
   });
   try {
     await client.connect();

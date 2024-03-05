@@ -1,3 +1,4 @@
+import "dotenv/config";
 import { Client } from "pg";
 import csv from "csv-parser";
 import fs from "fs";
@@ -6,11 +7,11 @@ import { createTaskQuery } from "../dataAccess/taskService";
 
 // PostgreSQL connection details
 const client = new Client({
-  user: "postgres",
-  password: "password",
-  host: "localhost",
-  port: 5432,
-  database: "signoldb",
+  user: process.env.USER,
+  password: process.env.PASSWORD,
+  host: process.env.HOST,
+  port: JSON.parse(process.env.PORT),
+  database: process.env.DATABASE,
 });
 
 const databaseName = "signoldb";

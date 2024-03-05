@@ -4,7 +4,8 @@ import {
   createBulkTasks,
   createTask,
   deleteTask,
-  getTasks,
+  getAllTasks,
+  getTasksWithSkipTake,
   updateTask,
 } from "../dataAccess/taskService";
 
@@ -15,8 +16,18 @@ router.get("/users", async (req, res) => {
   res.send(usersData);
 });
 
-router.get("/tasks", async (req, res) => {
-  const tasksData = await getTasks();
+router.get("/alltasks", async (req, res) => {
+  const tasksData = await getAllTasks();
+  res.send(tasksData);
+});
+
+router.get("/tasksskiptake", async (req, res) => {
+  const tasksData = await getTasksWithSkipTake(req.body);
+  res.send(tasksData);
+});
+
+router.get("/taskssearch", async (req, res) => {
+  const tasksData = await getTasksWithSkipTake(req.body);
   res.send(tasksData);
 });
 

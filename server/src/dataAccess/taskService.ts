@@ -1,6 +1,32 @@
 import { multiQueryClient, singleQueryClient } from "../connection";
+import { SearchParamBody, SkipTakeBody } from "../types";
 
-export const getTasks = async () => {
+export const getAllTasks = async () => {
+  //update query with join
+  //SELECT * FROM tasks JOIN users ON tasks.createdBy = users.id;
+  const result = await singleQueryClient("SELECT * FROM tasks");
+  return result;
+};
+
+export const getTasksCount = async () => {
+  //change query string
+  //SELECT COUNT(id) FROM tasks;
+  const result = await singleQueryClient("SELECT * FROM tasks");
+  return result;
+};
+
+export const getTasksWithSkipTake = async (body: SkipTakeBody) => {
+  //change query string
+  // select * from tasks order by "taskDate" asc
+  // offset 10 rows
+  // FETCH NEXT 10 rows only;
+  const result = await singleQueryClient("SELECT * FROM tasks");
+  return result;
+};
+
+export const getTasksWithSearchParam = async (body: SearchParamBody) => {
+  //change query string
+  // SELECT * FROM tasks WHERE CONTAINS(email, '${string}');
   const result = await singleQueryClient("SELECT * FROM tasks");
   return result;
 };

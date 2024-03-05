@@ -1,12 +1,12 @@
-import express, { Express, Request, Response } from "express";
+import express, { Express } from "express";
 import dotenv from "dotenv";
-import { createServer } from "http";
 
+import "dotenv/config";
 import routes from "./routes";
 dotenv.config();
 
 const app: Express = express();
-const port = process.env.PORT || 4000;
+const port = process.env.SERVER_PORT || 4000;
 
 dotenv.config();
 
