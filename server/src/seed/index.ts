@@ -1,4 +1,8 @@
-const { Client } = require("pg");
+import { Client } from "pg";
+import csv from "csv-parser";
+import fs from "fs";
+import path from "path";
+import { createTaskQuery } from "../dataAccess/taskService";
 
 // PostgreSQL connection details
 const client = new Client({
@@ -34,42 +38,6 @@ const createTasksTableQuery = `
   )
 `;
 
-const sampleUserData = [
-  {
-    id: 1,
-    name: "John Doe",
-    email: "john@example.com",
-    company: "Sample Company A",
-  },
-  {
-    id: 2,
-    name: "Jane Smith",
-    email: "jane@example.com",
-    company: "Sample Company B",
-  },
-];
-
-const sampleTasksData = [
-  {
-    createdBy: null,
-    taskDate: new Date("2024-03-04"),
-    taskDescription: "Sample task 1 description",
-    status: "in_review",
-  },
-  {
-    createdBy: null,
-    taskDate: new Date("2024-03-05"),
-    taskDescription: "Sample task 2 description",
-    status: "approved",
-  },
-  {
-    createdBy: null,
-    taskDate: new Date("2024-03-10"),
-    taskDescription: "Sample task 2 description",
-    status: "rejected",
-  },
-];
-
 // Function to execute SQL queries
 async function executeQueries() {
   try {
@@ -81,43 +49,46 @@ async function executeQueries() {
     // Create tasks table if not exists
     await client.query(createTasksTableQuery);
 
+    // Remove previous data
+    await client.query(`DELETE FROM tasks`);
     // Remove data from users table
     await client.query(`DELETE FROM users`);
 
-    // Insert sample user data if not exists and retrieve their IDs
-    const insertedUsers = [];
-    for (const userData of sampleUserData) {
-      const result = await client.query(
-        `
-        INSERT INTO public.users ( "name", "email", "company")
-        VALUES ($1, $2, $3)
-        RETURNING "id"
-      `,
-        [userData.name, userData.email, userData.company]
-      );
+    //retrieve data from csv file for seeds
+    const filePath = path.join(__dirname, "tasks.csv");
+    const promise = new Promise<any[]>((res, rej) => {
+      const csvResults = [];
+      fs.createReadStream(filePath)
+        .pipe(csv())
+        .on("data", (data) => {
+          csvResults.push({
+            name: data.task_owner,
+            email: data.email,
+            company: data.company_name,
+            taskDate: data.task_date,
+            taskDescription: data.task_description,
+            status: data.task_status,
+          });
+        })
+        .on("end", () => res(csvResults));
+    });
+    const fullResult = await promise;
 
-      insertedUsers.push(result.rows[0].id);
-    }
+    try {
+      //create multiQuery array
+      const multiQueryArray = fullResult.map((r) => {
+        return createTaskQuery(r);
+      });
+      const flatArray = multiQueryArray.flatMap((i) => i);
 
-    // Remove previous data
-    await client.query(`DELETE FROM tasks`);
-
-    // Insert sample tasks data using retrieved user IDs
-    for (let i = 0; i < sampleTasksData.length; i++) {
-      const taskData = sampleTasksData[i];
-      const createdBy = insertedUsers[i % 2];
-      await client.query(
-        `
-          INSERT INTO public.tasks ("createdBy", "taskDate", "taskDescription", "status")
-          VALUES ($1, $2, $3, $4)
-        `,
-        [
-          createdBy,
-          taskData.taskDate,
-          taskData.taskDescription,
-          taskData.status,
-        ]
-      );
+      //use multiQuery array for insertion in DB
+      const promises = flatArray.map(async (query, index) => {
+        await client.query(query.sqlQuery, query.params);
+        return "success";
+      });
+      const results = await Promise.all(promises);
+    } catch (error) {
+      console.log("in catch");
     }
 
     console.log("Tables created and sample data inserted successfully!");

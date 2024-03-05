@@ -5,7 +5,7 @@ export const getTasks = async () => {
   return result;
 };
 
-const createTaskQuery = (taskData: any) => {
+export const createTaskQuery = (taskData: any) => {
   const { email, name, company, taskDate, taskDescription, status } = taskData;
 
   return [
