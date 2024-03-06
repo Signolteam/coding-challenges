@@ -3,5 +3,8 @@ export interface SkipTakeBody {
   take: number;
 }
 export interface SearchParamBody {
-  searchString: string;
+  searchType?: string;
+  searchString?: string;
+  searchStartDate?: string;
+  searchEndDate?: string;
 }

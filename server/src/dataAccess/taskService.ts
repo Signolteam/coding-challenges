@@ -2,33 +2,45 @@ import { multiQueryClient, singleQueryClient } from "../connection";
 import { SearchParamBody, SkipTakeBody } from "../types";
 
 export const getAllTasks = async () => {
-  //update query with join
-  //SELECT * FROM tasks JOIN users ON tasks.createdBy = users.id;
-  const result = await singleQueryClient("SELECT * FROM tasks");
+  const result = await singleQueryClient(
+    `SELECT * FROM tasks
+    JOIN users u
+    ON "createdBy" = u.id 
+    ORDER BY "taskDate"`
+  );
   return result;
 };
 
 export const getTasksCount = async () => {
-  //change query string
-  //SELECT COUNT(id) FROM tasks;
-  const result = await singleQueryClient("SELECT * FROM tasks");
+  const result = await singleQueryClient("SELECT COUNT(id) FROM tasks");
   return result;
 };
 
 export const getTasksWithSkipTake = async (body: SkipTakeBody) => {
-  //change query string
-  // select * from tasks order by "taskDate" asc
-  // offset 10 rows
-  // FETCH NEXT 10 rows only;
-  const result = await singleQueryClient("SELECT * FROM tasks");
+  const { skip, take } = body;
+  const result = await singleQueryClient(
+    `SELECT * FROM tasks ORDER BY "taskDate" OFFSET $1 rows FETCH NEXT $2 rows ONLY`,
+    [skip, take]
+  );
   return result;
 };
 
-export const getTasksWithSearchParam = async (body: SearchParamBody) => {
-  //change query string
-  // SELECT * FROM tasks WHERE CONTAINS(email, '${string}');
-  const result = await singleQueryClient("SELECT * FROM tasks");
-  return result;
+export const getTasksWithParam = async (body: SearchParamBody) => {
+  const type = body.searchType;
+  switch (type) {
+    case "description":
+      return await singleQueryClient(
+        `SELECT * FROM tasks WHERE LOWER("taskDescription") LIKE '%' || LOWER($1) || '%' ORDER BY "taskDate";`,
+        [body.searchString]
+      );
+    case "date":
+      return await singleQueryClient(
+        `SELECT * FROM tasks WHERE "taskDate" BETWEEN $1 AND $2;`,
+        [body.searchStartDate, body.searchEndDate]
+      );
+    default:
+      break;
+  }
 };
 
 export const createTaskQuery = (taskData: any) => {

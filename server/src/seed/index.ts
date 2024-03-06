@@ -4,17 +4,9 @@ import csv from "csv-parser";
 import fs from "fs";
 import path from "path";
 import { createTaskQuery } from "../dataAccess/taskService";
+import { clientOptions } from "../connection";
 
-// PostgreSQL connection details
-const client = new Client({
-  user: process.env.USER,
-  password: process.env.PASSWORD,
-  host: process.env.HOST,
-  port: JSON.parse(process.env.PORT),
-  database: process.env.DATABASE,
-});
-
-const databaseName = "signoldb";
+const client = new Client(clientOptions);
 
 const createUsersTableQuery = `
   CREATE TABLE IF NOT EXISTS public.users (

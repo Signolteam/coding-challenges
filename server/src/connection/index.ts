@@ -1,18 +1,20 @@
 import "dotenv/config";
 import { Client } from "pg";
 
+export const clientOptions = {
+  user: process.env.USER,
+  password: process.env.PASSWORD,
+  host: process.env.HOST,
+  port: JSON.parse(process.env.PORT),
+  database: process.env.DATABASE,
+};
+
 export const singleQueryClient = async (
   sqlQuery: string,
   params: any[] = [],
   success?: boolean
 ) => {
-  const client = new Client({
-    user: process.env.USER,
-    password: process.env.PASSWORD,
-    host: process.env.HOST,
-    port: JSON.parse(process.env.PORT),
-    database: process.env.DATABASE,
-  });
+  const client = new Client(clientOptions);
   try {
     await client.connect();
 
@@ -29,13 +31,7 @@ export const multiQueryClient = async (
   multiQuery: any[],
   success?: boolean
 ) => {
-  const client = new Client({
-    user: "postgres",
-    password: "password",
-    host: "localhost",
-    port: 5432,
-    database: "signoldb",
-  });
+  const client = new Client(clientOptions);
   try {
     await client.connect();
 
@@ -47,9 +43,7 @@ export const multiQueryClient = async (
     const results = await Promise.all(promises);
 
     client.end();
-    return results.every((item) => item === "success")
-      ? "success"
-      : "success with some messages";
+    return !!success ? "success" : results;
   } catch (error) {
     console.error("Error connecting to PostgreSQL database", error);
   }

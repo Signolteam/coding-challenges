@@ -1,10 +1,11 @@
 import express from "express";
-import { getUsers } from "../dataAccess/userService";
+import { getUsers, getUsersWithParam } from "../dataAccess/userService";
 import {
   createBulkTasks,
   createTask,
   deleteTask,
   getAllTasks,
+  getTasksWithParam,
   getTasksWithSkipTake,
   updateTask,
 } from "../dataAccess/taskService";
@@ -16,18 +17,27 @@ router.get("/users", async (req, res) => {
   res.send(usersData);
 });
 
+router.get("/users/search/:string", async (req, res) => {
+  const usersData = await getUsersWithParam(req.params.string);
+  res.send(usersData);
+});
+
 router.get("/alltasks", async (req, res) => {
   const tasksData = await getAllTasks();
   res.send(tasksData);
 });
 
-router.get("/tasksskiptake", async (req, res) => {
-  const tasksData = await getTasksWithSkipTake(req.body);
+router.get("/tasks/:skip/:take", async (req, res) => {
+  const obj = {
+    skip: JSON.parse(req.params.skip),
+    take: JSON.parse(req.params.take),
+  };
+  const tasksData = await getTasksWithSkipTake(obj);
   res.send(tasksData);
 });
 
-router.get("/taskssearch", async (req, res) => {
-  const tasksData = await getTasksWithSkipTake(req.body);
+router.get("/tasks/search", async (req, res) => {
+  const tasksData = await getTasksWithParam(req.body);
   res.send(tasksData);
 });
 
