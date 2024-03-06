@@ -6,7 +6,7 @@ export const getAllTasks = async () => {
     `SELECT * FROM tasks
     JOIN users u
     ON "createdBy" = u.id 
-    ORDER BY "taskDate"`
+    ORDER BY "taskDate", tasks.id`
   );
   return result;
 };
@@ -19,7 +19,8 @@ export const getTasksCount = async () => {
 export const getTasksWithSkipTake = async (body: SkipTakeBody) => {
   const { skip, take } = body;
   const result = await singleQueryClient(
-    `SELECT * FROM tasks ORDER BY "taskDate" OFFSET $1 rows FETCH NEXT $2 rows ONLY`,
+    `SELECT * FROM tasks JOIN users u
+    ON "createdBy" = u.id  ORDER BY "taskDate", tasks.id OFFSET $1 rows FETCH NEXT $2 rows ONLY`,
     [skip, take]
   );
   return result;
@@ -30,7 +31,7 @@ export const getTasksWithParam = async (body: SearchParamBody) => {
   switch (type) {
     case "description":
       return await singleQueryClient(
-        `SELECT * FROM tasks WHERE LOWER("taskDescription") LIKE '%' || LOWER($1) || '%' ORDER BY "taskDate";`,
+        `SELECT * FROM tasks WHERE LOWER("taskDescription") LIKE '%' || LOWER($1) || '%' ORDER BY "taskDate", tasks.id;`,
         [body.searchString]
       );
     case "date":
