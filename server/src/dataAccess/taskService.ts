@@ -87,14 +87,14 @@ export const updateTask = async (body: any) => {
   const updateQuery = `UPDATE public.tasks
   SET "status" = $1
   WHERE "id" = $2;`;
-  const params = [body.status, body.id];
-  const result = await singleQueryClient(updateQuery, params, true);
+  const params = [body.status.toUpperCase(), body.id];
+  const result = await singleQueryClient(updateQuery, params);
   return result;
 };
 
 export const deleteTask = async (body: any) => {
   const deleteQuery = `DELETE FROM public.tasks WHERE "id" = $1;`;
   const params = [body.id];
-  const result = await singleQueryClient(deleteQuery, params, true);
+  const result = await singleQueryClient(deleteQuery, params);
   return result;
 };

@@ -11,8 +11,7 @@ export const clientOptions = {
 
 export const singleQueryClient = async (
   sqlQuery: string,
-  params: any[] = [],
-  success?: boolean
+  params: any[] = []
 ) => {
   const client = new Client(clientOptions);
   try {
@@ -21,29 +20,30 @@ export const singleQueryClient = async (
     const result = await client.query(sqlQuery, params);
 
     client.end();
-    return !!success ? "success" : result.rows ? result.rows : "success";
+    return {
+      status: "success",
+      data: result.rows ? result.rows : null,
+      result: !result.rows ? result : null,
+    };
   } catch (error) {
     console.error("Error connecting to PostgreSQL database", error);
   }
 };
 
-export const multiQueryClient = async (
-  multiQuery: any[],
-  success?: boolean
-) => {
+export const multiQueryClient = async (multiQuery: any[]) => {
   const client = new Client(clientOptions);
   try {
     await client.connect();
 
     const promises = multiQuery.map(async (query, index) => {
-      await client.query(query.sqlQuery, query.params);
-      return "success";
+      const response = await client.query(query.sqlQuery, query.params);
+      return response;
     });
 
     const results = await Promise.all(promises);
 
     client.end();
-    return !!success ? "success" : results;
+    return { status: "success", executed: results.length };
   } catch (error) {
     console.error("Error connecting to PostgreSQL database", error);
   }

@@ -5,6 +5,7 @@ import {
   createTask,
   deleteTask,
   getAllTasks,
+  getTasksCount,
   getTasksWithParam,
   getTasksWithSkipTake,
   updateTask,
@@ -24,6 +25,11 @@ router.get("/users/search/:string", async (req, res) => {
 
 router.get("/alltasks", async (req, res) => {
   const tasksData = await getAllTasks();
+  res.send(tasksData);
+});
+
+router.get("/tasks/count", async (req, res) => {
+  const tasksData = await getTasksCount();
   res.send(tasksData);
 });
 
