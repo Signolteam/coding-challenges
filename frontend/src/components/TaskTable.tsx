@@ -18,7 +18,7 @@ interface TableProps {
   handleChangePage: any;
   handleChangeRowsPerPage: any;
 }
-export const TaskTable = ({
+export const AllTasksTable = ({
   data,
   taskCount,
   rowsPerPage,
