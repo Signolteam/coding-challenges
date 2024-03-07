@@ -68,6 +68,10 @@ export const AddTasksPanel = () => {
     },
   });
 
+  const handleCreateTask = () => {
+    console.log("creating one task");
+  };
+
   const handleFileUpload = async (e: ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files) {
       return;
@@ -176,69 +180,84 @@ export const AddTasksPanel = () => {
         </Typography>
       )}
 
-      <Typography variant="h6"> Or add a task manually</Typography>
-      <Autocomplete
-        disablePortal
-        id="combo-box-demo"
-        options={users ? users : []}
-        sx={{ width: 300 }}
-        getOptionLabel={(option: any) => option.name}
-        onChange={(event: any, newValue: any) => {
-          setUser(newValue);
-        }}
-        renderInput={(params) => <TextField {...params} label="Users" />}
-      />
-      <Typography>Name of task owner</Typography>
-      <TextField
-        onChange={(e) =>
-          taskDispatch({
-            type: "UPDATE_FIELD",
-            value: { name: e.target.value },
-          })
-        }
-      />
-      <Typography>Their email</Typography>
-      <TextField
-        onChange={(e) =>
-          taskDispatch({
-            type: "UPDATE_FIELD",
-            value: { email: e.target.value },
-          })
-        }
-      />
-      <Typography>Their company</Typography>
-      <TextField
-        onChange={(e) =>
-          taskDispatch({
-            type: "UPDATE_FIELD",
-            value: { company: e.target.value },
-          })
-        }
-      />
-      <Typography>Task description</Typography>
-      <TextField
-        onChange={(e) =>
-          taskDispatch({
-            type: "UPDATE_FIELD",
-            value: { taskDescription: e.target.value },
-          })
-        }
-      />
-      <Typography>Task date</Typography>
-      <LocalizationProvider dateAdapter={AdapterDayjs}>
-        <DemoContainer components={["DatePicker"]}>
-          <DatePicker
-            label="Start date"
-            value={taskState.taskDate}
-            onChange={(newValue) =>
-              taskDispatch({
-                type: "UPDATE_FIELD",
-                value: { taskDate: newValue.format("YYYY-MM-DD") },
-              })
-            }
-          />
-        </DemoContainer>
-      </LocalizationProvider>
+      <Box display={"flex"} flexDirection={"row"} gap={"1rem"}>
+        <Typography variant="h6"> Or add a task manually</Typography>
+        <Autocomplete
+          disablePortal
+          id="combo-box-demo"
+          options={users ? users : []}
+          sx={{ width: 300 }}
+          getOptionLabel={(option: any) => option.name}
+          onChange={(event: any, newValue: any) => {
+            setUser(newValue);
+            taskDispatch({
+              type: "UPDATE_FIELD",
+              value: {
+                name: newValue.name,
+                email: newValue.email,
+                company: newValue.company,
+              },
+            });
+          }}
+          renderInput={(params) => <TextField {...params} label="Users" />}
+        />
+        <Typography>Name of task owner</Typography>
+        <TextField
+          value={taskState.name}
+          onChange={(e) =>
+            taskDispatch({
+              type: "UPDATE_FIELD",
+              value: { name: e.target.value },
+            })
+          }
+        />
+        <Typography>Their email</Typography>
+        <TextField
+          value={taskState.email}
+          onChange={(e) =>
+            taskDispatch({
+              type: "UPDATE_FIELD",
+              value: { email: e.target.value },
+            })
+          }
+        />
+        <Typography>Their company</Typography>
+        <TextField
+          value={taskState.company}
+          onChange={(e) =>
+            taskDispatch({
+              type: "UPDATE_FIELD",
+              value: { company: e.target.value },
+            })
+          }
+        />
+        <Typography>Task description</Typography>
+        <TextField
+          value={taskState.taskDescription}
+          onChange={(e) =>
+            taskDispatch({
+              type: "UPDATE_FIELD",
+              value: { taskDescription: e.target.value },
+            })
+          }
+        />
+        <Typography>Task date</Typography>
+        <LocalizationProvider dateAdapter={AdapterDayjs}>
+          <DemoContainer components={["DatePicker"]}>
+            <DatePicker
+              label="Start date"
+              value={taskState.taskDate}
+              onChange={(newValue) =>
+                taskDispatch({
+                  type: "UPDATE_FIELD",
+                  value: { taskDate: newValue.format("YYYY-MM-DD") },
+                })
+              }
+            />
+          </DemoContainer>
+        </LocalizationProvider>
+        <Button onClick={handleCreateTask}>Create task</Button>
+      </Box>
     </Stack>
   );
 };
