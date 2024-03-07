@@ -180,7 +180,7 @@ export const AddTasksPanel = () => {
         </Typography>
       )}
 
-      <Box display={"flex"} flexDirection={"row"} gap={"1rem"}>
+      <Box display={"flex"} flexDirection={"column"} gap={"1rem"}>
         <Typography variant="h6"> Or add a task manually</Typography>
         <Autocomplete
           disablePortal
