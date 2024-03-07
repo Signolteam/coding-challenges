@@ -8,8 +8,8 @@ function a11yProps(index: number) {
 }
 
 interface TabProps {
-  value: any;
-  handleChange: any;
+  value: number;
+  handleChange: (event: React.SyntheticEvent, newValue: number) => void;
 }
 export const TaskTab = ({ value, handleChange }: TabProps) => {
   return (
@@ -22,7 +22,6 @@ export const TaskTab = ({ value, handleChange }: TabProps) => {
         >
           <Tab label="All tasks" {...a11yProps(0)} />
           <Tab label="View by date" {...a11yProps(1)} />
-          <Tab label="Tasks by search" {...a11yProps(2)} />
         </Tabs>
       </Box>
     </>

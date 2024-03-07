@@ -9,8 +9,8 @@ import { Box, Button, Typography } from "@mui/material";
 interface DateFilterProps {
   start: Dayjs;
   end: Dayjs;
-  setStart: any;
-  setEnd: any;
+  setStart: (start: any) => void;
+  setEnd: (end: any) => void;
   handleDateSearch: (start: Dayjs, end: Dayjs) => void;
 }
 

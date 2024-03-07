@@ -90,7 +90,7 @@ export const updateTask = async (body: any) => {
   const updateQuery = `UPDATE public.tasks
   SET "status" = $1
   WHERE "id" = $2;`;
-  const params = [body.status.toUpperCase(), body.id];
+  const params = [body.status, body.id];
   const result = await singleQueryClient(updateQuery, params);
   return result;
 };

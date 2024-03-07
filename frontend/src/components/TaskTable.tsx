@@ -12,15 +12,19 @@ import {
 } from "@mui/material";
 
 import { renderStatusBox } from "./StatusBox";
+import { useWindowDimensions } from "../utils/mediaQuery";
+import { Task } from "../types";
 
 interface TableProps {
-  data: any;
+  data: Task[];
   taskCount: number;
   rowsPerPage: number;
   page: number;
-  handleChangePage: any;
-  handleChangeRowsPerPage: any;
+  handleChangePage: (event: unknown, newPage: number) => void;
+  handleChangeRowsPerPage: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  refetch?: () => void;
 }
+
 export const AllTasksTable = ({
   data,
   taskCount,
@@ -28,7 +32,9 @@ export const AllTasksTable = ({
   page,
   handleChangePage,
   handleChangeRowsPerPage,
+  refetch,
 }: TableProps) => {
+  const { width } = useWindowDimensions();
   return (
     <Paper sx={{ width: "100%", overflow: "hidden" }}>
       <TableContainer sx={{ maxHeight: 600 }}>
@@ -64,21 +70,47 @@ export const AllTasksTable = ({
           </TableHead>
           <TableBody>
             {data &&
-              data.map((row: any) => (
+              data.map((row: Task) => (
                 <TableRow
                   key={row.id}
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
-                  <TableCell component="th" scope="row">
-                    {row.name}
+                  <TableCell
+                    component="th"
+                    scope="row"
+                    sx={{ maxWidth: "200px" }}
+                  >
+                    <Typography
+                      sx={{
+                        display: "-webkit-box",
+                        WebkitBoxOrient: "vertical",
+                        WebkitLineClamp: "1",
+                        textOverflow: "ellipsis",
+                        overflow: "hidden",
+                      }}
+                    >
+                      {row.name}
+                    </Typography>
                   </TableCell>
-                  <TableCell>{row.email}</TableCell>
+                  <TableCell sx={{ maxWidth: "200px" }}>
+                    <Typography
+                      sx={{
+                        display: "-webkit-box",
+                        WebkitBoxOrient: "vertical",
+                        WebkitLineClamp: "1",
+                        textOverflow: "ellipsis",
+                        overflow: "hidden",
+                      }}
+                    >
+                      {row.email}
+                    </Typography>
+                  </TableCell>
                   <TableCell>
                     <Typography width={"100px"}>
                       {row.taskDate.substring(0, 10)}
                     </Typography>
                   </TableCell>
-                  <TableCell>
+                  <TableCell sx={{ maxWidth: "340ch" }}>
                     <Typography
                       sx={{
                         display: "-webkit-box",
@@ -91,7 +123,9 @@ export const AllTasksTable = ({
                       {row.taskDescription}
                     </Typography>
                   </TableCell>
-                  <TableCell>{renderStatusBox(row.status)}</TableCell>
+                  <TableCell sx={{ width: width > 1240 ? "230px" : "auto" }}>
+                    {renderStatusBox(row.status, row.id, refetch)}
+                  </TableCell>
                 </TableRow>
               ))}
           </TableBody>

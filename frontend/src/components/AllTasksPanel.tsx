@@ -44,7 +44,11 @@ export const AllTasksPanel = () => {
       margin={"20px"}
     >
       <Box textAlign={"left"}>
-        <h2>All tasks - {taskCount ? taskCount : 0}</h2>
+        <h2>
+          All tasks {"("}
+          {taskCount ? taskCount : 0}
+          {")"}
+        </h2>
       </Box>
       {!!data && !!taskCount && (
         <AllTasksTable
@@ -54,6 +58,7 @@ export const AllTasksPanel = () => {
           rowsPerPage={rowsPerPage}
           handleChangePage={handleChangePage}
           handleChangeRowsPerPage={handleChangeRowsPerPage}
+          refetch={refetch}
         />
       )}
     </Stack>

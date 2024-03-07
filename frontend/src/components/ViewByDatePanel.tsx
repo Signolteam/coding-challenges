@@ -1,7 +1,7 @@
 import { Box, Stack, Typography } from "@mui/material";
 import { useQuery } from "@tanstack/react-query";
-import { fetchTaskCount, fetchTaskPage, fetchTaskPerDate } from "../utils";
-import { useEffect, useState } from "react";
+import { fetchTaskPerDate } from "../utils";
+import { useState } from "react";
 import { AllTasksTable } from "../components/TaskTable";
 import { DateFilter } from "./DateFilter";
 import dayjs, { Dayjs } from "dayjs";
@@ -10,14 +10,13 @@ export const ViewByDatePanel = () => {
   const [start, setStart] = useState<Dayjs>(dayjs());
   const [end, setEnd] = useState<Dayjs>(dayjs().add(1, "day"));
 
-  const { data, error, refetch } = useQuery({
+  const { data, refetch } = useQuery({
     queryKey: ["tasksPerDate"],
     queryFn: async () => {
       const response = await fetchTaskPerDate(
         start.format("YYYY-MM-DD"),
         end.format("YYYY-MM-DD")
       );
-      console.log(response);
       return response.data;
     },
     enabled: false,
@@ -70,6 +69,7 @@ export const ViewByDatePanel = () => {
           rowsPerPage={rowsPerPage}
           handleChangePage={handleChangePage}
           handleChangeRowsPerPage={handleChangeRowsPerPage}
+          refetch={refetch}
         />
       )}
     </Stack>

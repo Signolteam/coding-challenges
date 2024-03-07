@@ -1,4 +1,5 @@
 import axios, { AxiosRequestConfig } from "axios";
+import { UpdateBody, csvItem } from "../types";
 
 export const fetchTaskList = async () => {
   const res = await axios.get("http://localhost:4000/alltasks");
@@ -25,6 +26,10 @@ export const fetchTaskPerDate = async (start: string, end: string) => {
 };
 
 //get("/users") --> get all users, no restriction
+export const fetchUsers = async () => {
+  const res = await axios.get("http://localhost:4000/users");
+  return res.data.data;
+};
 
 //get("/users/search/:string") --> get user based on search on name
 
@@ -37,9 +42,18 @@ export const fetchTaskPerDate = async (start: string, end: string) => {
 //get("/tasks/search") --> get tasks based on search param - date or string
 
 //post("/task") --> create 1 task
-
 //post("/tasks") --> create many
+export const createTasks = async (body: csvItem[]) => {
+  const config = { headers: { "Content-Type": "application/json" } };
+  const res = await axios.post(`http://localhost:4000/tasks`, body, config);
+  return res.data;
+};
 
 //put("/task") --> update task status
+export const updateStatus = async (body: UpdateBody) => {
+  const config = { headers: { "Content-Type": "application/json" } };
+  const res = await axios.put(`http://localhost:4000/task`, body, config);
+  return res.data;
+};
 
 //delete("/task")

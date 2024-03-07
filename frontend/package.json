@@ -17,7 +17,9 @@
     "@types/react": "^18.2.61",
     "@types/react-dom": "^18.2.19",
     "axios": "^1.6.7",
+    "csv-parse": "^5.5.5",
     "dayjs": "^1.11.10",
+    "papaparse": "^5.4.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
@@ -47,5 +49,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/papaparse": "^5.3.14"
   }
 }
