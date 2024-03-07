@@ -7,6 +7,12 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
+import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+
+import dayjs, { Dayjs } from "dayjs";
 import UploadFileIcon from "@mui/icons-material/UploadFile";
 import { ChangeEvent, useReducer, useState } from "react";
 import Papa from "papaparse";
@@ -218,6 +224,21 @@ export const AddTasksPanel = () => {
           })
         }
       />
+      <Typography>Task date</Typography>
+      <LocalizationProvider dateAdapter={AdapterDayjs}>
+        <DemoContainer components={["DatePicker"]}>
+          <DatePicker
+            label="Start date"
+            value={taskState.taskDate}
+            onChange={(newValue) =>
+              taskDispatch({
+                type: "UPDATE_FIELD",
+                value: { taskDate: newValue.format("YYYY-MM-DD") },
+              })
+            }
+          />
+        </DemoContainer>
+      </LocalizationProvider>
     </Stack>
   );
 };
