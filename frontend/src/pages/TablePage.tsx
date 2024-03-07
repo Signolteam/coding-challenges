@@ -16,6 +16,7 @@ import { useEffect, useState } from "react";
 import { AllTasksTable } from "../components/TaskTable";
 import { AllTasksPanel } from "../components/AllTasksPanel";
 import { TaskTab } from "../components/TaskTab";
+import { ViewByDatePanel } from "../components/ViewByDatePanel";
 
 export const TablePage = () => {
   //for tabs
@@ -37,6 +38,7 @@ export const TablePage = () => {
       </Box>
       <TaskTab value={value} handleChange={handleChange} />
       {value === 0 && <AllTasksPanel />}
+      {value === 1 && <ViewByDatePanel />}
     </Stack>
   );
 };

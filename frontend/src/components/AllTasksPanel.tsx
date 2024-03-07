@@ -44,9 +44,9 @@ export const AllTasksPanel = () => {
       margin={"20px"}
     >
       <Box textAlign={"left"}>
-        <h2>All tasks - {taskCount}</h2>
+        <h2>All tasks - {taskCount ? taskCount : 0}</h2>
       </Box>
-      {data && (
+      {!!data && !!taskCount && (
         <AllTasksTable
           data={data}
           taskCount={taskCount}

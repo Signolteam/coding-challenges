@@ -42,8 +42,21 @@ router.get("/tasks/:skip/:take", async (req, res) => {
   res.send(tasksData);
 });
 
-router.get("/tasks/search", async (req, res) => {
-  const tasksData = await getTasksWithParam(req.body);
+router.get("/tasks/search/description/:searchString", async (req, res) => {
+  const obj = {
+    searchType: "description",
+    searchString: req.params.searchString,
+  };
+  const tasksData = await getTasksWithParam(obj);
+  res.send(tasksData);
+});
+router.get("/tasks/search/date/start/:start/end/:end", async (req, res) => {
+  const obj = {
+    searchType: "date",
+    searchStartDate: req.params.start,
+    searchEndDate: req.params.end,
+  };
+  const tasksData = await getTasksWithParam(obj);
   res.send(tasksData);
 });
 

@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { AxiosRequestConfig } from "axios";
 
 export const fetchTaskList = async () => {
   const res = await axios.get("http://localhost:4000/alltasks");
@@ -15,6 +15,13 @@ export const fetchTaskPage = async (page: number, rowsPerPage: number) => {
 export const fetchTaskCount = async () => {
   const res = await axios.get("http://localhost:4000/tasks/count");
   return JSON.parse(res.data.data[0].count);
+};
+
+export const fetchTaskPerDate = async (start: string, end: string) => {
+  const res = await axios.get(
+    `http://localhost:4000/tasks/search/date/start/${start}/end/${end}`
+  );
+  return res.data;
 };
 
 //get("/users") --> get all users, no restriction

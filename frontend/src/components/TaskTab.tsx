@@ -21,7 +21,7 @@ export const TaskTab = ({ value, handleChange }: TabProps) => {
           aria-label="basic tabs example"
         >
           <Tab label="All tasks" {...a11yProps(0)} />
-          <Tab label="Tasks by date" {...a11yProps(1)} />
+          <Tab label="View by date" {...a11yProps(1)} />
           <Tab label="Tasks by search" {...a11yProps(2)} />
         </Tabs>
       </Box>

@@ -8,7 +8,10 @@ import {
   TableHead,
   TablePagination,
   TableRow,
+  Typography,
 } from "@mui/material";
+
+import { renderStatusBox } from "./StatusBox";
 
 interface TableProps {
   data: any;
@@ -70,9 +73,25 @@ export const AllTasksTable = ({
                     {row.name}
                   </TableCell>
                   <TableCell>{row.email}</TableCell>
-                  <TableCell>{row.taskDate}</TableCell>
-                  <TableCell>{row.taskDescription}</TableCell>
-                  <TableCell>{row.status}</TableCell>
+                  <TableCell>
+                    <Typography width={"100px"}>
+                      {row.taskDate.substring(0, 10)}
+                    </Typography>
+                  </TableCell>
+                  <TableCell>
+                    <Typography
+                      sx={{
+                        display: "-webkit-box",
+                        WebkitBoxOrient: "vertical",
+                        WebkitLineClamp: "3",
+                        textOverflow: "ellipsis",
+                        overflow: "hidden",
+                      }}
+                    >
+                      {row.taskDescription}
+                    </Typography>
+                  </TableCell>
+                  <TableCell>{renderStatusBox(row.status)}</TableCell>
                 </TableRow>
               ))}
           </TableBody>

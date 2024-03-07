@@ -31,12 +31,14 @@ export const getTasksWithParam = async (body: SearchParamBody) => {
   switch (type) {
     case "description":
       return await singleQueryClient(
-        `SELECT * FROM tasks WHERE LOWER("taskDescription") LIKE '%' || LOWER($1) || '%' ORDER BY "taskDate", tasks.id;`,
+        `SELECT * FROM tasks JOIN users u
+        ON "createdBy" = u.id WHERE LOWER("taskDescription") LIKE '%' || LOWER($1) || '%' ORDER BY "taskDate", tasks.id;`,
         [body.searchString]
       );
     case "date":
       return await singleQueryClient(
-        `SELECT * FROM tasks WHERE "taskDate" BETWEEN $1 AND $2;`,
+        `SELECT * FROM tasks JOIN users u
+        ON "createdBy" = u.id WHERE "taskDate" BETWEEN $1 AND $2;`,
         [body.searchStartDate, body.searchEndDate]
       );
     default:
