@@ -1,9 +1,11 @@
-import axios, { AxiosRequestConfig } from "axios";
+import axios from "axios";
 import { UpdateBody, csvItem } from "../types";
 
 export const fetchTaskList = async () => {
-  const res = await axios.get("http://localhost:4000/alltasks");
-  return res.data.data;
+  const res = await axios.get(
+    "https://nyrslk37od.execute-api.eu-west-1.amazonaws.com/prod/getTasks"
+  );
+  return res.data;
 };
 
 export const fetchTaskPage = async (page: number, rowsPerPage: number) => {

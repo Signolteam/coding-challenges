@@ -5,11 +5,21 @@ import { AllTasksPanel } from "../components/ViewTasks/AllTasksPanel";
 import { TaskTab } from "../components/ViewTasks/TaskTab";
 import { ViewByDatePanel } from "../components/ViewTasks/ViewByDatePanel";
 import { AddTasksPanel } from "../components/AddTasks/AddTasksPanel";
+import { fetchTaskList } from "../utils/axios";
+import { useQuery } from "@tanstack/react-query";
 
 export const TablePage = () => {
   //for add tasks panel
   const [add, setAdd] = useState(false);
 
+  const { data } = useQuery({
+    queryKey: ["alltasks"],
+    queryFn: async () => {
+      const response = await fetchTaskList();
+      return response.body;
+    },
+  });
+  console.log("the saved data", data);
   //for view tasks tabs/panels
   const [value, setValue] = useState(0);
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
