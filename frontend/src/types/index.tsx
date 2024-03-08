@@ -18,6 +18,14 @@ export type Task = {
   status: string;
 };
 
+export type TaskFormState = {
+  name?: string;
+  email?: string;
+  company?: string;
+  taskDate?: any;
+  taskDescription?: string;
+};
+
 export type UpdateBody = {
   id: string;
   status: string;

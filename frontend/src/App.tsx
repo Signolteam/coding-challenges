@@ -1,3 +1,4 @@
+import { Typography } from "@mui/material";
 import "./App.css";
 import { TablePage } from "./pages/TablePage";
 
@@ -9,7 +10,8 @@ function App() {
     <div className="App">
       <QueryClientProvider client={queryClient}>
         <header className="App-header">
-          <p></p>
+          <Typography fontWeight={700}>Company Logo</Typography>
+          <Typography>Hi, Geronimo!</Typography>
         </header>
         <main>
           <TablePage />

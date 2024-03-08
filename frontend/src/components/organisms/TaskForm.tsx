@@ -9,13 +9,12 @@ import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-
 import { useReducer, useState } from "react";
-import { User } from "../../types";
 import { useMutation, useQuery } from "@tanstack/react-query";
-import { createOneTask, createTasks, fetchUsers } from "../../utils/axios";
+import { createOneTask, fetchUsers } from "../../utils/axios";
+import { TaskFormState, csvItem } from "../../types";
+
 export const TaskForm = () => {
-  const [user, setUser] = useState<User>();
   const [createStatus, setCreateStatus] = useState<String | null>(null);
   const initialState = {
     name: "",
@@ -24,7 +23,10 @@ export const TaskForm = () => {
     taskDate: "",
     taskDescription: "",
   };
-  const reducer = (state: any, action: { type: string; value: any }) => {
+  const reducer = (
+    state: TaskFormState,
+    action: { type: string; value: TaskFormState | null }
+  ) => {
     switch (action.type) {
       case "UPDATE_FIELD":
         return { ...state, ...action.value };
@@ -36,7 +38,7 @@ export const TaskForm = () => {
   };
   const [taskState, taskDispatch] = useReducer(reducer, initialState);
 
-  const { data: users, error: usersError } = useQuery({
+  const { data: users } = useQuery({
     queryKey: ["userList"],
     queryFn: async () => {
       const result = await fetchUsers();
@@ -47,7 +49,10 @@ export const TaskForm = () => {
   const createTask = useMutation({
     mutationFn: async () => {
       setCreateStatus("Creation ongoing...");
-      return await createOneTask({ ...taskState, status: "IN_REVIEW" });
+      return await createOneTask({
+        ...taskState,
+        status: "IN_REVIEW",
+      } as csvItem);
     },
     onSuccess: () => {
       setCreateStatus("Successfully created task");
@@ -66,6 +71,7 @@ export const TaskForm = () => {
 
   return (
     <Box display={"flex"} flexDirection={"column"} gap={"1rem"}>
+      <Typography fontWeight={600}>Select an existing user</Typography>
       <Autocomplete
         disablePortal
         id="combo-box-demo"
@@ -73,7 +79,6 @@ export const TaskForm = () => {
         sx={{ width: 300 }}
         getOptionLabel={(option: any) => option.name}
         onChange={(event: any, newValue: any) => {
-          setUser(newValue);
           taskDispatch({
             type: "UPDATE_FIELD",
             value: {
@@ -85,6 +90,7 @@ export const TaskForm = () => {
         }}
         renderInput={(params) => <TextField {...params} label="Users" />}
       />
+      <Typography fontWeight={600}>Or add user details manually</Typography>
       <Typography>Name of task owner</Typography>
       <TextField
         required
@@ -118,6 +124,7 @@ export const TaskForm = () => {
           })
         }
       />
+      <Typography fontWeight={600}>Task details</Typography>
       <Typography>Task description</Typography>
       <TextField
         required

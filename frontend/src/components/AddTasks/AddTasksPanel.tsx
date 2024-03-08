@@ -5,12 +5,16 @@ import { TaskForm } from "../organisms/TaskForm";
 
 export const AddTasksPanel = () => {
   return (
-    <Stack display={"flex"} textAlign={"left"} gap={"2rem"}>
-      <Typography variant="h6"> Add tasks by uploading a csv file</Typography>
-      <FileUpload />
+    <Stack gap={"4rem"}>
+      <Stack display={"flex"} textAlign={"left"} gap={"2rem"}>
+        <Typography variant="h6"> Add tasks by uploading a csv file</Typography>
+        <FileUpload />
+      </Stack>
 
-      <Typography variant="h6"> Or add a task manually</Typography>
-      <TaskForm />
+      <Stack display={"flex"} textAlign={"left"} gap={"2rem"}>
+        <Typography variant="h6"> Or add a task manually</Typography>
+        <TaskForm />
+      </Stack>
     </Stack>
   );
 };
