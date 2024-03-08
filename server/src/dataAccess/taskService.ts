@@ -19,7 +19,7 @@ export const getTasksCount = async () => {
 export const getTasksWithSkipTake = async (body: SkipTakeBody) => {
   const { skip, take } = body;
   const result = await singleQueryClient(
-    `SELECT * FROM tasks JOIN users u
+    `SELECT tasks.*, u.name, u.email FROM tasks JOIN users u
     ON "createdBy" = u.id  ORDER BY "taskDate", tasks.id OFFSET $1 rows FETCH NEXT $2 rows ONLY`,
     [skip, take]
   );
@@ -31,14 +31,14 @@ export const getTasksWithParam = async (body: SearchParamBody) => {
   switch (type) {
     case "description":
       return await singleQueryClient(
-        `SELECT * FROM tasks JOIN users u
+        `SELECT tasks.*, u.name, u.email FROM tasks JOIN users u
         ON "createdBy" = u.id WHERE LOWER("taskDescription") LIKE '%' || LOWER($1) || '%' ORDER BY "taskDate", tasks.id;`,
         [body.searchString]
       );
     case "date":
       return await singleQueryClient(
-        `SELECT * FROM tasks JOIN users u
-        ON "createdBy" = u.id WHERE "taskDate" BETWEEN $1 AND $2;`,
+        `SELECT tasks.*, u.name, u.email FROM tasks JOIN users u
+        ON "createdBy" = u.id WHERE "taskDate" BETWEEN $1 AND $2 ORDER BY "taskDate", tasks.id;`,
         [body.searchStartDate, body.searchEndDate]
       );
     default:

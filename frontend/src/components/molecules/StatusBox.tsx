@@ -5,6 +5,7 @@ import { updateStatus } from "../../utils/axios";
 
 export const renderStatusBox = (status: string, id: string, refetch?: any) => {
   const handleStatusUpdate = async (newStatus: string, id: string) => {
+    console.log(id);
     const body = { id, status: newStatus };
     await updateStatus(body);
     refetch && refetch();

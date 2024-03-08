@@ -9,8 +9,10 @@ import { csvItem } from "../../types";
 import { createTasks } from "../../utils/axios";
 import { useMutation } from "@tanstack/react-query";
 import dayjs from "dayjs";
+import customParseFormat from "dayjs/plugin/customParseFormat";
 
 export const FileUpload = () => {
+  dayjs.extend(customParseFormat);
   const [filename, setFilename] = useState<String>("");
   const [csvData, setCsvData] = useState<csvItem[]>([]);
   const [createStatus, setCreateStatus] = useState<String | null>(null);
@@ -44,7 +46,9 @@ export const FileUpload = () => {
               name: item.task_owner,
               email: item.email,
               company: item.company_name,
-              taskDate: dayjs(new Date(item.task_date)).format("YYYY-MM-DD"),
+              taskDate: dayjs(item.task_date, "DD/MM/YYYY").format(
+                "YYYY-MM-DD"
+              ),
               taskDescription: item.task_description,
               status: "IN_REVIEW",
             });
@@ -55,6 +59,7 @@ export const FileUpload = () => {
     });
   };
 
+  console.log(csvData);
   return (
     <>
       <Box display={"flex"} flexDirection={"row"} gap={"1rem"}>

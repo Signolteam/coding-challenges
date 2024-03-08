@@ -70,9 +70,9 @@ export const TasksTable = ({
           </TableHead>
           <TableBody>
             {data &&
-              data.map((row: Task) => (
+              data.map((row: Task, index: number) => (
                 <TableRow
-                  key={`row-${row.id}-${row.email}`}
+                  key={`row-${row.id}-${index}`}
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
                   <TableCell
@@ -156,9 +156,9 @@ export const TasksTable = ({
           </TableHead>
           <TableBody>
             {data &&
-              data.map((row: Task) => (
+              data.map((row: Task, index: number) => (
                 <TableRow
-                  key={`card-${row.id}-${row.email}`}
+                  key={`card-${row.id}-${index}`}
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
                   <TableCell component="th" scope="row">
