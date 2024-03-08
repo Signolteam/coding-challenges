@@ -55,4 +55,8 @@ Due to my limited knowledge of AWS when starting this project, I developed all p
 - DB structure --> server connection to DB --> endpoints structure --> client connection to server --> client development --> UX refinement
 - DB deployment to AWS RDS --> Server deployment to Lambda functions (partial) --> Set up API gateway (partial) --> Client deployment to S3 bucket (not done)
 
-While there were significant challenges for me to deploy to lambda functions, in the time given I didn't manage to deploy with serverless. However , I did achieve to set up
+While there were challenges to deploy to AWS, in the time given I didn't manage to deploy with serverless. However , I did achieve to partially deploy to AWS:
+
+- PostgresQL instance deployed with RDS
+- Lambda functions and API gateway: 2 functions deployed to get all tasks and get tasks count. These connect to the RDS and can be tested with the lambda postman collection provided in this repo.
+- S3 client:
