@@ -13,6 +13,7 @@ import { useReducer, useState } from "react";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { createOneTask, fetchUsers } from "../../utils/axios";
 import { TaskFormState, csvItem } from "../../types";
+import dayjs from "dayjs";
 
 export const TaskForm = () => {
   const [createStatus, setCreateStatus] = useState<String | null>(null);
@@ -23,6 +24,7 @@ export const TaskForm = () => {
     taskDate: "",
     taskDescription: "",
   };
+
   const reducer = (
     state: TaskFormState,
     action: { type: string; value: TaskFormState | null }
@@ -141,8 +143,9 @@ export const TaskForm = () => {
         <DemoContainer components={["DatePicker"]}>
           <DatePicker
             label="Start date"
-            value={taskState.taskDate}
+            value={dayjs(taskState.taskDate)}
             onChange={(newValue) =>
+              !!newValue &&
               taskDispatch({
                 type: "UPDATE_FIELD",
                 value: { taskDate: newValue.format("YYYY-MM-DD") },
