@@ -17,9 +17,9 @@ import UploadFileIcon from "@mui/icons-material/UploadFile";
 import { ChangeEvent, useReducer, useState } from "react";
 import Papa from "papaparse";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { User, csvItem } from "../types";
+import { User, csvItem } from "../../types";
 import { useMutation, useQuery } from "@tanstack/react-query";
-import { createTasks, fetchUsers } from "../utils";
+import { createTasks, fetchUsers } from "../../utils/axios";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 

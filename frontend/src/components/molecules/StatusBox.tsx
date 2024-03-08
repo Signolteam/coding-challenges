@@ -1,7 +1,7 @@
 import { Box, Button, Typography } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import CheckIcon from "@mui/icons-material/Check";
-import { updateStatus } from "../utils";
+import { updateStatus } from "../../utils/axios";
 
 export const renderStatusBox = (status: string, id: string, refetch?: any) => {
   const handleStatusUpdate = async (newStatus: string, id: string) => {

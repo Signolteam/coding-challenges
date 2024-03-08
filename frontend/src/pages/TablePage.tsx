@@ -1,31 +1,16 @@
-import {
-  Box,
-  Button,
-  Paper,
-  Stack,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TablePagination,
-  TableRow,
-  Typography,
-} from "@mui/material";
-import { useQuery } from "@tanstack/react-query";
-import { fetchTaskCount, fetchTaskList, fetchTaskPage } from "../utils";
-import { useEffect, useState } from "react";
-import { AllTasksTable } from "../components/TaskTable";
-import { AllTasksPanel } from "../components/AllTasksPanel";
-import { TaskTab } from "../components/TaskTab";
-import { ViewByDatePanel } from "../components/ViewByDatePanel";
-import { AddTasksPanel } from "../components/AddTasksPanel";
+import { Box, Button, Stack, Typography } from "@mui/material";
+
+import { useState } from "react";
+import { AllTasksPanel } from "../components/ViewTasks/AllTasksPanel";
+import { TaskTab } from "../components/ViewTasks/TaskTab";
+import { ViewByDatePanel } from "../components/ViewTasks/ViewByDatePanel";
+import { AddTasksPanel } from "../components/AddTasks/AddTasksPanel";
 
 export const TablePage = () => {
-  //for add tasks options
+  //for add tasks panel
   const [add, setAdd] = useState(false);
 
-  //for view tasks tabs
+  //for view tasks tabs/panels
   const [value, setValue] = useState(0);
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);

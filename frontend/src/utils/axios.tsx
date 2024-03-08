@@ -24,24 +24,19 @@ export const fetchTaskPerDate = async (start: string, end: string) => {
   );
   return res.data;
 };
+//TODO: get("/tasks/search") --> get tasks based on search param - string compared to content in description
 
-//get("/users") --> get all users, no restriction
 export const fetchUsers = async () => {
   const res = await axios.get("http://localhost:4000/users");
   return res.data.data;
 };
 
-//get("/users/search/:string") --> get user based on search on name
-
-//get("/alltasks") --> get all tasks, no skip&take, no restrictions
-
-//get("/tasks/count") --> get total count of tasks
-
-//get("/tasks/:skip/:take") --> get tasks per page with skip & take
-
-//get("/tasks/search") --> get tasks based on search param - date or string
-
 //post("/task") --> create 1 task
+export const createOneTask = async (body: csvItem) => {
+  const config = { headers: { "Content-Type": "application/json" } };
+  const res = await axios.post(`http://localhost:4000/task`, body, config);
+  return res.data;
+};
 //post("/tasks") --> create many
 export const createTasks = async (body: csvItem[]) => {
   const config = { headers: { "Content-Type": "application/json" } };
@@ -49,11 +44,10 @@ export const createTasks = async (body: csvItem[]) => {
   return res.data;
 };
 
-//put("/task") --> update task status
 export const updateStatus = async (body: UpdateBody) => {
   const config = { headers: { "Content-Type": "application/json" } };
   const res = await axios.put(`http://localhost:4000/task`, body, config);
   return res.data;
 };
 
-//delete("/task")
+//TODO: delete("/task")

@@ -1,4 +1,5 @@
 import {
+  Box,
   Paper,
   Stack,
   Table,
@@ -11,9 +12,9 @@ import {
   Typography,
 } from "@mui/material";
 
-import { renderStatusBox } from "./StatusBox";
-import { useWindowDimensions } from "../utils/mediaQuery";
-import { Task } from "../types";
+import { renderStatusBox } from "../molecules/StatusBox";
+import { useWindowDimensions } from "../../utils/mediaQuery";
+import { Task } from "../../types";
 
 interface TableProps {
   data: Task[];
@@ -25,7 +26,7 @@ interface TableProps {
   refetch?: () => void;
 }
 
-export const AllTasksTable = ({
+export const TasksTable = ({
   data,
   taskCount,
   rowsPerPage,
@@ -35,7 +36,7 @@ export const AllTasksTable = ({
   refetch,
 }: TableProps) => {
   const { width } = useWindowDimensions();
-  return (
+  return width > 900 ? (
     <Paper sx={{ width: "100%", overflow: "hidden" }}>
       <TableContainer sx={{ maxHeight: 600 }}>
         <Table stickyHeader sx={{ minWidth: 650 }} aria-label="task table">
@@ -125,6 +126,97 @@ export const AllTasksTable = ({
                   </TableCell>
                   <TableCell sx={{ width: width > 1240 ? "230px" : "auto" }}>
                     {renderStatusBox(row.status, row.id, refetch)}
+                  </TableCell>
+                </TableRow>
+              ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+      <TablePagination
+        rowsPerPageOptions={[10, 20]}
+        component="div"
+        count={taskCount}
+        rowsPerPage={rowsPerPage}
+        page={page}
+        onPageChange={handleChangePage}
+        onRowsPerPageChange={handleChangeRowsPerPage}
+      />
+    </Paper>
+  ) : (
+    <Paper sx={{ width: "100%", overflow: "hidden" }}>
+      <TableContainer>
+        <Table aria-label="mobile-task table">
+          <TableHead>
+            <TableRow>
+              <TableCell
+                sx={{ backgroundColor: "rgb(40, 44, 52)", color: "white" }}
+              >
+                Task details
+              </TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {data &&
+              data.map((row: Task) => (
+                <TableRow
+                  key={row.id}
+                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                >
+                  <TableCell component="th" scope="row">
+                    <Box
+                      display={"flex"}
+                      flexDirection={"column"}
+                      gap={"0.5rem"}
+                    >
+                      <Typography
+                        sx={{
+                          display: "-webkit-box",
+                          WebkitBoxOrient: "vertical",
+                          WebkitLineClamp: "1",
+                          textOverflow: "ellipsis",
+                          overflow: "hidden",
+                        }}
+                      >
+                        Task owner: {row.name}
+                      </Typography>
+                      <Typography
+                        sx={{
+                          display: "-webkit-box",
+                          WebkitBoxOrient: "vertical",
+                          WebkitLineClamp: "1",
+                          textOverflow: "ellipsis",
+                          overflow: "hidden",
+                        }}
+                      >
+                        Owner email: {row.email}
+                      </Typography>
+                      <Typography
+                        sx={{
+                          display: "-webkit-box",
+                          WebkitBoxOrient: "vertical",
+                          WebkitLineClamp: "1",
+                          textOverflow: "ellipsis",
+                          overflow: "hidden",
+                        }}
+                      >
+                        Owner company: {row.company}
+                      </Typography>
+                      <Typography>
+                        Task date: {row.taskDate.substring(0, 10)}
+                      </Typography>
+                      <Typography
+                        sx={{
+                          display: "-webkit-box",
+                          WebkitBoxOrient: "vertical",
+                          WebkitLineClamp: "3",
+                          textOverflow: "ellipsis",
+                          overflow: "hidden",
+                        }}
+                      >
+                        Task description: {row.taskDescription}
+                      </Typography>
+                      <Box>{renderStatusBox(row.status, row.id, refetch)}</Box>
+                    </Box>
                   </TableCell>
                 </TableRow>
               ))}

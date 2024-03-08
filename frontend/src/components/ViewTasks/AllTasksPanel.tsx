@@ -1,8 +1,8 @@
 import { Box, Stack } from "@mui/material";
 import { useQuery } from "@tanstack/react-query";
-import { fetchTaskCount, fetchTaskPage } from "../utils";
+import { fetchTaskCount, fetchTaskPage } from "../../utils/axios";
 import { useEffect, useState } from "react";
-import { AllTasksTable } from "../components/TaskTable";
+import { TasksTable } from "../organisms/TaskTable";
 
 export const AllTasksPanel = () => {
   const { data, error, refetch } = useQuery({
@@ -51,7 +51,7 @@ export const AllTasksPanel = () => {
         </h2>
       </Box>
       {!!data && !!taskCount && (
-        <AllTasksTable
+        <TasksTable
           data={data}
           taskCount={taskCount}
           page={page}

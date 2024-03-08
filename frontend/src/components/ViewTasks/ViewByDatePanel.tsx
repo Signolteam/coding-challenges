@@ -1,9 +1,9 @@
 import { Box, Stack, Typography } from "@mui/material";
 import { useQuery } from "@tanstack/react-query";
-import { fetchTaskPerDate } from "../utils";
+import { fetchTaskPerDate } from "../../utils/axios";
 import { useState } from "react";
-import { AllTasksTable } from "../components/TaskTable";
-import { DateFilter } from "./DateFilter";
+import { TasksTable } from "../organisms/TaskTable";
+import { DateFilter } from "../molecules/DateFilter";
 import dayjs, { Dayjs } from "dayjs";
 
 export const ViewByDatePanel = () => {
@@ -58,7 +58,7 @@ export const ViewByDatePanel = () => {
         setEnd={setEnd}
       />
       {!!data && (
-        <AllTasksTable
+        <TasksTable
           data={
             rowsPerPage > 0
               ? data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
