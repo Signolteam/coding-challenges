@@ -60,7 +60,7 @@ Note that there might be slight differences in the functions between the sam2 re
 
 ## Structure of the project
 
-Further details of the structure and design or style choices are explained in more details in the [backend readme](./sam2/backend/readme) and the [frontend readme](./sam2/frontend/readme).
+Further details of the structure and design or style choices are explained in more details in the [backend readme](./sam2/backend/README.md) and the [frontend readme](./sam2/frontend/README.md).
 
 ## Current state vs target state
 
