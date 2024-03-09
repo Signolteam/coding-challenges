@@ -1,0 +1,7 @@
+{
+  "httpMethod": "GET",
+  "pathParameters": {
+    "skip": "0",
+    "take": "10"
+  }
+}

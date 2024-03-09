@@ -1,0 +1,64 @@
+import PKG from "pg";
+
+export const getItemsSkipTakeHandler = async (event) => {
+  if (event.httpMethod !== "GET") {
+    throw new Error(
+      `getAllItems only accept GET method, you tried: ${event.httpMethod}`
+    );
+  }
+
+  const skip = event.pathParameters.skip;
+  const take = event.pathParameters.take;
+
+  const clientOptions = {
+    user: "postgres",
+    password: "password",
+    host: "signoldb-identifier.chmccoigw4nq.eu-west-1.rds.amazonaws.com",
+    port: 5432,
+    database: "signoldb",
+  };
+
+  let resBody = null;
+  try {
+    const client = new PKG.Pool(clientOptions);
+
+    const sqlQuery = `SELECT tasks.*, u.name, u.email, u.company FROM tasks JOIN users u
+    ON "createdBy" = u.id  ORDER BY "taskDate", tasks.id OFFSET $1 rows FETCH NEXT $2 rows ONLY`;
+
+    const params = [skip, take];
+
+    client.connect();
+
+    const result = await client.query(sqlQuery, params);
+
+    resBody = {
+      status: "success",
+      data: result.rows ? result.rows : null,
+      result: !result.rows ? result : null,
+    };
+
+    client.end();
+  } catch (error) {
+    return {
+      statusCode: 500,
+      headers: {
+        "Access-Control-Allow-Headers": "Content-Type",
+        "Access-Control-Allow-Origin": "*", //DO NOT USE THIS VALUE IN PRODUCTION - https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-cors.html
+        "Access-Control-Allow-Methods": "OPTIONS,POST,GET",
+      },
+      body: JSON.stringify(["Error connecting to PostgreSQL database", error]),
+    };
+  }
+
+  const response = {
+    statusCode: 200,
+    headers: {
+      "Access-Control-Allow-Headers": "Content-Type",
+      "Access-Control-Allow-Origin": "*", //DO NOT USE THIS VALUE IN PRODUCTION - https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-cors.html
+      "Access-Control-Allow-Methods": "OPTIONS,POST,GET",
+    },
+    body: JSON.stringify(resBody),
+  };
+
+  return response;
+};
