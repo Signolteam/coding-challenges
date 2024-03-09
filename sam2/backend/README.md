@@ -59,4 +59,4 @@ Possible extensions and improvements of this app would:
 
 - add tests all round (not done due to timeframe)
 - add additional checks on the quality of the csv file content
-- improve the sam2/server to TypeScript
+- improve the sam2\server to TypeScript

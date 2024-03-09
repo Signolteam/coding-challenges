@@ -8,7 +8,7 @@ If you prefer to run this frontend locally, you can clone the repo and :
 
 - in your terminal, at your prefered location: `git clone {repo url or ssh link}`
 - `cd {repo name}`
-- `cd sam2/frontend`
+- `cd sam2\frontend`
 - `npm install`
 - `npm run start`
 

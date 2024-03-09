@@ -21,7 +21,7 @@ The structure of the deployed app is contained in the sam2 folder. You should be
 - `npm i`
 - `npm run start`
 
-This would connect you to the deployed lambda functions and the deployed RDS.
+This would connect you to the deployed lambda functions and the deployed RDS. If you have SAM installed in your machine, you can also use `sam local start-api` to run the lambda functions located in sam2\server locally.
 
 Prior to deployment, the base structure was thought through using the frontend and server apps sitting at root level of this repo, so you are also able to run it all locally if you prefer, or should you want to install it locally and modify it. You can do so by cloning this repo at your prefered location: `git clone {repo url or ssh link}`.
 
@@ -56,11 +56,11 @@ DATABASE="signoldb"
 - if you've chosen the local postgresQL instance, you can use `npm run seed` to seed your db before starting it
 - `npm run start`
 
-Note that there might be slight differences in the functions between the sam2 repo and the other frontend/server repos, so it is best to use one group or the other (sam2/frontend + sam2/backend, or frontend + server).
+Note that there might be slight differences in the functions between the sam2 repo and the other frontend/server repos, so it is best to use one group or the other (sam2\frontend + sam2\backend, or frontend + server).
 
 ## Structure of the project
 
-Further details of the structure and design or style choices are explained in more details in the [backend readme](./sam2//backend/readme) and the [frontend readme](./sam2/frontend/readme).
+Further details of the structure and design or style choices are explained in more details in the [backend readme](./sam2/backend/readme) and the [frontend readme](./sam2/frontend/readme).
 
 ## Current state vs target state
 
