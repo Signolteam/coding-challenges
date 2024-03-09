@@ -1,0 +1,250 @@
+{
+	"info": {
+		"_postman_id": "40cb3e93-caa2-4e08-af3a-7a5f158f0e5f",
+		"name": "Sam2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24927149"
+	},
+	"item": [
+		{
+			"name": "Get all tasks",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://5byhs0fdig.execute-api.eu-west-1.amazonaws.com/Prod/",
+					"protocol": "https",
+					"host": [
+						"5byhs0fdig",
+						"execute-api",
+						"eu-west-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"Prod",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all tasks with skip/take",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://5byhs0fdig.execute-api.eu-west-1.amazonaws.com/Prod/tasks/0/10",
+					"protocol": "https",
+					"host": [
+						"5byhs0fdig",
+						"execute-api",
+						"eu-west-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"Prod",
+						"tasks",
+						"0",
+						"10"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get tasks by date",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://5byhs0fdig.execute-api.eu-west-1.amazonaws.com/Prod/date/start/2021-11-14/end/2021-11-16",
+					"protocol": "https",
+					"host": [
+						"5byhs0fdig",
+						"execute-api",
+						"eu-west-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"Prod",
+						"date",
+						"start",
+						"2021-11-14",
+						"end",
+						"2021-11-16"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get task by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://5byhs0fdig.execute-api.eu-west-1.amazonaws.com/Prod/42",
+					"protocol": "https",
+					"host": [
+						"5byhs0fdig",
+						"execute-api",
+						"eu-west-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"Prod",
+						"42"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get tasks count",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://5byhs0fdig.execute-api.eu-west-1.amazonaws.com/Prod/count",
+					"protocol": "https",
+					"host": [
+						"5byhs0fdig",
+						"execute-api",
+						"eu-west-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"Prod",
+						"count"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://5byhs0fdig.execute-api.eu-west-1.amazonaws.com/Prod/users",
+					"protocol": "https",
+					"host": [
+						"5byhs0fdig",
+						"execute-api",
+						"eu-west-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"Prod",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post new task",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Henry Jones\",\r\n  \"email\": \"henry@example.org\",\r\n   \"taskDescription\": \"xxx yyy zzz\",\r\n      \"taskDate\": \"2024-06-28\" ,\r\n   \"company\": \"ALPE\",\r\n   \"status\": \"APPROVED\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://5byhs0fdig.execute-api.eu-west-1.amazonaws.com/Prod/",
+					"protocol": "https",
+					"host": [
+						"5byhs0fdig",
+						"execute-api",
+						"eu-west-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"Prod",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update task",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"42\",\r\n    \"status\": \"APPROVED\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://5byhs0fdig.execute-api.eu-west-1.amazonaws.com/Prod/",
+					"protocol": "https",
+					"host": [
+						"5byhs0fdig",
+						"execute-api",
+						"eu-west-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"Prod",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post many new tasks",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"tasks\": [\r\n    {\r\n  \"name\": \"Henry Jones\",\r\n  \"email\": \"henry@example.org\",\r\n   \"taskDescription\": \"xxx yyy zzz\",\r\n      \"taskDate\": \"2024-06-28\" ,\r\n   \"company\": \"ALPE\",\r\n   \"status\": \"APPROVED\"\r\n},\r\n{\r\n  \"name\": \"Henry Jones\",\r\n  \"email\": \"henry@example.org\",\r\n   \"taskDescription\": \"Lorem ipsum\",\r\n      \"taskDate\": \"2024-06-29\" ,\r\n   \"company\": \"ALPE\",\r\n   \"status\": \"APPROVED\"\r\n}\r\n]}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://5byhs0fdig.execute-api.eu-west-1.amazonaws.com/Prod/manytasks",
+					"protocol": "https",
+					"host": [
+						"5byhs0fdig",
+						"execute-api",
+						"eu-west-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"Prod",
+						"manytasks"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

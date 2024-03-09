@@ -50,6 +50,11 @@ Add tasks
 
 ![addtasks-mobile](./src/screenshots/signol-addtasks-mobile.png)
 
-## Learn More
+## Further improvements and developments
 
-You can contact me by sending me an email at amelie.pira@gmail.com.
+Possible changes and extensions are:
+
+- add tests all round (rendering and behaviours on clicks etc)
+- investigate further functionalities for the app, so that it offers a bit more to the user
+- investigate further the styling and design aspects. While it is mobile friendly, it is not 'slick' yet.
+- add more validation thoughout (field checks and csv parsing checks)

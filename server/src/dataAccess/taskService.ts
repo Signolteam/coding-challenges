@@ -47,8 +47,8 @@ export const getTasksWithParam = async (body: SearchParamBody) => {
 };
 
 export const createTaskQuery = (taskData: any) => {
-  const { email, name, company, taskDate, taskDescription, status } = taskData;
-
+  const { email, name, company, taskDate, taskDescription } = taskData;
+  const status = "IN_REVIEW";
   return [
     {
       sqlQuery: ` INSERT INTO public.users ("name", "email", "company") 

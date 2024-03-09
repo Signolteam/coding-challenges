@@ -1,13 +1,14 @@
 # Signol - challenge - Frontend
 
-This project is part of the Signlo full stack challenge. You can view the deployed version [here]().
+This project is part of the Signol full stack challenge. You can view the deployed version [here](http://sam2-websitebucket-fjrjfopk9wed.s3-website-eu-west-1.amazonaws.com/).
 
 ## Installation
 
-If you prefer to run this project locally, you can clone the repo and :
+If you prefer to run this frontend locally, you can clone the repo and :
 
 - in your terminal, at your prefered location: `git clone {repo url or ssh link}`
 - `cd {repo name}`
+- `cd sam2/frontend`
 - `npm install`
 - `npm run start`
 
@@ -30,25 +31,25 @@ Example csv files for you to try are available in the example-data folder in thi
 
 View tasks
 
-![alltasks-desktop](./src/screenshots/signol-alltasks.png)
+![alltasks-desktop](../screenshots/signol-alltasks.png)
 
-![viewbydate-desktop](./src/screenshots/signol-viewbydate.png)
+![viewbydate-desktop](../screenshots/signol-viewbydate.png)
 
 Add tasks
 
-![addtasks-desktop](./src/screenshots/signol-addtasks.png)
+![addtasks-desktop](../screenshots/signol-addtasks.png)
 
 ### Mobile
 
 View tasks
 
-![alltasks-mobile](./src/screenshots/signol-alltasks-mobile.png)
+![alltasks-mobile](../screenshots/signol-alltasks-mobile.png)
 
-![viewbydate-mobile](./src/screenshots/signol-viewbydate-mobile.png)
+![viewbydate-mobile](../screenshots/signol-viewbydate-mobile.png)
 
 Add tasks
 
-![addtasks-mobile](./src/screenshots/signol-addtasks-mobile.png)
+![addtasks-mobile](../screenshots/signol-addtasks-mobile.png)
 
 ## Learn More
 

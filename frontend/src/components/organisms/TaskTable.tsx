@@ -64,6 +64,11 @@ export const TasksTable = ({
               <TableCell
                 sx={{ backgroundColor: "rgb(40, 44, 52)", color: "white" }}
               >
+                Company
+              </TableCell>
+              <TableCell
+                sx={{ backgroundColor: "rgb(40, 44, 52)", color: "white" }}
+              >
                 Status
               </TableCell>
             </TableRow>
@@ -121,6 +126,19 @@ export const TasksTable = ({
                       }}
                     >
                       {row.taskDescription}
+                    </Typography>
+                  </TableCell>
+                  <TableCell sx={{ maxWidth: "50ch" }}>
+                    <Typography
+                      sx={{
+                        display: "-webkit-box",
+                        WebkitBoxOrient: "vertical",
+                        WebkitLineClamp: "1",
+                        textOverflow: "ellipsis",
+                        overflow: "hidden",
+                      }}
+                    >
+                      {row.company}
                     </Typography>
                   </TableCell>
                   <TableCell sx={{ width: width > 1240 ? "230px" : "auto" }}>
