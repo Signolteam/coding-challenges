@@ -16,7 +16,14 @@ The deployed app can be viewed [here](http://sam2-websitebucket-fjrjfopk9wed.s3-
 
 ## Local installation
 
-The structure of the deployed app is contained in the sam2 folder. But prior to deployment, the base structure was thought through using the frontend and server apps sitting at root level of this repo. Should you want to install it locally and modify it, you can do so by cloning this repo at your prefered location: `git clone {repo url or ssh link}`.
+The structure of the deployed app is contained in the sam2 folder. You should be able to start the frontend locally, located in sam2\frontend by using:
+
+- `npm i`
+- `npm run start`
+
+This would connect you to the deployed lambda functions and the deployed RDS.
+
+Prior to deployment, the base structure was thought through using the frontend and server apps sitting at root level of this repo, so you are also able to run it all locally if you prefer, or should you want to install it locally and modify it. You can do so by cloning this repo at your prefered location: `git clone {repo url or ssh link}`.
 
 Once cloned, in your terminal, you can proceed with these steps:
 
@@ -46,7 +53,7 @@ HOST="localhost"
 PORT=5432
 DATABASE="signoldb"
 
-- if you've chosen the local postgresQL instance, you can use `npm run seed` to seed your db
+- if you've chosen the local postgresQL instance, you can use `npm run seed` to seed your db before starting it
 - `npm run start`
 
 Note that there might be slight differences in the functions between the sam2 repo and the other frontend/server repos, so it is best to use one group or the other (sam2/frontend + sam2/backend, or frontend + server).
@@ -64,7 +71,7 @@ Due to my limited knowledge of AWS when starting this project, I went through th
 - stack development: DB structure --> server connection to DB --> endpoints structure --> client connection to server --> client development --> UX refinement
 - deployment: DB deployment to AWS RDS --> Server deployment to Lambda functions and API gateway --> Client deployment to S3 bucket
 
-While there were challenges to deploy to AWS, I managed to perform all deployments but I didn't use serverless.
+While there were challenges to deploy to AWS, I managed to deploy all parts in their intended location but I didn't use serverless.
 
 This was a very interesting project and it got me acquainted with AWS which was very useful.
 
