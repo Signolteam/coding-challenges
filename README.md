@@ -73,13 +73,15 @@ Due to my limited knowledge of AWS when starting this project, I went through th
 
 While there were challenges to deploy to AWS, I managed to deploy all parts in their intended location but I didn't use serverless.
 
-This was a very interesting project and it got me acquainted with AWS which was very useful.
+Due to time constraints, there are urgent aspects that I didn't get to work on but that I would fix as a priority:
 
-## Further improvements and developments
+- explore the SAM template further to hide all environment variables properly (top priority)
+- clean up the template to remove all unnecessary code
 
-Possible changes and extensions are:
+Other changes and extensions are:
 
 - add tests all round (frontend and backend)
+- review code all round and refactor where needed
 - investigate further functionalities for the app, so that it offers a bit more to the user
 - investigate further the styling and design aspects. While it is mobile friendly, it is not 'slick' yet.
 - add more validation thoughout (field checks to match certain formats etc)
