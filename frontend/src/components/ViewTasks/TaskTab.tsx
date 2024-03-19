@@ -22,6 +22,7 @@ export const TaskTab = ({ value, handleChange }: TabProps) => {
         >
           <Tab label="All tasks" {...a11yProps(0)} />
           <Tab label="View by date" {...a11yProps(1)} />
+          <Tab label="View by string" {...a11yProps(2)} />
         </Tabs>
       </Box>
     </>

@@ -27,6 +27,12 @@ export const fetchTaskPerDate = async (start: string, end: string) => {
   return res.data;
 };
 //TODO: get("/tasks/search") --> get tasks based on search param - string compared to content in description
+export const fetchTaskPerString = async (str: string) => {
+  const res = await axios.get(
+    `http://localhost:4000/tasks/search/description/${str}`
+  );
+  return res.data;
+};
 
 export const fetchUsers = async () => {
   const res = await axios.get("http://localhost:4000/users");
